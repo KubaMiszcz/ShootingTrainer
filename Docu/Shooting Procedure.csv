@@ -1,0 +1,66 @@
+Id,Name,Shape Library,Page ID,Contained By,Group,Line Source,Line Destination,Source Arrow,Destination Arrow,Status,Text Area 1,Comments
+1,Document,,,,,,,,,Pending review,Shooting Procedure,
+2,Page,,,,,,,,,,Flowchart,
+3,Terminator,Flowchart Shapes/Containers,2,,,,,,,,Start,
+4,Process,Flowchart Shapes/Containers,2,,,,,,,,"niska gotowosc
+czekaj na sygnał",
+5,Text,Standard,2,,55,,,,,,procedura strzelania,
+6,Text,Standard,2,,55,,,,,,"kubamiszcz   |  June 8, 2023",
+7,Process,Flowchart Shapes/Containers,2,,,,,,,,"palec na spuscie? zdejm
+sprawdz czy zabezpieczona 
+cofnij suwadlo i zablokuj",
+8,Process,Flowchart Shapes/Containers,2,,,,,,,,"wepnij magazynek
+obroc bron       
+patrz na komore
+zrzuc suwadlo",
+9,Decision,Flowchart Shapes/Containers,2,,,,,,,,NABOJ   PODANY?,
+10,Decision,Flowchart Shapes/Containers,2,,,,,,,,CEL     TRAFIONY?,
+11,Terminator,Flowchart Shapes/Containers,2,,,,,,,,CEL!,
+12,Decision,Flowchart Shapes/Containers,2,,,,,,,,STRZELIŁO?,
+13,Process,Flowchart Shapes/Containers,2,,,,,,,,STRZELAJ,
+14,Process,Flowchart Shapes/Containers,2,,,,,,,,palec ze spustu zabezpiecz,
+15,Process,Flowchart Shapes/Containers,2,,,,,,,,Przyceluj   odbezpiecz,
+16,Process,Flowchart Shapes/Containers,2,,,,,,,,"palec ze spustu
+zabezpiecz krzyknij AWARIA zejdz na kolano
+obroc bron sprawdz komore",
+17,Decision,Flowchart Shapes/Containers,2,,,,,,,,KONIEC AMUNICJI,
+18,Decision,Flowchart Shapes/Containers,2,,,,,,,,DOUBLE FEED,
+19,Process,Flowchart Shapes/Containers,2,,,,,,,,wypnij pusty magazynek wrzuc do worka wepnij nowy magazynek,
+20,Decision,Flowchart Shapes/Containers,2,,,,,,,,NABOJ   PODANY?,
+21,Process,Flowchart Shapes/Containers,2,,,,,,,,krzyknij gotow odczekaj 3sek wstan,
+22,Decision,Flowchart Shapes/Containers,2,,,,,,,,SUCHY STRZAŁ,
+23,Process,Flowchart Shapes/Containers,2,,,,,,,,wypnij magazynek wsadz go pod kolano obroc komore do ziemi przeladuj 3 razy zablokuj suwadlo obroc komore do gory??? sprawdz komore??? wepnij magazynek spod kolana??,
+24,Decision,Flowchart Shapes/Containers,2,,,,,,,,KOMORA OTWARTA?,
+25,Process,Flowchart Shapes/Containers,2,,,,,,,,"obroc komore do gory patrz na komore
+zrzuc suwadlo",
+26,Process,Flowchart Shapes/Containers,2,,,,,,,,wypnij magazynek wsadz go pod kolano obroc komore do ziemi przeladuj 1 raz??? zablokuj suwadlo wepnij magazynek spod kolana,
+27,Line,,2,,,12,16,None,Arrow,,NIE,
+28,Line,,2,,55,,,None,None,,,
+29,Line,,2,,,7,8,None,Arrow,,,
+30,Line,,2,,,8,9,None,Arrow,,,
+31,Line,,2,,,9,4,None,Arrow,,TAK,
+32,Line,,2,,,3,7,None,Arrow,,,
+33,Line,,2,,,11,13,None,Arrow,,,
+34,Line,,2,,,10,14,None,Arrow,,TAK,
+35,Line,,2,,,13,12,None,Arrow,,,
+36,Line,,2,,,12,10,None,Arrow,,TAK,
+37,Line,,2,,,10,13,None,Arrow,,NIE,
+38,Line,,2,,,4,11,None,Arrow,,,
+39,Line,,2,,,14,4,None,Arrow,,,
+40,Line,,2,,,24,17,None,Arrow,,TAK,
+41,Line,,2,,,24,18,None,Arrow,,TAK,
+42,Line,,2,,,17,19,None,Arrow,,TAK,
+43,Line,,2,,,25,20,None,Arrow,,,
+44,Line,,2,,,20,21,None,Arrow,,TAK,
+45,Line,,2,,,21,4,None,Arrow,,,
+46,Line,,2,,,24,22,None,Arrow,,NIE,
+47,Line,,2,,,16,24,None,Arrow,,,
+48,Line,,2,,,18,23,None,Arrow,,TAK,
+49,Line,,2,,,23,25,None,Arrow,,,
+50,Line,,2,,,22,26,None,Arrow,,TAK,
+51,Line,,2,,,26,25,None,Arrow,,,
+52,Line,,2,,,9,24,None,Arrow,,NIE,
+53,Line,,2,,,19,25,None,Arrow,,,
+54,Line,,2,,,20,24,None,Arrow,,NIE,
+55,Group 1,,2,,,,,,,,,
+56,Page,,,,,,,,,,Page 2,
