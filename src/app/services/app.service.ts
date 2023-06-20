@@ -8,12 +8,7 @@ import { AppSettingsService } from './app-settings.service';
 export class AppService {
   constructor(private appSettings: AppSettingsService) {}
 
-  playAudio(path: string) {
-    let audio = new Audio();
-    audio.src = path;
-    audio.load();
-    audio.play();
-  }
+
 }
 
 

@@ -6,43 +6,26 @@ import { BehaviorSubject, Subject } from 'rxjs';
   providedIn: 'root',
 })
 export class AudioPlayerService {
-  playbackEndedSource = new Subject<string>();
   playbackEndedBS = new BehaviorSubject<string>('');
-  playbackEnded$ = this.playbackEndedSource.asObservable();
 
-  constructor() {
-    // this.audio initialization
-    // this.audio.addEventListener('ended', () => this.playbackEndedSource.next());
-  }
+  constructor() {}
 
-  // play(path: string): void {
-  //     this.audio.src = path;
-  //     this.audio.load();
-  //     this.audio.play();
-  // }
-
-  playAudio(path: string) {
+  playAction(path: string) {
     let audio = new Audio();
     audio.src = path;
-    audio.addEventListener('ended', () =>{
-      this.playbackEndedSource.next('ended' + path);
+    audio.addEventListener('ended', () => {
       this.playbackEndedBS.next('ended' + path);
-    }
-    );
+    });
     audio.load();
     audio.play();
   }
 
-  // playAudio2(path: string) {
-  //   let audio = new Audio();
-  //   audio.src = path;
-  //   audio.addEventListener('ended', () =>{
-  //     this.playbackEndedBS.next('ended' + path);
-  //   }
-  //   );
-  //   audio.load();
-  //   audio.play();
-  // }
+  playAudio(path: string) {
+    let audio = new Audio();
+    audio.src = path;
+    // audio.src = "../../../assets/audio/alarm.wav";
+    // audio.src = '../assets/mywav.wav';
+    audio.load();
+    audio.play();
+  }
 }
-
-

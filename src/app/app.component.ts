@@ -23,61 +23,30 @@ export class AppComponent {
     this.defaultProcedure = appSettings.defaultProcedure;
 
     this.audioPlayerService.playbackEndedBS.subscribe((data) =>
-      this.playStage(data)
+      this.playAction(data)
     );
   }
 
-  playStage(data: string) {
+  private playAction(data: string) {
     console.log(data);
     let actions = this.defaultProcedure[0].actions;
     let action = actions[this.currentActionIdx];
 
     if (!!action) {
-      this.currentActionLabel = action.label;
-      // console.log(data);
-      this.audioPlayerService.playAudio(
-        this.appSettings.audioPath + action.audioFileName
-      );
+      setTimeout(() => {
+        this.currentActionLabel = action.label;
+        this.audioPlayerService.playAction(
+          this.appSettings.audioPath + action.audioFileName
+        );
+      }, Number(action?.delay_sec) * 1000);
     }
+
     this.currentActionIdx = this.currentActionIdx + 1;
   }
 
-  playProcedure2() {
+  executeStage() {
     this.currentActionIdx = 0;
-    // let actions = this.defaultProcedure[0].actions;
     this.audioPlayerService.playbackEndedBS.next('start');
-  }
-
-  playProcedure() {
-    let actions = this.defaultProcedure[0].actions;
-    this.audioPlayerService.playbackEndedSource.next('start');
-    // this.audioPlayerService.playAudio(
-    //   this.appSettings.audioPath + actions[idx].audioFileName
-    // );
-
-    let idx = 0;
-    this.audioPlayerService.playbackEnded$.subscribe((data) => {
-      console.log(data);
-      let action = actions[idx];
-      // console.log(action);
-
-      if (!!action) {
-        this.currentActionLabel = action.label;
-        // console.log(data);
-        this.audioPlayerService.playAudio(
-          this.appSettings.audioPath + action.audioFileName
-        );
-      }
-      idx = idx + 1;
-    });
-  }
-
-  playAudio() {
-    let audio = new Audio();
-    // audio.src = "../../../assets/audio/alarm.wav";
-    audio.src = '../assets/mywav.wav';
-    audio.load();
-    audio.play();
   }
 
   // recordAudio() {
