@@ -1,7 +1,8 @@
-import { IAction } from "./action";
+import { IAction } from './action';
+import { IDecider } from './decider';
 
 export interface IStage {
   name: string;
   actions: IAction[];
-  nextStage: IStage;
+  nextStage?: IStage | IDecider;
 }
