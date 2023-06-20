@@ -1,6 +1,7 @@
 export interface IAction {
-  name: string;
   label: string;
-  audioFile: string;
+  audioFilepath: string;
+  orderNo: number;
   isActive:boolean;
+  delay_ms: number;
 }
