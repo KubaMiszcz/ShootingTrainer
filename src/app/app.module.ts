@@ -7,6 +7,7 @@ import { AppComponent } from './app.component';
 import { NavBarComponent } from './components/nav-bar/nav-bar.component';
 import { EditProcedureTabComponent } from './components/edit-procedure-tab/edit-procedure-tab.component';
 import { PlayProcedureTabComponent } from './components/play-procedure-tab/play-procedure-tab.component';
+import { FooterComponent } from './components/footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -15,6 +16,7 @@ import { PlayProcedureTabComponent } from './components/play-procedure-tab/play-
     EditProcedureTabComponent,
     PlayProcedureTabComponent,
     TimerTabComponent,
+    FooterComponent,
     ],
   imports: [
     BrowserModule,
