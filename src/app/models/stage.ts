@@ -4,5 +4,7 @@ import { IDecider } from './decider';
 export interface IStage {
   name: string;
   actions: IAction[];
-  nextStage?: IStage | IDecider;
+  nextBlockName?: string;
 }
+
+

@@ -1,10 +1,11 @@
-import { IAction } from "./action";
-import { IStage } from "./stage";
+import { IAction } from './action';
+import { IStage } from './stage';
 
 export interface IDecider {
-  label: string;
-  audioFilepath: string;
-  positiveOutput: IStage;
-  negativeOutput: IStage;
-  delay_ms: number;
+  name: string;
+  audioFileName: string;
+  positiveBlockName: string;
+  negativeBlockName: string;
+  positiveChance: number;
+  delay_ms?: number;
 }
