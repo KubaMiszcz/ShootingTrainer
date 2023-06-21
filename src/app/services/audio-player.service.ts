@@ -14,7 +14,7 @@ export class AudioPlayerService {
     let audio = new Audio();
     audio.src = path;
     audio.addEventListener('ended', () => {
-      this.playbackEndedBS.next('ended' + path);
+      this.playbackEndedBS.next(path+' ends');
     });
     audio.load();
     audio.play();
