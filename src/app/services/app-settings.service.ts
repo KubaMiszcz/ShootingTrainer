@@ -10,45 +10,16 @@ import { IDecider } from '../models/decider';
 export class AppSettingsService {
   magazineCapacity = 30;
   defaultFailureChance = 0.25;
-  defaultProcedure: IStage[] = [];
+  allStages: IStage[] = [];
+  allDeciders: IDecider[] = [];
   audioFilesPath = '../assets/audio/';
+  maxPlaylistLength= 20;
 
-  constructor() {}
+  constructor() {
+    this.allStages=ALL_STAGES;
+    this.allDeciders = ALL_DECIDERS;
+  }
 }
-
-// export const DELAY_1SEC: IAction = {
-//     label: 'pauza 1sek',
-//     audioFileName: 'pause-1sec.mp3',
-// }
-
-// export const DEFAULT_STAGES: any[] = [
-//   {
-//     name: '111stage',
-//     actions: [
-//       {
-//         name: 'prosto11',
-//         audioFileName: 'forward.mp3',
-//       },
-//       {
-//         name: 'prosto12',
-//         audioFileName: 'left.mp3',
-//       },
-//     ],
-//   },
-//   {
-//     name: '222stage',
-//     actions: [
-//       {
-//         name: 'prosto21',
-//         audioFileName: 'right.mp3',
-//       },
-//       {
-//         name: 'prosto22',
-//         audioFileName: 'forward.mp3',
-//       },
-//     ],
-//   },
-// ];
 
 export const ALL_DECIDERS: IDecider[] = [
   {
@@ -61,6 +32,11 @@ export const ALL_DECIDERS: IDecider[] = [
 ];
 
 export const ALL_STAGES: IStage[] = [
+  {
+    name: 'start',
+    actions: [],
+    nextBlockName: 'step1',
+  },
   {
     name: 'step1',
     actions: [
@@ -119,3 +95,38 @@ export const ALL_STAGES: IStage[] = [
     nextBlockName: '',
   },
 ];
+
+
+// export const DELAY_1SEC: IAction = {
+//     label: 'pauza 1sek',
+//     audioFileName: 'pause-1sec.mp3',
+// }
+
+// export const DEFAULT_STAGES: any[] = [
+//   {
+//     name: '111stage',
+//     actions: [
+//       {
+//         name: 'prosto11',
+//         audioFileName: 'forward.mp3',
+//       },
+//       {
+//         name: 'prosto12',
+//         audioFileName: 'left.mp3',
+//       },
+//     ],
+//   },
+//   {
+//     name: '222stage',
+//     actions: [
+//       {
+//         name: 'prosto21',
+//         audioFileName: 'right.mp3',
+//       },
+//       {
+//         name: 'prosto22',
+//         audioFileName: 'forward.mp3',
+//       },
+//     ],
+//   },
+// ];

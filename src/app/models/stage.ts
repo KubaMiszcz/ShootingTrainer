@@ -6,5 +6,3 @@ export interface IStage {
   actions: IAction[];
   nextBlockName?: string;
 }
-
-

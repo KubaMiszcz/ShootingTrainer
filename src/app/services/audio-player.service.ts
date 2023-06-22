@@ -1,20 +1,53 @@
 import { Injectable } from '@angular/core';
 import { AppSettingsService } from './app-settings.service';
 import { BehaviorSubject, Subject } from 'rxjs';
+import { IAction } from '../models/action';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AudioPlayerService {
-  playbackEndedBS = new BehaviorSubject<string>('');
+  playbackEnded$ = new Subject<string>();
+  currentActionName$ = new Subject<string>();
+  playlist: IAction[] = [];
 
-  constructor() {}
+  constructor(private appSettingsService: AppSettingsService) {
+    this.playbackEnded$.subscribe((data) => {
+      console.log('data', data);
+      this.playNextAction();
+    });
+  }
 
-  playAction(path: string) {
+  playPlaylist() {
+    this.playNextAction();
+  }
+
+  playNextAction() {
+    if (this.playlist.length === 0) {
+      return;
+    }
+
+    let action = this.playlist.shift();
+
+    if (!!action) {
+      this.playAction(action);
+    }
+  }
+
+  playAction(action: IAction) {
+    console.log(action);
+    this.currentActionName$.next(action.name);
+    this.playActionAudio(
+      this.appSettingsService.audioFilesPath + action.audioFileName
+    );
+  }
+
+  playActionAudio(path: string) {
     let audio = new Audio();
     audio.src = path;
     audio.addEventListener('ended', () => {
-      this.playbackEndedBS.next(path+' ends');
+      this.playbackEnded$.next(path + ' ends');
+      console.log(path + ' ends');
     });
     audio.load();
     audio.play();
