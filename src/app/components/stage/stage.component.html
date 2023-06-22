@@ -1,0 +1,24 @@
+<div *ngIf="stage.actions.length" class="card stage-card m-2">
+
+    <div class="card-header">
+        {{stage.name}}
+    </div>
+    <div class="card-body">
+        <div class="card">
+            <ul class="list-group list-group-flush">
+                <li *ngFor="let action of stage.actions" class="list-group-item action-row">
+                    <div> {{action.name}} </div>
+                    <div>
+                        <i *ngFor="let _ of [].constructor(getDelay(action))" class="fa fa-clock  mx-1  "></i>
+                        <button type="button" class="btn btn-primary btn-sm mx-1" (click)="editAction(action)">
+                            <i class="fa fa-edit" aria-hidden="true"></i>
+                        </button>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <button type="button" name="" id="" class="btn btn-primary btn-lg btn-block mt-2">adsas</button>
+    </div>
+
+</div>

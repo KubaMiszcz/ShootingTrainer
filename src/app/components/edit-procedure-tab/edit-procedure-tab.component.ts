@@ -1,6 +1,6 @@
 import { AppService } from 'src/app/services/app.service';
 import { Component } from '@angular/core';
-import { ALL_DECIDERS, ALL_STAGES, AppSettingsService } from 'src/app/services/app-settings.service';
+import { AppSettingsService } from 'src/app/services/app-settings.service';
 
 @Component({
   selector: 'app-edit-procedure-tab',
@@ -13,14 +13,16 @@ export class EditProcedureTabComponent {
   procedureJSON = '';
 
   constructor(
-    private appService:AppService,
-    private appSettingsService: AppSettingsService) {}
+    private appService: AppService,
+    private appSettingsService: AppSettingsService
+  ) {}
 
-  updateJSON(){
-    let json = JSON.stringify(this.appSettingsService.allStages);
+  importJSON() {
+   let appData = this.appSettingsService.getAppData();
+   this.appSettingsService.reloadDefaultAppData(appData);
   }
 
-importJSON(){
-  
-}
+  exportJSON() {
+    this.procedureJSON = JSON.stringify(this.appSettingsService.appData);
+  }
 }

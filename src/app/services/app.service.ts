@@ -19,7 +19,6 @@ export class AppService {
     private appSettings: AppSettingsService,
     private audioPlayerService: AudioPlayerService
   ) {
-this.appDataJSON
 
   }
 

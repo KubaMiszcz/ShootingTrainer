@@ -1,27 +1,50 @@
-import { IKeyValue } from './../models/KeyValue';
 import { Injectable } from '@angular/core';
 import { IStage } from '../models/stage';
 import { IAction } from '../models/action';
 import { IDecider } from '../models/decider';
+import { IAppData } from '../models/appData';
 
 @Injectable({
   providedIn: 'root',
 })
-
 export class AppSettingsService {
-  magazineCapacity = 30;
-  defaultFailureChance = 0.25;
   allStages: IStage[] = [];
   allDeciders: IDecider[] = [];
-  audioFilesPath = '../assets/audio/';
-  maxPlaylistLength= 20;
-  appDataJSON = '';
-
+  magazineCapacity: number;
+  defaultFailureChance: number;
+  audioFilesPath: string;
+  maxPlaylistLength: number;
+  appData: IAppData;
 
   constructor() {
-    this.allStages=ALL_STAGES;
-    this.allDeciders = ALL_DECIDERS;
-    this.appDataJSON
+    this.appData = APP_DATA_JSON;
+    this.allStages = this.appData.procedures[0].allStages;
+    this.allDeciders = this.appData.procedures[0].allDeciders;
+    this.magazineCapacity=this.appData.procedures[0].magazineCapacity ??30;
+    this.defaultFailureChance=this.appData.procedures[0].defaultFailureChance??30;
+    this.audioFilesPath=this.appData.audioFilesPath??'';
+    this.maxPlaylistLength = this.appData.maxPlaylistLength??30;
+  }
+
+  reloadDefaultAppData(appData: IAppData) {
+    this.appData = appData;
+  }
+
+  getAppData() {
+    let appData: IAppData = {
+      procedures: [
+        {
+          allStages: this.appData.procedures[0].allStages,
+          allDeciders: this.appData.procedures[0].allDeciders,
+          magazineCapacity: 30,
+          defaultFailureChance: 0.25,
+        },
+      ],
+      audioFilesPath: '../assets/audio/',
+      maxPlaylistLength: 20,
+    };
+
+  return appData;
   }
 }
 
@@ -147,3 +170,65 @@ export const NO_ACTION: IAction = {
 //     ],
 //   },
 // ];
+
+export const APP_DATA_JSON: IAppData = {
+  procedures: [
+    {
+      allStages: [
+        { name: 'start', actions: [], nextBlockName: 'step1' },
+        {
+          name: 'step1',
+          actions: [
+            {
+              name: 'S1podepnij magazynek',
+              audioFileName: 'podepnij magazynek.mp3',
+            },
+            {
+              name: 'S1obroc bron',
+              audioFileName: 'obrocBron.mp3',
+              delay_sec: 2,
+            },
+          ],
+          nextBlockName: 'step2',
+        },
+        {
+          name: 'step2',
+          actions: [
+            { name: 'S2patrz na komore', audioFileName: 'patrzNaKomore.mp3' },
+            { name: 'S2zrzuc suwadlo', audioFileName: 'zrzucSuwadlo.mp3' },
+          ],
+          nextBlockName: 'dec1',
+        },
+        {
+          name: 'step3',
+          actions: [
+            { name: 'S3patrz na komore', audioFileName: 'patrzNaKomore.mp3' },
+            { name: 'S3zrzuc suwadlo', audioFileName: 'zrzucSuwadlo.mp3' },
+          ],
+          nextBlockName: '',
+        },
+        {
+          name: 'step4',
+          actions: [
+            { name: 'S4patrz na komore', audioFileName: 'patrzNaKomore.mp3' },
+            { name: 'S4zrzuc suwadlo', audioFileName: 'zrzucSuwadlo.mp3' },
+          ],
+          nextBlockName: '',
+        },
+      ],
+      allDeciders: [
+        {
+          name: 'dec1',
+          audioFileName: 'przeladuj.mp3',
+          positiveBlockName: 'step3',
+          negativeBlockName: 'step4',
+          positiveChance: 0.5,
+        },
+      ],
+      magazineCapacity: 30,
+      defaultFailureChance: 0.25,
+    },
+  ],
+  audioFilesPath: '../assets/audio/',
+  maxPlaylistLength: 20,
+};

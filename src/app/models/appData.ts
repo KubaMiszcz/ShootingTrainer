@@ -4,5 +4,10 @@ import { IStage } from "./stage";
 
 export interface IAppData {
   procedures: IProcedure[];
+  audioFilesPath:string;
+  maxPlaylistLength:number;
 }
+
+
+
 
