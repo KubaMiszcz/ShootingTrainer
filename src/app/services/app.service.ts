@@ -18,7 +18,10 @@ export class AppService {
   constructor(
     private appSettings: AppSettingsService,
     private audioPlayerService: AudioPlayerService
-  ) {}
+  ) {
+this.appDataJSON
+
+  }
 
   playProcedure() {
     let playlist = this.createPlaylist(this.appSettings.maxPlaylistLength);
@@ -104,5 +107,9 @@ export class AppService {
 
   getetDeciderByName(name: string | undefined): IDecider | undefined {
     return this.appSettings.allDeciders.find((s) => s.name === name);
+  }
+
+  deepCopy<T>(obj: T): T {
+    return JSON.parse(JSON.stringify(obj));
   }
 }

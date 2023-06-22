@@ -15,10 +15,13 @@ export class AppSettingsService {
   allDeciders: IDecider[] = [];
   audioFilesPath = '../assets/audio/';
   maxPlaylistLength= 20;
+  appDataJSON = '';
+
 
   constructor() {
     this.allStages=ALL_STAGES;
     this.allDeciders = ALL_DECIDERS;
+    this.appDataJSON
   }
 }
 

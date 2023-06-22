@@ -13,9 +13,11 @@ export class AudioPlayerService {
   isPlaylistPlayed$ = new Subject<boolean>();
 
   constructor(private appSettingsService: AppSettingsService) {
-    this.playbackEnded$.subscribe((data) => {
-      this.playNextAction();
-    });
+    this.playbackEnded$.subscribe(
+      (data) => {
+        this.playNextAction();
+      },
+    );
   }
 
   playPlaylist() {
@@ -26,12 +28,12 @@ export class AudioPlayerService {
   stopPlaylist() {
     this.playlist = [];
     this.playbackEnded$.next('procedure stopped');
-    this.isPlaylistPlayed$.next(false)
+    this.isPlaylistPlayed$.next(false);
   }
 
   playNextAction() {
     if (this.playlist.length === 0) {
-      this.isPlaylistPlayed$.next(false)
+      this.isPlaylistPlayed$.next(false);
       return;
     }
 
@@ -56,8 +58,12 @@ export class AudioPlayerService {
     audio.addEventListener('ended', () => {
       this.playbackEnded$.next(path + ' ends');
     });
-    audio.load();
-    audio.play();
+    try {
+      audio.load();
+      audio.play();
+    } catch (error) {
+      console.log('ssssssssss');
+    }
   }
 
   playAudio(path: string) {
