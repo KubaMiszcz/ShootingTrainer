@@ -22,23 +22,24 @@ export class AppService {
 
   createPlaylist(maxLength: number): IAction[] {
     let playlist = [];
-    let stage = this.getStagebyName('start');
+    let stage = this.getStageByName('start');
     let deadEnd=stage?.nextBlockName?.length === 0
 
     while (playlist.length < maxLength && !deadEnd) {
       playlist.push(...(stage?.actions ?? []));
+      stage = this.getStageByName(stage?.nextBlockName);
+      
       deadEnd = !stage?.nextBlockName?.length;
-      stage = this.getStagebyName(stage?.nextBlockName);
     }
 
     return playlist;
   }
 
-  getStagebyName(name: string | undefined): IStage | undefined {
+  getStageByName(name: string | undefined): IStage | undefined {
     return this.appSettings.allStages.find((s) => s.name === name);
   }
 
-  getetDeciderbyName(name: string | undefined): IDecider | undefined {
+  getetDeciderByName(name: string | undefined): IDecider | undefined {
     return this.appSettings.allDeciders.find((s) => s.name === name);
   }
 }
