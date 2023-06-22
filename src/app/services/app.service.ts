@@ -1,8 +1,13 @@
 import { AudioPlayerService } from 'src/app/services/audio-player.service';
 import { Injectable } from '@angular/core';
-import { AppSettingsService } from './app-settings.service';
-import { IStage } from '../models/stage';
-import { IDecider } from '../models/decider';
+import {
+  AppSettingsService,
+  GENERIC_STRINGS,
+  NO_ACTION,
+  YES_ACTION,
+} from './app-settings.service';
+import { IStage, Stage } from '../models/stage';
+import { Decider, IDecider } from '../models/decider';
 import { IAction } from '../models/action';
 
 @Injectable({
@@ -22,17 +27,70 @@ export class AppService {
 
   createPlaylist(maxLength: number): IAction[] {
     let playlist = [];
-    let stage = this.getStageByName('start');
-    let deadEnd=stage?.nextBlockName?.length === 0
+    let block = this.getBlockByName('start');
+    let deadEnd = false;
 
-    while (playlist.length < maxLength && !deadEnd) {
-      playlist.push(...(stage?.actions ?? []));
-      stage = this.getStageByName(stage?.nextBlockName);
-      
-      deadEnd = !stage?.nextBlockName?.length;
-    }
+    do {
+      if (this.isStage(block)) {
+        block = block as IStage;
+        playlist.push(...block?.actions);
+      }
+
+      if (this.isDecider(block)) {
+        block = block as IDecider;
+        let result = this.getDeciderResult(block);
+        let actions: IAction[] = [
+          {
+            name: block.name,
+            audioFileName: block.audioFileName,
+            delay_sec: block.delay_ms,
+          },
+          result ? YES_ACTION : NO_ACTION,
+        ];
+        playlist.push(...actions);
+      }
+
+      let nextBlockName = this.getNextBlockName(block);
+      deadEnd = !nextBlockName.length;
+      if (!deadEnd) {
+        block = this.getBlockByName(nextBlockName);
+      }
+    } while (playlist.length < maxLength && !deadEnd);
 
     return playlist;
+  }
+
+  getNextBlockName(block: IStage | IDecider | undefined, result?: boolean) {
+    let nextBlockName = '';
+
+    if (this.isStage(block)) {
+      nextBlockName = (block as IStage).nextBlockName ?? '';
+    }
+    if (this.isDecider(block)) {
+      block = block as IDecider;
+      nextBlockName = !!result
+        ? block.positiveBlockName
+        : block.negativeBlockName;
+    }
+
+    return nextBlockName;
+  }
+
+  isDecider(obj: IStage | IDecider | undefined): boolean {
+    return (obj as IDecider).positiveBlockName !== undefined;
+  }
+
+  isStage(obj: IStage | IDecider | undefined): boolean {
+    return (obj as IStage).actions !== undefined;
+  }
+
+  getDeciderResult(block: Decider) {
+    return Math.random() < block.positiveChance;
+  }
+
+  getBlockByName(name: string | undefined): IStage | IDecider | undefined {
+    let block = this.getStageByName(name) ?? this.getetDeciderByName(name);
+    return block;
   }
 
   getStageByName(name: string | undefined): IStage | undefined {

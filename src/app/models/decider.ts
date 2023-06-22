@@ -9,3 +9,12 @@ export interface IDecider {
   positiveChance: number;
   delay_ms?: number;
 }
+
+export class Decider implements IDecider {
+  name = '';
+  audioFileName = '';
+  positiveBlockName = '';
+  negativeBlockName = '';
+  positiveChance = 0.5;
+  delay_ms?: number | undefined;
+}

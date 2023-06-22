@@ -1,3 +1,4 @@
+import { IKeyValue } from './../models/KeyValue';
 import { Injectable } from '@angular/core';
 import { IStage } from '../models/stage';
 import { IAction } from '../models/action';
@@ -27,7 +28,7 @@ export const ALL_DECIDERS: IDecider[] = [
     audioFileName: 'where.mp3',
     positiveBlockName: 'step3',
     negativeBlockName: 'step4',
-    positiveChance: 0.5,
+    positiveChance: 0.9,
   },
 ];
 
@@ -96,6 +97,19 @@ export const ALL_STAGES: IStage[] = [
   },
 ];
 
+export enum GENERIC_STRINGS {
+  YES = 'TAK',
+  NO = 'NIE',
+}
+
+export const YES_ACTION: IAction = {
+  name: GENERIC_STRINGS.YES,
+  audioFileName: 'tak.mp3',
+};
+export const NO_ACTION: IAction = {
+  name: GENERIC_STRINGS.NO,
+  audioFileName: 'nie.mp3',
+};
 
 // export const DELAY_1SEC: IAction = {
 //     label: 'pauza 1sek',

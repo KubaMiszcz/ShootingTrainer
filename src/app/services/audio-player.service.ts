@@ -13,7 +13,6 @@ export class AudioPlayerService {
 
   constructor(private appSettingsService: AppSettingsService) {
     this.playbackEnded$.subscribe((data) => {
-      console.log('data', data);
       this.playNextAction();
     });
   }
@@ -35,7 +34,7 @@ export class AudioPlayerService {
   }
 
   playAction(action: IAction) {
-    console.log(action);
+    console.log(action.name);
     this.currentActionName$.next(action.name);
     this.playActionAudio(
       this.appSettingsService.audioFilesPath + action.audioFileName
@@ -47,7 +46,6 @@ export class AudioPlayerService {
     audio.src = path;
     audio.addEventListener('ended', () => {
       this.playbackEnded$.next(path + ' ends');
-      console.log(path + ' ends');
     });
     audio.load();
     audio.play();

@@ -6,3 +6,9 @@ export interface IStage {
   actions: IAction[];
   nextBlockName?: string;
 }
+
+export class Stage implements IStage {
+  name = '';
+  actions = [];
+  nextBlockName?: string | undefined;
+}
