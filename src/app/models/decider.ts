@@ -10,11 +10,11 @@ export interface IDecider {
   delay_ms?: number;
 }
 
-export class Decider implements IDecider {
-  name = '';
-  audioFileName = '';
-  positiveBlockName = '';
-  negativeBlockName = '';
-  positiveChance = 0.5;
-  delay_ms?: number | undefined;
-}
+// export class Decider implements IDecider {
+//   name = '';
+//   audioFileName = '';
+//   positiveBlockName = '';
+//   negativeBlockName = '';
+//   positiveChance = 0.5;
+//   delay_ms?: number | undefined;
+// }

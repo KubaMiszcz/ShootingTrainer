@@ -7,8 +7,8 @@ export interface IStage {
   nextBlockName?: string;
 }
 
-export class Stage implements IStage {
-  name = '';
-  actions = [];
-  nextBlockName?: string | undefined;
-}
+// export class Stage implements IStage {
+//   name = '';
+//   actions = [];
+//   nextBlockName?: string | undefined;
+// }
