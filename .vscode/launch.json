@@ -3,6 +3,13 @@
   "version": "0.2.0",
   "configurations": [
     {
+      "name": "Firefox Attach",
+      "type": "firefox",
+      "request": "launch",
+      "preLaunchTask": "npm: start",
+      "url": "http://localhost:4200/"
+    },
+    {
       "name": "ng serve",
       "type": "chrome",
       "request": "launch",
