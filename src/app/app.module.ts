@@ -9,6 +9,7 @@ import { EditProcedureTabComponent } from './components/edit-procedure-tab/edit-
 import { PlayProcedureTabComponent } from './components/play-procedure-tab/play-procedure-tab.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { SettingsTabComponent } from './components/settings-tab/settings-tab.component';
+import { ActionTileComponent } from './components/action-tile/action-tile.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { SettingsTabComponent } from './components/settings-tab/settings-tab.com
     TimerTabComponent,
     FooterComponent,
     SettingsTabComponent,
+    ActionTileComponent,
     ],
   imports: [
     BrowserModule,

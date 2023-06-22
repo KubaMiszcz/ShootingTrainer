@@ -8,8 +8,9 @@ import { IAction } from '../models/action';
 })
 export class AudioPlayerService {
   playbackEnded$ = new Subject<string>();
-  currentActionName$ = new Subject<string>();
+  currentAction$ = new Subject<IAction>();
   playlist: IAction[] = [];
+  isPlaylistPlayed$ = new Subject<boolean>();
 
   constructor(private appSettingsService: AppSettingsService) {
     this.playbackEnded$.subscribe((data) => {
@@ -18,11 +19,19 @@ export class AudioPlayerService {
   }
 
   playPlaylist() {
+    this.isPlaylistPlayed$.next(true);
     this.playNextAction();
+  }
+
+  stopPlaylist() {
+    this.playlist = [];
+    this.playbackEnded$.next('procedure stopped');
+    this.isPlaylistPlayed$.next(false)
   }
 
   playNextAction() {
     if (this.playlist.length === 0) {
+      this.isPlaylistPlayed$.next(false)
       return;
     }
 
@@ -35,10 +44,10 @@ export class AudioPlayerService {
 
   playAction(action: IAction) {
     console.log(action.name);
-    this.currentActionName$.next(action.name);
-    this.playActionAudio(
-      this.appSettingsService.audioFilesPath + action.audioFileName
-    );
+    this.currentAction$.next(action);
+
+    let path = this.appSettingsService.audioFilesPath + action.audioFileName;
+    this.playActionAudio(path);
   }
 
   playActionAudio(path: string) {

@@ -1,7 +1,13 @@
-<div class="content">
-  <button type="button" class="btn btn-primary" (click)="playProcedure()">PlayProcedure</button>
+<div class="content p-4">
+  <button type="button" class="btn btn-primary mx-1" (click)="playProcedure()"
+    [disabled]="isPlaylistPlayed$ | async"><i class="fa fa-play" aria-hidden="true"></i> PlayProcedure</button>
+  <button type="button" class="btn btn-primary mx-1" (click)="stopProcedure()"
+    [disabled]="!(isPlaylistPlayed$ | async)"><i class="fa fa-stop" aria-hidden="true"></i> StopProcedure</button>
+  <button type="button" class="btn btn-primary mx-1" [routerLink]="'edit-procedure'"><i class="fa fa-edit" aria-hidden="true"></i>EditProcedure</button>
   <!-- <button type="button" class="btn btn-primary" (click)="playStage()">playStage</button> -->
-  <p>actionName: {{currentActionName}}</p>
+  
+  <!-- <app-action-tile [name]=""></app-action-tile> -->
+  <app-action-tile [action]="currentAction$ | async"></app-action-tile>
 </div>
 
 <!-- <div>

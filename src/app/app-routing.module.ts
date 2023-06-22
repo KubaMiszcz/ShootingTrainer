@@ -6,7 +6,7 @@ import { TimerTabComponent } from './components/timer-tab/timer-tab.component';
 import { SettingsTabComponent } from './components/settings-tab/settings-tab.component';
 
 const routes: Routes = [
-  { path: 'play-procedure-tab', component: PlayProcedureTabComponent },
+  { path: 'procedure-tab', component: PlayProcedureTabComponent },
   { path: 'edit-procedure-tab', component: EditProcedureTabComponent },
   { path: 'timer-tab', component: TimerTabComponent },
   { path: 'settings-tab', component: SettingsTabComponent },

@@ -2,18 +2,19 @@ import { AudioPlayerService } from 'src/app/services/audio-player.service';
 import { Injectable } from '@angular/core';
 import {
   AppSettingsService,
-  GENERIC_STRINGS,
   NO_ACTION,
   YES_ACTION,
 } from './app-settings.service';
-import { IStage, Stage } from '../models/stage';
-import { Decider, IDecider } from '../models/decider';
+import { IStage } from '../models/stage';
+import { IDecider } from '../models/decider';
 import { IAction } from '../models/action';
+import { Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AppService {
+
   constructor(
     private appSettings: AppSettingsService,
     private audioPlayerService: AudioPlayerService
@@ -23,6 +24,10 @@ export class AppService {
     let playlist = this.createPlaylist(this.appSettings.maxPlaylistLength);
     this.audioPlayerService.playlist = playlist;
     this.audioPlayerService.playPlaylist();
+  }
+
+  stopProcedure() {
+    this.audioPlayerService.stopPlaylist();
   }
 
   createPlaylist(maxLength: number): IAction[] {
@@ -84,7 +89,7 @@ export class AppService {
     return (obj as IStage).actions !== undefined;
   }
 
-  getDeciderResult(block: Decider) {
+  getDeciderResult(block: IDecider) {
     return Math.random() < block.positiveChance;
   }
 

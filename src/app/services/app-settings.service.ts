@@ -25,10 +25,10 @@ export class AppSettingsService {
 export const ALL_DECIDERS: IDecider[] = [
   {
     name: 'dec1',
-    audioFileName: 'where.mp3',
+    audioFileName: 'przeladuj.mp3',
     positiveBlockName: 'step3',
     negativeBlockName: 'step4',
-    positiveChance: 0.9,
+    positiveChance: 0.5,
   },
 ];
 
@@ -43,11 +43,11 @@ export const ALL_STAGES: IStage[] = [
     actions: [
       {
         name: 'S1wepnij magazynek',
-        audioFileName: 'attach-magazine.mp3',
+        audioFileName: 'wepnijMagazynek.mp3',
       },
       {
         name: 'S1obroc bron',
-        audioFileName: 'turn-rifle.mp3',
+        audioFileName: 'obrocBron.mp3',
         delay_sec: 2,
       },
     ],
@@ -58,11 +58,11 @@ export const ALL_STAGES: IStage[] = [
     actions: [
       {
         name: 'S2patrz na komore',
-        audioFileName: 'lookatchamber.mp3',
+        audioFileName: 'patrzNaKomore.mp3',
       },
       {
         name: 'S2zrzuc suwadlo',
-        audioFileName: 'release-slider.mp3',
+        audioFileName: 'zrzucSuwadlo.mp3',
       },
     ],
     nextBlockName: 'dec1',
@@ -72,11 +72,11 @@ export const ALL_STAGES: IStage[] = [
     actions: [
       {
         name: 'S3patrz na komore',
-        audioFileName: 'lookatchamber.mp3',
+        audioFileName: 'patrzNaKomore.mp3',
       },
       {
         name: 'S3zrzuc suwadlo',
-        audioFileName: 'release-slider.mp3',
+        audioFileName: 'zrzucSuwadlo.mp3',
       },
     ],
     nextBlockName: '',
@@ -86,11 +86,11 @@ export const ALL_STAGES: IStage[] = [
     actions: [
       {
         name: 'S4patrz na komore',
-        audioFileName: 'lookatchamber.mp3',
+        audioFileName: 'patrzNaKomore.mp3',
       },
       {
         name: 'S4zrzuc suwadlo',
-        audioFileName: 'release-slider.mp3',
+        audioFileName: 'zrzucSuwadlo.mp3',
       },
     ],
     nextBlockName: '',
