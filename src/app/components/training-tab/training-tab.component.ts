@@ -6,6 +6,7 @@ import { AppService } from 'src/app/services/app.service';
 import { AudioPlayerService } from 'src/app/services/audio-player.service';
 
 @Component({
+  selector: 'app-training-tab',
   templateUrl: './training-tab.component.html',
   styleUrls: ['./training-tab.component.scss'],
 })
