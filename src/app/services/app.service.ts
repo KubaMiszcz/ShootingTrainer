@@ -25,6 +25,10 @@ export class AppService {
     this.audioPlayerService.playPlaylist();
   }
 
+  pauseProcedure() {
+    this.audioPlayerService.pausePlaylist();
+  }
+
   stopProcedure() {
     this.audioPlayerService.stopPlaylist();
   }
@@ -41,7 +45,7 @@ export class AppService {
         playlist.push(...block?.actions);
         nextBlockName = this.getNextBlockName(block);
       }
-      
+
       let result = true;
       if (this.isDecider(block)) {
         block = block as IDecider;

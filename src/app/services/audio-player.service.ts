@@ -12,6 +12,8 @@ export class AudioPlayerService {
   currentAction$ = new Subject<IAction>();
   playlist: IAction[] = [];
   isPlaylistPlayed$ = new Subject<boolean>();
+  // isPlaylistPaused = false;
+  audio = new Audio();
 
   constructor(private appSettingsService: AppSettingsService) {
     this.playbackEnded$.subscribe((data) => {
@@ -22,6 +24,10 @@ export class AudioPlayerService {
   playPlaylist() {
     this.isPlaylistPlayed$.next(true);
     this.playNextAction();
+  }
+
+  pausePlaylist() {
+    // this.isPlaylistPaused = true;
   }
 
   stopPlaylist() {
@@ -47,7 +53,7 @@ export class AudioPlayerService {
     console.log(action.name);
     this.currentAction$.next(action);
 
-    if (this.isFileWithExtension(action.audioFileName)) {
+    if (!this.isFileWithExtension(action.audioFileName)) {
       action.audioFileName =
         action.audioFileName +
         this.appSettingsService.appData.defaultAudioExtension;
@@ -58,13 +64,14 @@ export class AudioPlayerService {
   }
 
   playActionAudio(path: string) {
-    let audio = new Audio();
-    audio.src = path;
-    audio.addEventListener('ended', () => {
+    this.audio = new Audio();
+    this.audio.src = path;
+    this.audio.addEventListener('ended', () => {
       this.playbackEnded$.next(path + ' ends');
     });
-    audio.load();
-    audio.play();
+
+    this.audio.load();
+    this.audio.play();
   }
 
   playAudio(path: string) {
@@ -77,6 +84,6 @@ export class AudioPlayerService {
   }
 
   isFileWithExtension(fileName: string) {
-    return !_.last(fileName.split('.'))?.length;
+    return !!_.last(fileName.split('.').slice(1))?.length;
   }
 }
