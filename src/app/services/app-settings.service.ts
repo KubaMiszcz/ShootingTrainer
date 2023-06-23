@@ -32,8 +32,8 @@ export class AppSettingsService {
       procedures: [
         {
           name: this.appData.procedures[0].name,
-          allStages: this.appData.procedures[0].allStages,
-          allDeciders: this.appData.procedures[0].allDeciders,
+          stages: this.appData.procedures[0].stages,
+          deciders: this.appData.procedures[0].deciders,
           magazineCapacity: this.appData.procedures[0].magazineCapacity,
           defaultFailureChance: this.appData.procedures[0].defaultFailureChance,
         },

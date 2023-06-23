@@ -4,7 +4,7 @@ export const APP_DATA_JSON: IAppData = {
   procedures: [
     {
       name: 'MSBS',
-      allStages: [
+      stages: [
         { name: 'start', actions: [], nextBlockName: 'step1' },
         {
           name: 'step1',
@@ -76,7 +76,7 @@ export const APP_DATA_JSON: IAppData = {
           nextBlockName: '',
         },
       ],
-      allDeciders: [
+      deciders: [
         {
           name: 'czy naboj podany',
           audioFileName: 'czy naboj podany',
@@ -104,8 +104,8 @@ export const APP_DATA_JSON: IAppData = {
     },
     {
       name: '9mm',
-      allStages: [],
-      allDeciders: [],
+      stages: [],
+      deciders: [],
       magazineCapacity: 12,
       defaultFailureChance: 0.25,
     },
