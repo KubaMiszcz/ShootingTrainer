@@ -10,16 +10,17 @@ export const APP_DATA_JSON: IAppData = {
           name: 'step1',
           actions: [
             { name: 'palec ze spustu', audioFileName: 'palec ze spustu.mp3' },
-            // {
-            //   name: 'zabezpiecz bron',
-            //   audioFileName: 'zabezpiecz bron.mp3',
-            //   delay_sec: 1,
-            // },
-            // {
-            //   name: 'cofnij i zablokuj suwadlo',
-            //   audioFileName: 'cofnij i zablokuj suwadlo.mp3',
-            //   delay_sec: 1,
-            // },
+            {
+              name: 'zabezpiecz bron',
+              audioFileName: 'zabezpiecz bron.mp3',
+              delay_sec: 1,
+              isDisabled: true,
+            },
+            {
+              name: 'cofnij i zablokuj suwadlo',
+              audioFileName: 'cofnij i zablokuj suwadlo.mp3',
+              delay_sec: 1,
+            },
           ],
           nextBlockName: 'step2',
         },
@@ -29,10 +30,11 @@ export const APP_DATA_JSON: IAppData = {
             {
               name: 'podepnij magazynek',
               audioFileName: 'podepnij magazynek.mp3',
+              isDisabled: true,
             },
-            // { name: 'obroc bron', audioFileName: 'obroc bron.mp3' },
-            // { name: 'patrz na komore', audioFileName: 'patrz na komore.mp3' },
-            // { name: 'zrzuc suwadlo', audioFileName: 'zrzuc suwadlo.mp3' },
+            { name: 'obroc bron', audioFileName: 'obroc bron.mp3' },
+            { name: 'patrz na komore', audioFileName: 'patrz na komore.mp3' },
+            { name: 'zrzuc suwadlo', audioFileName: 'zrzuc suwadlo.mp3' },
           ],
           nextBlockName: 'czy naboj podany',
         },

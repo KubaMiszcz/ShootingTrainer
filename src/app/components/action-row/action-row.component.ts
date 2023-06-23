@@ -37,4 +37,8 @@ export class ActionRowComponent {
   getDelay(action: IAction) {
     return action.delay_sec ?? 0;
   }
+
+  toggleIsDisabled(){
+    this.action.isDisabled = !this.action.isDisabled;
+  }
 }

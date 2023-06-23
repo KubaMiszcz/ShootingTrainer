@@ -23,8 +23,7 @@ export class AppService {
   constructor(
     private appSettings: AppSettingsService,
     private audioPlayerService: AudioPlayerService
-  ) {
-  }
+  ) {}
 
   changeProcedure(value: IProcedure) {
     this.appSettings.appData.procedures.forEach((p) => (p.isDefault = false));
@@ -60,7 +59,8 @@ export class AppService {
     do {
       if (this.isStage(block)) {
         block = block as IStage;
-        playlist.push(...block?.actions);
+        let activeActions = block?.actions.filter((a) => !a.isDisabled);
+        playlist.push(...activeActions);
         nextBlockName = this.getNextBlockName(block);
       }
 
