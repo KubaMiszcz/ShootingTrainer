@@ -59,7 +59,12 @@ export class AudioPlayerService {
     console.log(action.name);
     this.currentAction$.next(action);
 
-    if (!this.isFileWithExtension(action.audioFileName)) {
+    if (!action.audioFileName.length) {
+      action.audioFileName =
+        action.name + this.appSettingsService.appData.defaultAudioExtension;
+    }
+
+    if (!this.hasFileExtension(action.audioFileName)) {
       action.audioFileName =
         action.audioFileName +
         this.appSettingsService.appData.defaultAudioExtension;
@@ -89,7 +94,7 @@ export class AudioPlayerService {
     audio.play();
   }
 
-  isFileWithExtension(fileName: string) {
+  hasFileExtension(fileName: string) {
     return !!_.last(fileName.split('.').slice(1))?.length;
   }
 }
