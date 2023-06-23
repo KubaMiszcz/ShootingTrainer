@@ -1,7 +1,9 @@
 .container {
-    .card{
+    .card {
         height: 30rem;
         width: 80%;
+        border-color: black;
+        border-width: 2px;
     }
 
     .card-header,
@@ -10,16 +12,36 @@
         height: 60%;
         font-size: 5rem;
         text-align: center;
+        background-color: #c4ccd5;
     }
-    
+
     .img {
         height: 60%;
         // max-height: 50%;
     }
-    
+
     .body {
         // height: 40%;
         font-size: 2rem;
-        text-align: center;
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
+        flex-direction: column;
+
+        .label {
+            font-size: 0.5em;
+            width: 100%;
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+        }
+
+        .card-text {
+            height: 100%;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
     }
 }
