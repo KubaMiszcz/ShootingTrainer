@@ -6,7 +6,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NavBarComponent } from './components/nav-bar/nav-bar.component';
 import { EditProcedureTabComponent } from './components/edit-procedure-tab/edit-procedure-tab.component';
-import { ProcedureTabComponent } from './components/procedure-tab/procedure-tab.component';
+import { ProcedureTabComponent } from './components/training-tab/training-tab.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { SettingsTabComponent } from './components/settings-tab/settings-tab.component';
 import { ActionTileComponent } from './components/action-tile/action-tile.component';

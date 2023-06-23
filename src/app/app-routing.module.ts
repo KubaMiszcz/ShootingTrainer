@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { ProcedureTabComponent } from './components/procedure-tab/procedure-tab.component';
+import { ProcedureTabComponent } from './components/training-tab/training-tab.component';
 import { EditProcedureTabComponent } from './components/edit-procedure-tab/edit-procedure-tab.component';
 import { TimerTabComponent } from './components/timer-tab/timer-tab.component';
 import { SettingsTabComponent } from './components/settings-tab/settings-tab.component';
