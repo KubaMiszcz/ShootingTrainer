@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { AppSettingsService } from './app-settings.service';
 import { BehaviorSubject, Subject } from 'rxjs';
 import { IAction } from '../models/action';
+import * as _ from 'lodash';
 
 @Injectable({
   providedIn: 'root',
@@ -46,10 +47,13 @@ export class AudioPlayerService {
     console.log(action.name);
     this.currentAction$.next(action);
 
+    if (this.isFileWithExtension(action.audioFileName)) {
+      action.audioFileName =
+        action.audioFileName +
+        this.appSettingsService.appData.defaultAudioExtension;
+    }
+    
     let path = this.appSettingsService.audioFilesPath + action.audioFileName;
-    let defaultExtension =
-      this.appSettingsService.appData.defaultAudioExtension;
-    path = path.endsWith(defaultExtension) ? path : path + defaultExtension;
     this.playActionAudio(path);
   }
 
@@ -74,5 +78,9 @@ export class AudioPlayerService {
     // audio.src = '../assets/mywav.wav';
     audio.load();
     audio.play();
+  }
+
+  isFileWithExtension(fileName: string) {
+    return !_.last(fileName.split('.'))?.length;
   }
 }
