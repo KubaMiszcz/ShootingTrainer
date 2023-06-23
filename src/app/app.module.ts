@@ -14,6 +14,9 @@ import { StageTileComponent } from './components/stage-tile/stage-tile.component
 import { EditActionModalComponent } from './components/edit-action-modal/edit-action-modal.component';
 import { FormsModule } from '@angular/forms';
 import { ActionRowComponent } from './components/action-row/action-row.component';
+import { DeciderTileComponent } from './components/decider-tile/decider-tile.component';
+import { EditDeciderModalComponent } from './components/edit-decider-modal/edit-decider-modal.component';
+import { EditStageModalComponent } from './components/edit-stage-modal/edit-stage-modal.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +31,9 @@ import { ActionRowComponent } from './components/action-row/action-row.component
     StageTileComponent,
     EditActionModalComponent,
     ActionRowComponent,
+    DeciderTileComponent,
+    EditDeciderModalComponent,
+    EditStageModalComponent,
     ],
   imports: [
     BrowserModule,

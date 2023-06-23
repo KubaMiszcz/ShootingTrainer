@@ -1,8 +1,15 @@
-span,
-label {
+.label {
     width: 12rem;
 }
 
-.modal-header,.modal-footer{
+.modal-header,
+.modal-footer {
     background-color: lightgrey;
+
+    .pill {
+        background-color: #2474ff;
+        padding: 10px;
+        border-color: blue;
+        border-radius: 0.5rem;
+    }
 }

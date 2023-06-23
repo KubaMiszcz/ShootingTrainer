@@ -5,10 +5,14 @@
 }
 
 .card{
-    border-color: black;
-    box-shadow: 4px 4px 6px 1px gray;
+    border-color: rgb(75, 75, 75);
+    box-shadow: 4px 4px 6px 1px rgb(75, 75, 75);
 }
 
 .no-box-shadow{
     box-shadow: none;
+}
+
+.input-group,.input-group-text,.form-control {
+    border-color: rgb(75, 75, 75);
 }

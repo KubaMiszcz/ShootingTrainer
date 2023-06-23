@@ -1,28 +1,34 @@
 <div class="modal-header">
-    <h4 *ngIf="!actionName.length" class="modal-title">Edit Action <b>{{action.name}}</b></h4>
-    <h4 *ngIf="actionName.length" class="modal-title">Edit Action <b>{{actionName}}</b></h4>
+    <h4 *ngIf="!actionName.length" class="modal-title">
+        <span> Edit Action </span>
+        <span class="pill">{{action.name}} </span>
+    </h4>
+    <h4 *ngIf="actionName.length" class="modal-title">
+        <span>Edit Action</span>
+        <span class="pill">{{action.name}} </span>
+    </h4>
     <button type="button" class="btn-close" aria-label="Close" (click)="activeModal.dismiss('Cross click')"
         ngbAutofocus></button>
 </div>
 <div class="modal-body">
     <div class="input-group mb-2">
-        <span class="input-group-text" id="basic-addon1">Action Name</span>
+        <span class="input-group-text label" id="basic-addon1">Action Name</span>
         <input [(ngModel)]="action.name" type="text" class="form-control" id="actionName" placeholder="name"
             aria-label="name" aria-describedby="basic-addon1" required (click)="actionName=action.name">
     </div>
 
     <div class="input-group mb-3">
-        <label class="input-group-text" for="inputGroupFile03">Audio File</label>
-        <input  [value]="action.audioFileName" type="text" class="form-control" id="inputGroupFile03" disabled readonly>
-      </div>
+        <label class="input-group-text label" for="inputGroupFile03">Audio File</label>
+        <input [value]="action.audioFileName" type="text" class="form-control" id="inputGroupFile03" disabled readonly>
+    </div>
     <div class="input-group mb-3">
-        <label class="input-group-text" for="inputGroupFile01">Replace Audio File</label>
-        <input  [(ngModel)]="audioFileName" type="file" class="form-control" id="inputGroupFile01">
-      </div>
+        <label class="input-group-text label" for="inputGroupFile01">Replace Audio File</label>
+        <input [(ngModel)]="audioFileName" type="file" class="form-control" id="inputGroupFile01">
+    </div>
 
     <div class="input-group mb-2">
-        <span class="input-group-text">Action description</span>
-        <textarea [(ngModel)]="action.description" class="form-control" aria-label="With textarea"></textarea>
+        <span class="input-group-text label">Action description</span>
+        <textarea [(ngModel)]="action.description" class="form-control" rows="3" aria-label="With textarea"></textarea>
     </div>
 
     <div class="input-group mb-2">
@@ -30,7 +36,7 @@
         <input [(ngModel)]="action.delay_sec" type="number" class="form-control" id="actionName" placeholder="delay"
             aria-label="delay" aria-describedby="basic-addon1" required (click)="actionName=action.name">
     </div>
-    <!-- delay_sec?: number; --> 
+    <!-- delay_sec?: number; -->
 
 
     <!-- <button type="button" class="btn btn-primary btn-sm ">
@@ -41,7 +47,6 @@
     </button> -->
 </div>
 <div class="modal-footer">
-    <button type="button" class="btn btn-primary" ngbAutofocus  (click)="saveAction()">Save</button>
+    <button type="button" class="btn btn-primary" ngbAutofocus (click)="saveAction()">Save</button>
     <button type="button" class="btn btn-secondary" (click)="activeModal.close('close click')">Cancel</button>
 </div>
-

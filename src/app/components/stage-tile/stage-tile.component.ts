@@ -9,7 +9,7 @@ import { IStage } from 'src/app/models/stage';
 export class StageTileComponent {
   @Input() stage: IStage;
   @Input() isHighlighted = false;
-  @Output() pointNextStage = new EventEmitter<string>();
+  @Output() pointNextBlock = new EventEmitter<string>();
 
   constructor() {
     this.stage = {
@@ -19,6 +19,6 @@ export class StageTileComponent {
   }
 
   showNextBlock(nextBlockName: string) {
-    this.pointNextStage.emit(nextBlockName);
+    this.pointNextBlock.emit(nextBlockName);
   }
 }

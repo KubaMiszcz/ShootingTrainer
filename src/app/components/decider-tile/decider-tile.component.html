@@ -1,0 +1,51 @@
+<div class="card decider-card m-2 highlight-border"
+    [ngClass]="{'highlight-border' : isHighlighted}">
+
+    <div class="card-header" [ngClass]="{'highlight-background' : isHighlighted}">
+        {{decider.name}}
+        <button type="button" class="btn btn-primary btn-sm">
+            <i class="fa fa-edit" aria-hidden="true"></i>
+        </button>
+    </div>
+
+    <div class="card-body p-2">
+        <div class="input-group input-group-sm mt-2">
+            <span class="input-group-text label" id="basic-addon1">Audio File</span>
+            <input [ngModel]="decider.audioFileName" type="text" class="form-control" id="actionName" placeholder="name"
+                aria-label="name" aria-describedby="basic-addon1" required disabled readonly>
+        </div>
+        
+        <div class="input-group input-group-sm mt-2">
+            <span class="input-group-text label" id="basic-addon1">jesli TAK</span>
+            <input [ngModel]="decider.positiveBlockName" type="text" class="form-control" id="actionName" placeholder="name"
+                aria-label="name" aria-describedby="basic-addon1" required disabled readonly>
+            <button class="input-group-text btn btn-outline-primary m-0" type="button"
+                (click)="showNextBlock(decider.positiveBlockName)">pokaz
+                <i class="fa fa-location-arrow" aria-hidden="true"></i>
+            </button>
+        </div>
+
+        <div class="input-group input-group-sm mt-2">
+            <span class="input-group-text label" id="basic-addon1">jesli NIE</span>
+            <input [ngModel]="decider.negativeBlockName" type="text" class="form-control" id="actionName" placeholder="name"
+                aria-label="name" aria-describedby="basic-addon1" required disabled readonly>
+            <button class="input-group-text btn btn-outline-primary m-0" type="button"
+                (click)="showNextBlock(decider.negativeBlockName)">pokaz
+                <i class="fa fa-location-arrow" aria-hidden="true"></i>
+            </button>
+        </div>
+        
+        <div class="input-group input-group-sm mt-2">
+            <span class="input-group-text label" id="basic-addon1">szansa na TAK</span>
+            <input [ngModel]="decider.positiveChance" type="text" class="form-control" id="actionName" placeholder="name"
+                aria-label="name" aria-describedby="basic-addon1" required disabled readonly>
+        </div>
+        
+        <div class="input-group input-group-sm mt-2">
+            <span class="input-group-text " id="basic-addon1">Dodatkowe opoznienie [sek]</span>
+            <input [ngModel]="decider.delay_ms" type="text" class="form-control" id="actionName" placeholder="name"
+                aria-label="name" aria-describedby="basic-addon1" required disabled readonly>
+        </div>
+    </div>
+
+</div>
