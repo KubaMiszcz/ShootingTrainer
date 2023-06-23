@@ -14,13 +14,10 @@ import { Subject } from 'rxjs';
   providedIn: 'root',
 })
 export class AppService {
-
   constructor(
     private appSettings: AppSettingsService,
     private audioPlayerService: AudioPlayerService
-  ) {
-
-  }
+  ) {}
 
   playProcedure() {
     let playlist = this.createPlaylist(this.appSettings.maxPlaylistLength);
@@ -36,16 +33,19 @@ export class AppService {
     let playlist = [];
     let block = this.getBlockByName('start');
     let deadEnd = false;
+    let nextBlockName = '';
 
     do {
       if (this.isStage(block)) {
         block = block as IStage;
         playlist.push(...block?.actions);
+        nextBlockName = this.getNextBlockName(block);
       }
-
+      
+      let result = true;
       if (this.isDecider(block)) {
         block = block as IDecider;
-        let result = this.getDeciderResult(block);
+        result = this.getDeciderResult(block);
         let actions: IAction[] = [
           {
             name: block.name,
@@ -55,9 +55,9 @@ export class AppService {
           result ? YES_ACTION : NO_ACTION,
         ];
         playlist.push(...actions);
+        nextBlockName = this.getNextBlockName(block, result);
       }
 
-      let nextBlockName = this.getNextBlockName(block);
       deadEnd = !nextBlockName.length;
       if (!deadEnd) {
         block = this.getBlockByName(nextBlockName);

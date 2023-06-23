@@ -3,19 +3,22 @@
     border-color: black;
     border-width: 2px;
 
-    .card{
+    .card {
         border-color: black;
     }
 
-    .card-header{
+    .card-header {
         font-weight: bold;
-    background-color: #e2e2e2;
+        background-color: #e2e2e2;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
     }
 
     .action-row {
         display: flex;
         justify-content: space-between;
-        align-items:center;
+        align-items: center;
         padding-left: 0.5em;
         padding-right: 0.25em;
     }

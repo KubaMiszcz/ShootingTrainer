@@ -4,8 +4,9 @@ import { IStage } from "./stage";
 
 export interface IAppData {
   procedures: IProcedure[];
-  audioFilesPath:string;
-  maxPlaylistLength:number;
+  audioFilesPath: string;
+  maxPlaylistLength: number;
+  defaultAudioExtension: string;
 }
 
 

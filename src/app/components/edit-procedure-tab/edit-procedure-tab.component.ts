@@ -22,7 +22,7 @@ export class EditProcedureTabComponent {
    this.appSettingsService.reloadDefaultAppData(appData);
   }
 
-  exportJSON() {
+  generateJSON() {
     this.procedureJSON = JSON.stringify(this.appSettingsService.appData);
   }
 }

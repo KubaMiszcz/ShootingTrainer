@@ -1,7 +1,10 @@
-<div *ngIf="stage.actions.length" class="card stage-card m-2">
+<div *ngIf="stage.actions.length" class="card stage-card m-1">
 
     <div class="card-header">
         {{stage.name}}
+        <button type="button" class="btn btn-primary btn-sm mx-1">
+            <i class="fa fa-edit" aria-hidden="true"></i>
+        </button>
     </div>
     <div class="card-body">
         <div class="card">
@@ -17,8 +20,19 @@
                 </li>
             </ul>
         </div>
+        <div class="mt-2">
 
-        <button type="button" name="" id="" class="btn btn-primary btn-lg btn-block mt-2">adsas</button>
+            <div *ngIf="stage.nextBlockName" class="input-group">
+                <span class="input-group-text" id="basic-addon1">Nastepny krok</span>
+                <input [ngModel]="stage.nextBlockName" type="text" class="form-control" id="actionName" placeholder="name"
+                    aria-label="name" aria-describedby="basic-addon1" required disabled readonly>
+            </div>
+
+            <!-- <button type="button" name="" id="" class="btn btn-primary btn-sm mx-1">Dodaj Akcje</button>
+            <button type="button" name="" id="" class="btn btn-primary btn-sm mx-1">Nastepny krok</button>
+            <button type="button" name="" id="" class="btn btn-primary btn-sm mx-1">Nastepna decyzja</button> -->
+
+        </div>
     </div>
 
 </div>

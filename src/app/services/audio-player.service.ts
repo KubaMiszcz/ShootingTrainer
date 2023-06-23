@@ -13,11 +13,9 @@ export class AudioPlayerService {
   isPlaylistPlayed$ = new Subject<boolean>();
 
   constructor(private appSettingsService: AppSettingsService) {
-    this.playbackEnded$.subscribe(
-      (data) => {
-        this.playNextAction();
-      },
-    );
+    this.playbackEnded$.subscribe((data) => {
+      this.playNextAction();
+    });
   }
 
   playPlaylist() {
@@ -49,6 +47,9 @@ export class AudioPlayerService {
     this.currentAction$.next(action);
 
     let path = this.appSettingsService.audioFilesPath + action.audioFileName;
+    let defaultExtension =
+      this.appSettingsService.appData.defaultAudioExtension;
+    path = path.endsWith(defaultExtension) ? path : path + defaultExtension;
     this.playActionAudio(path);
   }
 
