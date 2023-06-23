@@ -5,6 +5,13 @@
     </div>
 </div>
 
+<div class="stages p-4">
+    <div *ngFor="let item of (procedure$ |async)?.deciders">
+        <!-- <app-stage-tile [stage]="item" [isHighlighted]="highlightedStageName===item.name"
+            (pointNextStage)="highlightStage($event)"></app-stage-tile> -->
+    </div>
+</div>
+
 <div>
     <button type="button" name="" id="" class="btn btn-primary btn-lg btn-block"
         (click)="generateJSON()">genereateJSON</button>
