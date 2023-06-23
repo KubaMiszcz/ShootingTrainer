@@ -11,9 +11,9 @@ export class AudioPlayerService {
   playbackEnded$ = new Subject<string>();
   currentAction$ = new Subject<IAction>();
   playlist: IAction[] = [];
-  isPlaylistPlayed$ = new Subject<boolean>();
-  // isPlaylistPaused = false;
-  audio = new Audio();
+  isPlaylistPlaying$ = new Subject<boolean>();
+  currentAudio = new Audio();
+  isAudioPaused = false;
 
   constructor(private appSettingsService: AppSettingsService) {
     this.playbackEnded$.subscribe((data) => {
@@ -22,23 +22,29 @@ export class AudioPlayerService {
   }
 
   playPlaylist() {
-    this.isPlaylistPlayed$.next(true);
+    this.isPlaylistPlaying$.next(true);
     this.playNextAction();
   }
 
   pausePlaylist() {
-    // this.isPlaylistPaused = true;
+    this.isAudioPaused = !this.isAudioPaused;
+    if (this.isAudioPaused) {
+      this.currentAudio.pause();
+    } else {
+      this.currentAudio.play();
+    }
   }
 
   stopPlaylist() {
+    this.currentAudio.pause();
     this.playlist = [];
     this.playbackEnded$.next('procedure stopped');
-    this.isPlaylistPlayed$.next(false);
+    this.isPlaylistPlaying$.next(false);
   }
 
   playNextAction() {
     if (this.playlist.length === 0) {
-      this.isPlaylistPlayed$.next(false);
+      this.isPlaylistPlaying$.next(false);
       return;
     }
 
@@ -64,14 +70,14 @@ export class AudioPlayerService {
   }
 
   playActionAudio(path: string) {
-    this.audio = new Audio();
-    this.audio.src = path;
-    this.audio.addEventListener('ended', () => {
+    this.currentAudio = new Audio();
+    this.currentAudio.src = path;
+    this.currentAudio.addEventListener('ended', () => {
       this.playbackEnded$.next(path + ' ends');
     });
 
-    this.audio.load();
-    this.audio.play();
+    this.currentAudio.load();
+    this.currentAudio.play();
   }
 
   playAudio(path: string) {

@@ -12,7 +12,7 @@ import { AudioPlayerService } from 'src/app/services/audio-player.service';
 })
 export class ProcedureTabComponent {
   currentAction$ = new Subject<IAction>();
-  isPlaylistPlayed$ = new Subject<boolean>();
+  isPlaylistPlaying$ = new Subject<boolean>();
 
   constructor(
     private appSettings: AppSettingsService,
@@ -20,7 +20,7 @@ export class ProcedureTabComponent {
     private audioPlayerService: AudioPlayerService
   ) {
     this.currentAction$ = audioPlayerService.currentAction$;
-    this.isPlaylistPlayed$ = this.audioPlayerService.isPlaylistPlayed$;
+    this.isPlaylistPlaying$ = this.audioPlayerService.isPlaylistPlaying$;
   }
 
   playProcedure() {

@@ -2,11 +2,11 @@
 
   <div class="control-buttons">
     <button type="button" class="btn btn-primary mx-1" (click)="playProcedure()"
-      [disabled]="isPlaylistPlayed$ | async"><i class="fa fa-play" aria-hidden="true"></i> Play</button>
-    <button type="button" class="btn btn-primary mx-1" (click)="stopProcedure()"
-      [disabled]="!(isPlaylistPlayed$ | async)"><i class="fa fa-pause" aria-hidden="true"></i> Pause</button>
+      [disabled]="isPlaylistPlaying$ | async"><i class="fa fa-play" aria-hidden="true"></i> Play</button>
     <button type="button" class="btn btn-primary mx-1" (click)="pauseProcedure()"
-      [disabled]="!(isPlaylistPlayed$ | async)"><i class="fa fa-stop" aria-hidden="true"></i> Stop</button>
+      [disabled]="!(isPlaylistPlaying$ | async)"><i class="fa fa-pause" aria-hidden="true"></i> Pause</button>
+    <button type="button" class="btn btn-primary mx-1" (click)="stopProcedure()"
+      [disabled]="!(isPlaylistPlaying$ | async)"><i class="fa fa-stop" aria-hidden="true"></i> Stop</button>
   </div>
 
   <div>
