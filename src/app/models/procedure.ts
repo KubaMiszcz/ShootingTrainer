@@ -7,4 +7,5 @@ export interface IProcedure {
   allDeciders: IDecider[];
   magazineCapacity: number;
   defaultFailureChance: number;
+  isDefault?: boolean;
 }

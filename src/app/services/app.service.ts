@@ -8,16 +8,34 @@ import {
 import { IStage } from '../models/stage';
 import { IDecider } from '../models/decider';
 import { IAction } from '../models/action';
-import { Subject } from 'rxjs';
+import { BehaviorSubject, Subject } from 'rxjs';
+import { IProcedure } from '../models/procedure';
+import * as _ from 'lodash';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AppService {
+  currentProcedure$ = new BehaviorSubject<IProcedure>(
+    this.getDefaultProcedure()
+  );
+
   constructor(
     private appSettings: AppSettingsService,
     private audioPlayerService: AudioPlayerService
-  ) {}
+  ) {
+  }
+
+  changeProcedure(value: IProcedure) {
+    this.appSettings.appData.procedures.forEach((p) => (p.isDefault = false));
+    value.isDefault = true;
+    this.currentProcedure$.next(value);
+  }
+
+  getDefaultProcedure(): IProcedure {
+    let procedures = this.appSettings.appData.procedures;
+    return procedures.find((p) => p.isDefault) ?? _.first(procedures)!;
+  }
 
   playProcedure() {
     let playlist = this.createPlaylist(this.appSettings.maxPlaylistLength);
