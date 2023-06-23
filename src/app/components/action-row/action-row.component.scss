@@ -1,0 +1,15 @@
+.action-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .name{
+        width: 100%;
+    }
+
+    .audio-filename{
+        font-style: italic;
+        font-size: 0.6rem;
+        text-align: end;
+    }
+}

@@ -1,37 +1,24 @@
-<div *ngIf="stage.actions.length" class="card stage-card m-1">
+<div *ngIf="stage.actions.length" class="card stage-card m-2">
 
     <div class="card-header">
         {{stage.name}}
-        <button type="button" class="btn btn-primary btn-sm mx-1">
+        <button type="button" class="btn btn-primary btn-sm">
             <i class="fa fa-edit" aria-hidden="true"></i>
         </button>
     </div>
-    <div class="card-body">
+
+    <div class="card-body p-2">
         <div class="card">
             <ul class="list-group list-group-flush">
-                <li *ngFor="let action of stage.actions" class="list-group-item action-row">
-                    <div> {{action.name}} </div>
-                    <div>
-                        <i *ngFor="let _ of [].constructor(getDelay(action))" class="fa fa-clock  mx-1  "></i>
-                        <button type="button" class="btn btn-primary btn-sm mx-1" (click)="editAction(action)">
-                            <i class="fa fa-edit" aria-hidden="true"></i>
-                        </button>
-                    </div>
-                </li>
+                <app-action-row *ngFor="let action of stage.actions" [action]="action"
+                    class="list-group-item p-0"></app-action-row>
             </ul>
         </div>
-        <div class="mt-2">
 
-            <div *ngIf="stage.nextBlockName" class="input-group">
-                <span class="input-group-text" id="basic-addon1">Nastepny krok</span>
-                <input [ngModel]="stage.nextBlockName" type="text" class="form-control" id="actionName" placeholder="name"
-                    aria-label="name" aria-describedby="basic-addon1" required disabled readonly>
-            </div>
-
-            <!-- <button type="button" name="" id="" class="btn btn-primary btn-sm mx-1">Dodaj Akcje</button>
-            <button type="button" name="" id="" class="btn btn-primary btn-sm mx-1">Nastepny krok</button>
-            <button type="button" name="" id="" class="btn btn-primary btn-sm mx-1">Nastepna decyzja</button> -->
-
+        <div *ngIf="stage.nextBlockName" class="input-group mt-2">
+            <span class="input-group-text" id="basic-addon1">Nastepny krok</span>
+            <input [ngModel]="stage.nextBlockName" type="text" class="form-control" id="actionName" placeholder="name"
+                aria-label="name" aria-describedby="basic-addon1" required disabled readonly>
         </div>
     </div>
 

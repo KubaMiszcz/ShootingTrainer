@@ -1,0 +1,12 @@
+<div class=" action-row p-1">
+    <div class="name"> 
+        <div>{{action.name}}</div>
+        <div class="audio-filename me-1">{{action.audioFileName}}</div>
+    </div>
+    <div>
+        <i *ngFor="let _ of [].constructor(getDelay(action))" class="fa fa-clock"></i>
+        <button type="button" class="btn btn-primary btn-sm" (click)="editAction(action)">
+            <i class="fa fa-edit" aria-hidden="true"></i>
+        </button>
+    </div>
+</div>

@@ -14,6 +14,7 @@ import { StageComponent } from './components/stage/stage.component';
 import { DeciderComponent } from './components/decider/decider.component';
 import { EditActionModalComponent } from './components/edit-action-modal/edit-action-modal.component';
 import { FormsModule } from '@angular/forms';
+import { ActionRowComponent } from './components/action-row/action-row.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import { FormsModule } from '@angular/forms';
     StageComponent,
     DeciderComponent,
     EditActionModalComponent,
+    ActionRowComponent,
     ],
   imports: [
     BrowserModule,

@@ -13,29 +13,10 @@ import { EditActionModalComponent } from '../edit-action-modal/edit-action-modal
 export class StageComponent {
   @Input() stage: IStage;
 
-  constructor(private appService: AppService, private modalService: NgbModal) {
+  constructor() {
     this.stage = {
       name: 'no action',
       actions: [],
     };
-  }
-
-  editAction(action: IAction) {
-    console.log(action.name);
-    const modalRef = this.modalService.open(EditActionModalComponent, {
-      size: 'lg',
-      centered: true,
-    });
-    modalRef.componentInstance.action = this.appService.deepCopy(action);
-    modalRef.componentInstance.result.subscribe((updatedAction: IAction) => {
-      action.name = updatedAction.name;
-      action.audioFileName = updatedAction.audioFileName;
-      action.description = updatedAction.description;
-      action.delay_sec = updatedAction.delay_sec;
-    });
-  }
-
-  getDelay(action: IAction) {
-    return action.delay_sec ?? 0;
   }
 }
