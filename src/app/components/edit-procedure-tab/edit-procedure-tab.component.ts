@@ -8,8 +8,8 @@ import { AppSettingsService } from 'src/app/services/app-settings.service';
   styleUrls: ['./edit-procedure-tab.component.scss'],
 })
 export class EditProcedureTabComponent {
-  allStages = this.appSettingsService.allStages;
-  alldeciders = this.appSettingsService.allDeciders;
+  allStages = this.appService.currentProcedure$.value.allStages;
+  alldeciders = this.appService.currentProcedure$.value.allDeciders;
   procedureJSON = '';
 
   constructor(

@@ -123,11 +123,11 @@ export class AppService {
   }
 
   getStageByName(name: string | undefined): IStage | undefined {
-    return this.appSettings.allStages.find((s) => s.name === name);
+    return this.currentProcedure$.value.allStages.find((s) => s.name === name);
   }
 
   getetDeciderByName(name: string | undefined): IDecider | undefined {
-    return this.appSettings.allDeciders.find((s) => s.name === name);
+    return this.currentProcedure$.value.allDeciders.find((s) => s.name === name);
   }
 
   deepCopy<T>(obj: T): T {

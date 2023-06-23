@@ -19,6 +19,18 @@
             <li class="nav-item active">
                 <a class="nav-link" [routerLink]="'procedure-tab'">Training <span class="sr-only">(current)</span></a>
             </li>
+            <li class="nav-item active">
+                <div class="btn-group">
+                    <button type="button" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown"
+                        aria-expanded="false">
+                        Wybrany Plan: {{(currentProcedure$ |async)?.name ?? 'brak'}}
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-end">
+                        <li *ngFor="let item of procedures"><button class="dropdown-item" type="button"
+                                (click)="selectProcedure(item)">{{item.name}}</button></li>
+                    </ul>
+                </div>
+            </li>
             <li class="nav-item">
                 <a class="nav-link" [routerLink]="'edit-procedure-tab'">Edit Training</a>
             </li>
@@ -28,15 +40,6 @@
             <li class="nav-item">
                 <a class="nav-link" [routerLink]="'settings-tab'">Settings</a>
             </li>
-            <div class="btn-group">
-                <button type="button" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown"
-                    aria-expanded="false">
-                    Wybrany Plan: {{(currentProcedure$ |async)?.name ?? 'brak'}}
-                </button>
-                <ul class="dropdown-menu dropdown-menu-end">
-                    <li *ngFor="let item of procedures"><button class="dropdown-item" type="button" (click)="selectProcedure(item)">{{item.name}}</button></li>
-                </ul>
-            </div>
             <!-- <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-bs-toggle="dropdown"
                     aria-haspopup="true" aria-expanded="false">
