@@ -34,7 +34,7 @@ export class DeciderTileComponent {
       size: 'lg',
       centered: true,
     });
-    modalRef.componentInstance.action = this.appService.deepCopy(decider);
+    modalRef.componentInstance.decider = this.appService.deepCopy(decider);
     modalRef.componentInstance.result.subscribe((updatedDecider: IDecider) => {
       decider.name = updatedDecider.name;
       decider.description = updatedDecider.description;

@@ -1,8 +1,6 @@
 <div class="modal-header">
     <h4  class="modal-title">
-        <span> Edit Action </span>
-        <span *ngIf="!deciderName.length" class="pill">{{decider.name}} </span>
-        <span *ngIf="deciderName.length" class="pill">{{deciderName}} </span>
+        <span> Edit Action: "{{deciderName}}" </span>
     </h4>
     <button type="button" class="btn-close" aria-label="Close" (click)="activeModal.dismiss('Cross click')"
         ngbAutofocus></button>
