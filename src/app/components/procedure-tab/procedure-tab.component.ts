@@ -27,6 +27,10 @@ export class ProcedureTabComponent {
     this.appService.playProcedure();
   }
 
+  pauseProcedure() {
+    this.appService.stopProcedure();
+  }
+  
   stopProcedure() {
     this.appService.stopProcedure();
   }

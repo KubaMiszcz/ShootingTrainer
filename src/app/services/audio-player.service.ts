@@ -52,7 +52,7 @@ export class AudioPlayerService {
         action.audioFileName +
         this.appSettingsService.appData.defaultAudioExtension;
     }
-    
+
     let path = this.appSettingsService.audioFilesPath + action.audioFileName;
     this.playActionAudio(path);
   }
@@ -63,12 +63,8 @@ export class AudioPlayerService {
     audio.addEventListener('ended', () => {
       this.playbackEnded$.next(path + ' ends');
     });
-    try {
-      audio.load();
-      audio.play();
-    } catch (error) {
-      console.log('ssssssssss');
-    }
+    audio.load();
+    audio.play();
   }
 
   playAudio(path: string) {
