@@ -14,12 +14,23 @@ export class EditProcedureTabComponent {
   deciders = this.appService.currentProcedure$.value.deciders;
   procedure$ = new Subject<IProcedure>();
   procedureJSON = '';
+  highlightedStageName = '';
 
   constructor(
     private appService: AppService,
     private appSettingsService: AppSettingsService
   ) {
     this.procedure$ = appService.currentProcedure$;
+  }
+
+  highlightStage(value: string) {
+    console.log(value);
+    let stage = this.stages.find((s) => s.name === value);
+
+    this.highlightedStageName = stage?.name ?? '';
+    setTimeout(() => {
+      this.highlightedStageName = '';
+    }, 3000);
   }
 
   applyJSON() {

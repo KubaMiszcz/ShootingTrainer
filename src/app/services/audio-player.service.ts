@@ -10,6 +10,7 @@ import * as _ from 'lodash';
 export class AudioPlayerService {
   playbackEnded$ = new Subject<string>();
   currentAction$ = new Subject<IAction>();
+  // currentAction$ = new BehaviorSubject<IAction>({name:'s',audioFileName:'ss'});
   playlist: IAction[] = [];
   isPlaylistPlaying$ = new Subject<boolean>();
   currentAudio = new Audio();
@@ -40,6 +41,7 @@ export class AudioPlayerService {
     this.playlist = [];
     this.playbackEnded$.next('procedure stopped');
     this.isPlaylistPlaying$.next(false);
+    this.currentAction$.next({ name: 'press play', audioFileName: '' });
   }
 
   playNextAction() {

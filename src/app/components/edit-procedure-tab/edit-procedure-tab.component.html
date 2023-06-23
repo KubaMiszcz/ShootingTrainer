@@ -1,16 +1,17 @@
 <div class="stages p-4">
     <div *ngFor="let item of (procedure$ |async)?.stages">
-        <app-stage [stage]="item"></app-stage>
+        <app-stage [stage]="item" [isHighlighted]="highlightedStageName===item.name"
+            (pointNextStage)="highlightStage($event)"></app-stage>
     </div>
 </div>
 
 <div>
-    <button type="button" name="" id="" class="btn btn-primary btn-lg btn-block" (click)="generateJSON()">genereateJSON</button>
-    <button type="button" name="" id="" class="btn btn-primary btn-lg btn-block" (click)="applyJSON()">applyJSON</button>
+    <button type="button" name="" id="" class="btn btn-primary btn-lg btn-block"
+        (click)="generateJSON()">genereateJSON</button>
+    <button type="button" name="" id="" class="btn btn-primary btn-lg btn-block"
+        (click)="applyJSON()">applyJSON</button>
     <div class="input-group mb-2">
         <span class="input-group-text">Application data JSON</span>
         <textarea [(ngModel)]="procedureJSON" class="form-control" aria-label="With textarea" rows="10"></textarea>
     </div>
 </div>
-
-

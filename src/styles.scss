@@ -6,4 +6,9 @@
 
 .card{
     border-color: black;
+    box-shadow: 4px 4px 6px 1px gray;
+}
+
+.no-box-shadow{
+    box-shadow: none;
 }

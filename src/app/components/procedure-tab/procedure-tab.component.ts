@@ -21,6 +21,7 @@ export class ProcedureTabComponent {
   ) {
     this.currentAction$ = audioPlayerService.currentAction$;
     this.isPlaylistPlaying$ = this.audioPlayerService.isPlaylistPlaying$;
+    this.stopProcedure();
   }
 
   playProcedure() {
