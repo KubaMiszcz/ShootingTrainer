@@ -10,7 +10,7 @@ import { ProcedureTabComponent } from './components/procedure-tab/procedure-tab.
 import { FooterComponent } from './components/footer/footer.component';
 import { SettingsTabComponent } from './components/settings-tab/settings-tab.component';
 import { ActionTileComponent } from './components/action-tile/action-tile.component';
-import { StageComponent } from './components/stage/stage.component';
+import { StageTileComponent } from './components/stage-tile/stage-tile.component';
 import { DeciderComponent } from './components/decider/decider.component';
 import { EditActionModalComponent } from './components/edit-action-modal/edit-action-modal.component';
 import { FormsModule } from '@angular/forms';
@@ -26,7 +26,7 @@ import { ActionRowComponent } from './components/action-row/action-row.component
     FooterComponent,
     SettingsTabComponent,
     ActionTileComponent,
-    StageComponent,
+    StageTileComponent,
     DeciderComponent,
     EditActionModalComponent,
     ActionRowComponent,

@@ -1,0 +1,31 @@
+<div *ngIf="stage.actions.length" class="card stage-card m-2 highlight-border"
+    [ngClass]="{'highlight-border' : isHighlighted}">
+
+    <div class="card-header" [ngClass]="{'highlight-background' : isHighlighted}">
+        {{stage.name}}
+        <button type="button" class="btn btn-primary btn-sm">
+            <i class="fa fa-edit" aria-hidden="true"></i>
+        </button>
+    </div>
+
+    <div class="card-body p-2">
+        <div class="card no-box-shadow">
+            <ul class="list-group list-group-flush">
+                <app-action-row *ngFor="let action of stage.actions" [action]="action"
+                    class="list-group-item p-0"></app-action-row>
+            </ul>
+        </div>
+
+        <div *ngIf="stage.nextBlockName" class="input-group input-group-sm mt-2">
+            <span class="input-group-text" id="basic-addon1">Nastepny krok</span>
+            <input [ngModel]="stage.nextBlockName" type="text" class="form-control" id="actionName" placeholder="name"
+                aria-label="name" aria-describedby="basic-addon1" required disabled readonly>
+            <button class="input-group-text btn btn-outline-primary m-0" type="button"
+                (click)="showNextBlock(stage.nextBlockName)">pokaz
+                <i class="fa fa-location-arrow" aria-hidden="true"></i>
+            </button>
+        </div>
+
+    </div>
+
+</div>

@@ -1,7 +1,7 @@
 <div class="stages p-4">
     <div *ngFor="let item of (procedure$ |async)?.stages">
-        <app-stage [stage]="item" [isHighlighted]="highlightedStageName===item.name"
-            (pointNextStage)="highlightStage($event)"></app-stage>
+        <app-stage-tile [stage]="item" [isHighlighted]="highlightedStageName===item.name"
+            (pointNextStage)="highlightStage($event)"></app-stage-tile>
     </div>
 </div>
 

@@ -1,0 +1,38 @@
+.stage-card {
+    width: 20rem;
+    border-color: black;
+    border-width: 2px;
+
+    .card {
+        border-color: black;
+
+    }
+
+    .card-header {
+        font-weight: bold;
+        background-color: #e2e2e2;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .btn-append {
+        border-radius: 0px 0px 0px 0px;
+    }
+}
+
+.highlight-background {
+    background-color: red !important;
+}
+
+.highlight-border {
+    border-color: red;
+    box-shadow: 4px 4px 6px 1px red;
+    animation: blinker 1s linear infinite;
+}
+
+@keyframes blinker {
+    50% {
+        opacity: 0;
+    }
+}
