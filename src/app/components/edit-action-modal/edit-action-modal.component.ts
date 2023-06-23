@@ -18,7 +18,7 @@ export class EditActionModalComponent {
     this.action = { name: 'aa', audioFileName: '' };
   }
 
-  saveAction() {
+  save() {
     this.action.audioFileName = _.last(this.audioFileName.split('\\')) ?? '';
     this.result.emit(this.action);
     this.activeModal.close();

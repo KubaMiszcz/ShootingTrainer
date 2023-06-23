@@ -24,7 +24,7 @@
 
     <div class="buttons" [ngClass]="{'disabled' : action.isDisabled}">
         <i *ngFor="let _ of [].constructor(getDelay(action))" class="fa fa-clock"></i>
-        <button type="button" class="btn btn-primary btn-sm" [ngClass]="{'btn-secondary' : action.isDisabled}" (click)="editAction(action)">
+        <button type="button" class="btn btn-primary btn-sm" [ngClass]="{'btn-secondary' : action.isDisabled}" (click)="edit(action)">
             <i class="fa fa-edit" aria-hidden="true"></i>
         </button>
     </div>

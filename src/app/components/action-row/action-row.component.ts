@@ -19,7 +19,7 @@ export class ActionRowComponent {
     }
   }
 
-  editAction(action: IAction) {
+  edit(action: IAction) {
     console.log(action.name);
     const modalRef = this.modalService.open(EditActionModalComponent, {
       size: 'lg',
@@ -28,8 +28,8 @@ export class ActionRowComponent {
     modalRef.componentInstance.action = this.appService.deepCopy(action);
     modalRef.componentInstance.result.subscribe((updatedAction: IAction) => {
       action.name = updatedAction.name;
-      action.audioFileName = updatedAction.audioFileName;
       action.description = updatedAction.description;
+      action.audioFileName = updatedAction.audioFileName;
       action.delay_sec = updatedAction.delay_sec;
     });
   }

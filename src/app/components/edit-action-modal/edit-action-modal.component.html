@@ -5,11 +5,12 @@
     </h4>
     <h4 *ngIf="actionName.length" class="modal-title">
         <span>Edit Action</span>
-        <span class="pill">{{action.name}} </span>
+        <span class="pill">{{actionName}} </span>
     </h4>
     <button type="button" class="btn-close" aria-label="Close" (click)="activeModal.dismiss('Cross click')"
         ngbAutofocus></button>
 </div>
+
 <div class="modal-body">
     <div class="input-group mb-2">
         <span class="input-group-text label" id="basic-addon1">Action Name</span>
@@ -47,6 +48,6 @@
     </button> -->
 </div>
 <div class="modal-footer">
-    <button type="button" class="btn btn-primary" ngbAutofocus (click)="saveAction()">Save</button>
+    <button type="button" class="btn btn-primary" ngbAutofocus (click)="save()">Save</button>
     <button type="button" class="btn btn-secondary" (click)="activeModal.close('close click')">Cancel</button>
 </div>

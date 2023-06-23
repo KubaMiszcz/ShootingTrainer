@@ -3,7 +3,7 @@
 
     <div class="card-header" [ngClass]="{'highlight-background' : isHighlighted}">
         {{decider.name}}
-        <button type="button" class="btn btn-primary btn-sm">
+        <button type="button" class="btn btn-primary btn-sm" (click)="edit(decider)">
             <i class="fa fa-edit" aria-hidden="true"></i>
         </button>
     </div>
@@ -43,7 +43,7 @@
         
         <div class="input-group input-group-sm mt-2">
             <span class="input-group-text " id="basic-addon1">Dodatkowe opoznienie [sek]</span>
-            <input [ngModel]="decider.delay_ms" type="text" class="form-control" id="actionName" placeholder="name"
+            <input [ngModel]="decider.delay_sec" type="text" class="form-control" id="actionName" placeholder="name"
                 aria-label="name" aria-describedby="basic-addon1" required disabled readonly>
         </div>
     </div>

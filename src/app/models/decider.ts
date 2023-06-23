@@ -3,11 +3,12 @@ import { IStage } from './stage';
 
 export interface IDecider {
   name: string;
+  description?: string;
   audioFileName: string;
   positiveBlockName: string;
   negativeBlockName: string;
   positiveChance: number;
-  delay_ms?: number;
+  delay_sec?: number;
 }
 
 // export class Decider implements IDecider {

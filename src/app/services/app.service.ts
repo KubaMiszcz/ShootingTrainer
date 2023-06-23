@@ -72,7 +72,7 @@ export class AppService {
           {
             name: block.name,
             audioFileName: block.audioFileName,
-            delay_sec: block.delay_ms,
+            delay_sec: block.delay_sec,
           },
           result ? YES_ACTION : NO_ACTION,
         ];
