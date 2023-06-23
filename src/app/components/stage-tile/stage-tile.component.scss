@@ -28,7 +28,7 @@
 .highlight-border {
     border-color: red;
     box-shadow: 4px 4px 6px 1px red;
-    animation: blinker 1s linear infinite;
+    animation: blinker 0.4s linear infinite;
 }
 
 @keyframes blinker {

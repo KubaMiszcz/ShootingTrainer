@@ -30,7 +30,7 @@ export class EditProcedureTabComponent {
     this.highlightedStageName = stage?.name ?? '';
     setTimeout(() => {
       this.highlightedStageName = '';
-    }, 3000);
+    }, 1000);
   }
 
   applyJSON() {
