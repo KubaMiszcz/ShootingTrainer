@@ -1,22 +1,17 @@
 <div class="modal-header">
-    <h4  class="modal-title">
-        <span> Edit Action </span>
-        <span *ngIf="!actionName.length" class="pill">{{action.name}} </span>
-        <span *ngIf="actionName.length" class="pill">{{actionName}} </span>
+    <h4 class="modal-title">
+        <span> Edit Action: "{{actionName}}" </span>
     </h4>
-    <!-- <h4 *ngIf="actionName.length" class="modal-title">
-        <span>Edit Action</span>
-        <span class="pill">{{actionName}} </span>
-    </h4> -->
     <button type="button" class="btn-close" aria-label="Close" (click)="activeModal.dismiss('Cross click')"
         ngbAutofocus></button>
 </div>
+
 
 <div class="modal-body">
     <div class="input-group mb-2">
         <span class="input-group-text label" id="basic-addon1">Action Name</span>
         <input [(ngModel)]="action.name" type="text" class="form-control" id="actionName" placeholder="name"
-            aria-label="name" aria-describedby="basic-addon1" required (click)="actionName=action.name">
+            aria-label="name" aria-describedby="basic-addon1" required>
     </div>
 
     <div class="input-group mb-3">
@@ -38,16 +33,9 @@
         <input [(ngModel)]="action.delay_sec" type="number" class="form-control" id="actionName" placeholder="delay"
             aria-label="delay" aria-describedby="basic-addon1" required (click)="actionName=action.name">
     </div>
-    <!-- delay_sec?: number; -->
-
-
-    <!-- <button type="button" class="btn btn-primary btn-sm ">
-        <i class="fa fa-plus-circle" aria-hidden="true"></i>
-    </button>
-    <button type="button" class="btn btn-primary btn-sm ">
-        <i class="fa fa-minus-circle" aria-hidden="true"></i>
-    </button> -->
 </div>
+
+
 <div class="modal-footer">
     <button type="button" class="btn btn-primary" ngbAutofocus (click)="save()">Save</button>
     <button type="button" class="btn btn-secondary" (click)="activeModal.close('close click')">Cancel</button>
