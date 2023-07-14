@@ -2,15 +2,16 @@
     <div *ngFor="let item of (procedure$ |async)?.deciders">
         <!-- <app-stage-tile [stage]="item" [isHighlighted]="highlightedStageName===item.name"
             (pointNextBlock)="highlightStage($event)"></app-stage-tile> -->
-            <app-decider-tile [decider]="item"></app-decider-tile>
+        <app-decider-tile [decider]="item" [isHighlighted]="highlightedBlockName===item.name"
+        (pointNextBlock)="highlightBlock($event)"></app-decider-tile>
     </div>
 </div>
 
 
 <div class="stages p-4">
     <div *ngFor="let item of (procedure$ |async)?.stages">
-        <app-stage-tile [stage]="item" [isHighlighted]="highlightedStageName===item.name"
-            (pointNextBlock)="highlightStage($event)"></app-stage-tile>
+        <app-stage-tile [stage]="item" [isHighlighted]="highlightedBlockName===item.name"
+            (pointNextBlock)="highlightBlock($event)"></app-stage-tile>
     </div>
 </div>
 

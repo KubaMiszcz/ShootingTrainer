@@ -17,6 +17,17 @@
         display: flex;
         justify-content: space-between;
         align-items: center;
+
+        .label-name{
+            // width: 60%;
+            width: -webkit-fill-available;
+            
+            .audio-filename{
+                font-style: italic;
+                font-size: 0.6rem;
+                text-align: start;
+            }
+        }
     }
 
     .btn-append {
@@ -25,12 +36,12 @@
 }
 
 .highlight-background {
-    background-color: red !important;
+    background-color: green !important;
 }
 
 .highlight-border {
-    border-color: red;
-    box-shadow: 4px 4px 6px 1px red;
+    border-color: green;
+box-shadow: 4px 4px 6px 1px green;
     animation: blinker 0.4s linear infinite;
 }
 

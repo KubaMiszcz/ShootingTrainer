@@ -2,21 +2,19 @@
     [ngClass]="{'highlight-border' : isHighlighted}">
 
     <div class="card-header" [ngClass]="{'highlight-background' : isHighlighted}">
-        {{decider.name}}
+        <div class="label-name me-2">
+            <div>{{decider.name}}</div>
+            <div class="audio-filename">{{decider.audioFileName}}</div>
+        </div>
         <button type="button" class="btn btn-primary btn-sm" (click)="edit(decider)">
             <i class="fa fa-edit" aria-hidden="true"></i>
         </button>
     </div>
 
     <div class="card-body p-2">
-        <div class="input-group input-group-sm mt-2">
-            <span class="input-group-text label" id="basic-addon1">Audio File</span>
-            <input [ngModel]="decider.audioFileName" type="text" class="form-control" id="actionName" placeholder="name"
-                aria-label="name" aria-describedby="basic-addon1" required disabled readonly>
-        </div>
         
         <div class="input-group input-group-sm mt-2">
-            <span class="input-group-text label" id="basic-addon1">jesli TAK</span>
+            <span class="input-group-text label" id="basic-addon1">jesli TAK to:</span>
             <input [ngModel]="decider.positiveBlockName" type="text" class="form-control" id="actionName" placeholder="name"
                 aria-label="name" aria-describedby="basic-addon1" required disabled readonly>
             <button class="input-group-text btn btn-outline-primary m-0" type="button"
@@ -26,7 +24,7 @@
         </div>
 
         <div class="input-group input-group-sm mt-2">
-            <span class="input-group-text label" id="basic-addon1">jesli NIE</span>
+            <span class="input-group-text label" id="basic-addon1">jesli NIE to:</span>
             <input [ngModel]="decider.negativeBlockName" type="text" class="form-control" id="actionName" placeholder="name"
                 aria-label="name" aria-describedby="basic-addon1" required disabled readonly>
             <button class="input-group-text btn btn-outline-primary m-0" type="button"

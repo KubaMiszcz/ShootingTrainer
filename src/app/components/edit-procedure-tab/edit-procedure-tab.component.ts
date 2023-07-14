@@ -14,7 +14,7 @@ export class EditProcedureTabComponent {
   deciders = this.appService.currentProcedure$.value.deciders;
   procedure$ = new Subject<IProcedure>();
   procedureJSON = '';
-  highlightedStageName = '';
+  highlightedBlockName = '';
 
   constructor(
     private appService: AppService,
@@ -23,13 +23,17 @@ export class EditProcedureTabComponent {
     this.procedure$ = appService.currentProcedure$;
   }
 
-  highlightStage(value: string) {
+  highlightBlock(value: string) {
     console.log(value);
-    let stage = this.stages.find((s) => s.name === value);
-
-    this.highlightedStageName = stage?.name ?? '';
+    let blockName = this.stages.find((s) => s.name === value)?.name;
+    
+    if (!blockName?.length) {
+      blockName = this.deciders.find((s) => s.name === value)?.name;
+    }
+    
+    this.highlightedBlockName = blockName ?? '';
     setTimeout(() => {
-      this.highlightedStageName = '';
+      this.highlightedBlockName = '';
     }, 1000);
   }
 
