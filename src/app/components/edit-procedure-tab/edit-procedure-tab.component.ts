@@ -13,7 +13,6 @@ export class EditProcedureTabComponent {
   stages = this.appService.currentProcedure$.value.stages;
   deciders = this.appService.currentProcedure$.value.deciders;
   procedure$ = new Subject<IProcedure>();
-  procedureJSON = '';
   highlightedBlockName = '';
 
   constructor(
@@ -35,14 +34,5 @@ export class EditProcedureTabComponent {
     setTimeout(() => {
       this.highlightedBlockName = '';
     }, 1000);
-  }
-
-  applyJSON() {
-    let appData = this.appSettingsService.getAppData();
-    this.appSettingsService.reloadDefaultAppData(appData);
-  }
-
-  generateJSON() {
-    this.procedureJSON = JSON.stringify(this.appSettingsService.appData);
   }
 }
