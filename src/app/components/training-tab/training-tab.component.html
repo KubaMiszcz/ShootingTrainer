@@ -1,12 +1,12 @@
 <div class="content p-4">
 
   <div class="control-buttons">
-    <button type="button" class="btn btn-primary " (click)="playProcedure()"
-      [disabled]="isPlaylistPlaying$ | async"><i class="fa fa-play" aria-hidden="true"></i> Play</button>
-    <button type="button" class="btn btn-primary " (click)="pauseProcedure()"
+    <button *ngIf="!(isPlaylistPlaying$ | async)" type="button" class="btn btn-primary " (click)="playProcedure()"
+      ><i class="fa fa-play" aria-hidden="true"></i> Play</button>
+    <button *ngIf="isPlaylistPlaying$ | async" type="button" class="btn btn-primary " (click)="pauseProcedure()"
       [disabled]="!(isPlaylistPlaying$ | async)"><i class="fa fa-pause" aria-hidden="true"></i> Pause</button>
     <button type="button" class="btn btn-primary " (click)="stopProcedure()"
-      [disabled]="!(isPlaylistPlaying$ | async)"><i class="fa fa-stop" aria-hidden="true"></i> Stop</button>
+      ><i class="fa fa-stop" aria-hidden="true"></i> Stop</button>
   </div>
 
   <div>

@@ -9,6 +9,9 @@ import { AudioPlayerService } from 'src/app/services/audio-player.service';
   selector: 'app-training-tab',
   templateUrl: './training-tab.component.html',
   styleUrls: ['./training-tab.component.scss'],
+  host: {
+    '(document:keypress)': 'handleKeyboardEvent($event)',
+  },
 })
 export class ProcedureTabComponent {
   currentAction$ = new Subject<IAction>();
@@ -31,9 +34,15 @@ export class ProcedureTabComponent {
   pauseProcedure() {
     this.appService.pauseProcedure();
   }
-  
+
   stopProcedure() {
     this.appService.stopProcedure();
+  }
+
+  handleKeyboardEvent(event: KeyboardEvent) {
+    if (event.code === 'Space') {
+      // this.playProcedure();
+    }
   }
 
   // recordAudio() {

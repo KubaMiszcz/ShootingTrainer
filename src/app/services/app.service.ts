@@ -37,11 +37,13 @@ export class AppService {
   }
 
   playProcedure() {
-    let playlist = this.createPlaylist(this.appSettings.maxPlaylistLength);
-    this.audioPlayerService.playlist = playlist;
+    if (!this.audioPlayerService.playlist?.length) {
+      let playlist = this.createPlaylist(this.appSettings.maxPlaylistLength);
+      this.audioPlayerService.playlist = playlist;
+    }
     this.audioPlayerService.playPlaylist();
   }
-
+  
   pauseProcedure() {
     this.audioPlayerService.pausePlaylist();
   }

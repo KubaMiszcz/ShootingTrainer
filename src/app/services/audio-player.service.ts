@@ -12,7 +12,7 @@ export class AudioPlayerService {
   currentAction$ = new Subject<IAction>();
   // currentAction$ = new BehaviorSubject<IAction>({name:'s',audioFileName:'ss'});
   playlist: IAction[] = [];
-  isPlaylistPlaying$ = new Subject<boolean>();
+  isPlaylistPlaying$ = new BehaviorSubject<boolean>(false);
   currentAudio = new Audio();
   isAudioPaused = false;
 
@@ -23,21 +23,30 @@ export class AudioPlayerService {
   }
 
   playPlaylist() {
+    if (this.isAudioPaused) {
+      this.currentAudio.play();
+    } else {
+      this.playNextAction();
+    }
+
     this.isPlaylistPlaying$.next(true);
-    this.playNextAction();
   }
 
   pausePlaylist() {
-    this.isAudioPaused = !this.isAudioPaused;
-    if (this.isAudioPaused) {
+    if (this.isPlaylistPlaying$.value) {
       this.currentAudio.pause();
+      this.isAudioPaused = true;
+      this.isPlaylistPlaying$.next(false);
     } else {
       this.currentAudio.play();
+      this.isAudioPaused = false;
+      this.isPlaylistPlaying$.next(true);
     }
   }
 
   stopPlaylist() {
     this.currentAudio.pause();
+    this.isAudioPaused = false;
     this.playlist = [];
     this.playbackEnded$.next('procedure stopped');
     this.isPlaylistPlaying$.next(false);
