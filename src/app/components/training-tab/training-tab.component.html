@@ -6,7 +6,7 @@
     <button *ngIf="isPlaylistPlaying$ | async" type="button" class="btn btn-primary " (click)="pauseProcedure()"
       [disabled]="!(isPlaylistPlaying$ | async)"><i class="fa fa-pause" aria-hidden="true"></i> Pause<br><span>
         [SPACE]</span></button>
-    <button type="button" class="btn btn-primary " (click)="stopProcedure()"><i class="fa fa-stop"
+    <button type="button" class="btn btn-primary ms-4" (click)="stopProcedure()"><i class="fa fa-stop"
         aria-hidden="true"></i> Stop</button>
   </div>
 
