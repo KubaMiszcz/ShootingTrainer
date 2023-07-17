@@ -1,16 +1,17 @@
 <div class="content p-4">
 
   <div class="control-buttons">
-    <button *ngIf="!(isPlaylistPlaying$ | async)" type="button" class="btn btn-primary " (click)="playProcedure()"
-      ><i class="fa fa-play" aria-hidden="true"></i> Play</button>
+    <button *ngIf="!(isPlaylistPlaying$ | async)" type="button" class="btn btn-primary " (click)="playProcedure()"><i
+        class="fa fa-play" aria-hidden="true"></i> Play<br><span> [SPACE]</span></button>
     <button *ngIf="isPlaylistPlaying$ | async" type="button" class="btn btn-primary " (click)="pauseProcedure()"
-      [disabled]="!(isPlaylistPlaying$ | async)"><i class="fa fa-pause" aria-hidden="true"></i> Pause</button>
-    <button type="button" class="btn btn-primary " (click)="stopProcedure()"
-      ><i class="fa fa-stop" aria-hidden="true"></i> Stop</button>
+      [disabled]="!(isPlaylistPlaying$ | async)"><i class="fa fa-pause" aria-hidden="true"></i> Pause<br><span>
+        [SPACE]</span></button>
+    <button type="button" class="btn btn-primary " (click)="stopProcedure()"><i class="fa fa-stop"
+        aria-hidden="true"></i> Stop</button>
   </div>
 
   <div>
-    <app-action-tile [action]="currentAction$ | async" ></app-action-tile>
+    <app-action-tile [action]="currentAction$ | async"></app-action-tile>
   </div>
 
 </div>

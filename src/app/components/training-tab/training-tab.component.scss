@@ -5,5 +5,11 @@
 
     .btn {
         width: 8rem;
+        height: 4rem;
+        font-weight: bold;
+
+        span {
+            font-size: 0.75rem;
+        }
     }
 }
