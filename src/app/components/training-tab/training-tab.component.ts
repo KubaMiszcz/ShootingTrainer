@@ -1,4 +1,4 @@
-import { Subject } from 'rxjs';
+import { BehaviorSubject, Subject } from 'rxjs';
 import { Component } from '@angular/core';
 import { IAction } from 'src/app/models/action';
 import { AppSettingsService } from 'src/app/services/app-settings.service';
@@ -15,7 +15,7 @@ import { AudioPlayerService } from 'src/app/services/audio-player.service';
 })
 export class ProcedureTabComponent {
   currentAction$ = new Subject<IAction>();
-  isPlaylistPlaying$ = new Subject<boolean>();
+  isPlaylistPlaying$ = new BehaviorSubject<boolean>(false);
 
   constructor(
     private appSettings: AppSettingsService,
@@ -41,7 +41,11 @@ export class ProcedureTabComponent {
 
   handleKeyboardEvent(event: KeyboardEvent) {
     if (event.code === 'Space') {
-      // this.playProcedure();
+      if (this.isPlaylistPlaying$.value) {
+        this.pauseProcedure();
+      } else {
+        this.playProcedure();
+      }
     }
   }
 

@@ -10,7 +10,6 @@ import * as _ from 'lodash';
 export class AudioPlayerService {
   playbackEnded$ = new Subject<string>();
   currentAction$ = new Subject<IAction>();
-  // currentAction$ = new BehaviorSubject<IAction>({name:'s',audioFileName:'ss'});
   playlist: IAction[] = [];
   isPlaylistPlaying$ = new BehaviorSubject<boolean>(false);
   currentAudio = new Audio();
@@ -25,6 +24,7 @@ export class AudioPlayerService {
   playPlaylist() {
     if (this.isAudioPaused) {
       this.currentAudio.play();
+      this.isAudioPaused = false;
     } else {
       this.playNextAction();
     }
@@ -33,15 +33,9 @@ export class AudioPlayerService {
   }
 
   pausePlaylist() {
-    if (this.isPlaylistPlaying$.value) {
-      this.currentAudio.pause();
-      this.isAudioPaused = true;
-      this.isPlaylistPlaying$.next(false);
-    } else {
-      this.currentAudio.play();
-      this.isAudioPaused = false;
-      this.isPlaylistPlaying$.next(true);
-    }
+    this.currentAudio.pause();
+    this.isAudioPaused = true;
+    this.isPlaylistPlaying$.next(false);
   }
 
   stopPlaylist() {
