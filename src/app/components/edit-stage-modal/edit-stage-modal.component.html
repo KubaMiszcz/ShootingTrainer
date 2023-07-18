@@ -9,30 +9,35 @@
 
 <div class="modal-body">
     <div class="input-group mb-3">
-        <span class="input-group-text label" id="basic-addon1">Stage Name</span>
-        <input [(ngModel)]="stage.name" type="text" class="form-control" id="actionName" placeholder="name"
+        <span class="input-group-text label" id="basic-addon9">Nowa nazwa</span>
+        <input [(ngModel)]="stage.name" type="text" class="form-control" id="stageName" placeholder="name"
             aria-label="name" aria-describedby="basic-addon2" required>
     </div>
-<!-- 
-    <div class="input-group mb-3">
-        <label class="input-group-text label" for="inputGroupFile03">Audio File</label>
-        <input [value]="action.audioFileName" type="text" class="form-control" id="inputGroupFile03" disabled readonly>
-    </div>
-    <div class="input-group mb-3">
-        <label class="input-group-text label" for="inputGroupFile01">Replace Audio File</label>
-        <input [(ngModel)]="audioFileName" type="file" class="form-control" id="inputGroupFile01">
+
+
+    <div class="card-body">
+
+        <div class="card no-box-shadow mb-3">
+            <div class="list-group list-group-flush">
+                <app-action-row *ngFor="let action of stage.actions" [action]="action"
+                    class="list-group-item p-0"></app-action-row>
+            </div>
+        </div>
+
+        <div class="input-group input-group mb-3">
+            <span class="input-group-text" id="basic-addon3">Nastepny krok</span>
+            <input [ngModel]="stage.nextBlockName" type="text" class="form-control" id="actionName" placeholder="name"
+                aria-label="name" aria-describedby="basic-addon1" required disabled readonly>
+            <button class="m-0 btn btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown"
+                aria-expanded="false">Zmien...</button>
+            <div class="dropdown-menu dropdown-menu-end">
+                <div *ngFor="let item of allBlocks"><span class="dropdown-item"
+                        (click)="changeNextStep(item)">{{item.name}}</span></div>
+            </div>
+        </div>
+
     </div>
 
-    <div class="input-group mb-3">
-        <span class="input-group-text label">Action description</span>
-        <textarea [(ngModel)]="action.description" class="form-control" rows="3" aria-label="With textarea"></textarea>
-    </div>
-
-    <div class="input-group mb-3">
-        <span class="input-group-text" id="basic-addon3">Dodatkowe opoznienie [sek]</span>
-        <input [(ngModel)]="action.delay_sec" type="number" class="form-control" id="actionName2" placeholder="delay"
-            aria-label="delay" aria-describedby="basic-addon4" required (click)="actionName=action.name">
-    </div> -->
 </div>
 
 

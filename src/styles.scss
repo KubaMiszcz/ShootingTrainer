@@ -13,8 +13,14 @@
     box-shadow: none;
 }
 
-.input-group,.input-group-text,.form-control {
+.input-group,
+.input-group-text,
+.form-control {
     border-color: rgb(75, 75, 75);
+}
+
+select{
+    border-color: red;
 }
 
 .btn-danger{

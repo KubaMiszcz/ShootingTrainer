@@ -17,12 +17,10 @@
 
     <div class="card-body p-2">
         <div class="card no-box-shadow">
-            <ul class="list-group list-group-flush">
-                <li>
+            <div class="list-group list-group-flush">
                     <app-action-row *ngFor="let action of stage.actions" [action]="action"
                         class="list-group-item p-0"></app-action-row>
-                </li>
-            </ul>
+            </div>
         </div>
 
         <div *ngIf="stage.nextBlockName" class="input-group input-group-sm mt-2">

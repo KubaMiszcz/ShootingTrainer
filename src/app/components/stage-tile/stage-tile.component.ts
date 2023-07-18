@@ -39,6 +39,8 @@ export class StageTileComponent {
     modalRef.componentInstance.stage = this.appService.deepCopy(this.stage);
     modalRef.componentInstance.result.subscribe((updatedStage: IStage) => {
       this.stage.name = updatedStage.name;
+      this.stage.actions = updatedStage.actions;
+      this.stage.nextBlockName = updatedStage.nextBlockName;
     });
   }
 }

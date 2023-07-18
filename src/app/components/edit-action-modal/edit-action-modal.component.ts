@@ -12,7 +12,7 @@ export class EditActionModalComponent implements OnInit {
   @Input() action: IAction;
   @Output() result: EventEmitter<IAction> = new EventEmitter();
   actionName = '';
-  audioFileName='';
+  audioFileName = '';
 
   constructor(public activeModal: NgbActiveModal) {
     this.action = { name: '', audioFileName: '' };
