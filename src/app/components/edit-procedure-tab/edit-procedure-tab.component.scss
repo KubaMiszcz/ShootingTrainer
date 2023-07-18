@@ -1,6 +1,15 @@
-.stages {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    align-content: center;
+.buttons {
+    background-color: lightgray;
+}
+
+.content {
+    overflow-y: scroll;
+    height: 85vh;
+
+    .stages {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        align-content: center;
+    }
 }
