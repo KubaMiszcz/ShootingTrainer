@@ -2,17 +2,26 @@
     [ngClass]="{'highlight-border' : isHighlighted}">
 
     <div class="card-header" [ngClass]="{'highlight-background' : isHighlighted}">
-        {{stage.name}}
-        <button type="button" class="btn btn-primary btn-sm">
-            <i class="fa fa-edit" aria-hidden="true"></i>
-        </button>
+        <div>
+            {{stage.name}}
+        </div>
+        <div>
+            <button type="button" class="btn btn-danger btn-sm" (click)="onDelete()">
+                <i class="fa fa-trash" aria-hidden="true"></i>
+            </button>
+            <button type="button" class="btn btn-primary btn-sm" (click)="onEdit()">
+                <i class="fa fa-edit" aria-hidden="true"></i>
+            </button>
+        </div>
     </div>
 
     <div class="card-body p-2">
         <div class="card no-box-shadow">
             <ul class="list-group list-group-flush">
-                <app-action-row *ngFor="let action of stage.actions" [action]="action"
-                    class="list-group-item p-0"></app-action-row>
+                <li>
+                    <app-action-row *ngFor="let action of stage.actions" [action]="action"
+                        class="list-group-item p-0"></app-action-row>
+                </li>
             </ul>
         </div>
 

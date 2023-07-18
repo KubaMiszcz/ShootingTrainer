@@ -1,7 +1,8 @@
 import { IAction } from './action';
+import { IBlock } from './block';
 import { IStage } from './stage';
 
-export interface IDecider {
+export interface IDecider extends IBlock {
   name: string;
   description?: string;
   audioFileName: string;

@@ -17,6 +17,15 @@ import { IBlock } from '../models/block';
   providedIn: 'root',
 })
 export class AppService {
+  currentProcedure$ = new BehaviorSubject<IProcedure>(
+    this.getDefaultProcedure()
+  );
+
+  constructor(
+    private appSettings: AppSettingsService,
+    private audioPlayerService: AudioPlayerService
+  ) {}
+
   deleteBlock(name: string) {
     let procedure = this.currentProcedure$.value;
     let block: IStage | IDecider | undefined = procedure.stages.find(
@@ -30,15 +39,6 @@ export class AppService {
     _.remove(procedure.stages, block);
     return;
   }
-
-  currentProcedure$ = new BehaviorSubject<IProcedure>(
-    this.getDefaultProcedure()
-  );
-
-  constructor(
-    private appSettings: AppSettingsService,
-    private audioPlayerService: AudioPlayerService
-  ) {}
 
   changeProcedure(value: IProcedure) {
     this.appSettings.appData.procedures.forEach((p) => (p.isDefault = false));

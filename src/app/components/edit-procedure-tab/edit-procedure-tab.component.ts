@@ -25,14 +25,18 @@ export class EditProcedureTabComponent {
   highlightBlock(value: string) {
     console.log(value);
     let blockName = this.stages.find((s) => s.name === value)?.name;
-    
+
     if (!blockName?.length) {
       blockName = this.deciders.find((s) => s.name === value)?.name;
     }
-    
+
     this.highlightedBlockName = blockName ?? '';
     setTimeout(() => {
       this.highlightedBlockName = '';
     }, 1000);
+  }
+
+  deleteBlock(value: string) {
+    this.appService.deleteBlock(value);
   }
 }

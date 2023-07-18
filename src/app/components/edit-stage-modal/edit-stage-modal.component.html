@@ -1,1 +1,42 @@
-<p>edit-stage-modal works!</p>
+<div class="modal-header">
+    <h4 class="modal-title">
+        <span> Edit Stage: "{{stageName}}" </span>
+    </h4>
+    <button type="button" class="btn-close" aria-label="Close" (click)="activeModal.dismiss('Cross click')"
+        ngbAutofocus></button>
+</div>
+
+
+<div class="modal-body">
+    <div class="input-group mb-3">
+        <span class="input-group-text label" id="basic-addon1">Stage Name</span>
+        <input [(ngModel)]="stage.name" type="text" class="form-control" id="actionName" placeholder="name"
+            aria-label="name" aria-describedby="basic-addon2" required>
+    </div>
+<!-- 
+    <div class="input-group mb-3">
+        <label class="input-group-text label" for="inputGroupFile03">Audio File</label>
+        <input [value]="action.audioFileName" type="text" class="form-control" id="inputGroupFile03" disabled readonly>
+    </div>
+    <div class="input-group mb-3">
+        <label class="input-group-text label" for="inputGroupFile01">Replace Audio File</label>
+        <input [(ngModel)]="audioFileName" type="file" class="form-control" id="inputGroupFile01">
+    </div>
+
+    <div class="input-group mb-3">
+        <span class="input-group-text label">Action description</span>
+        <textarea [(ngModel)]="action.description" class="form-control" rows="3" aria-label="With textarea"></textarea>
+    </div>
+
+    <div class="input-group mb-3">
+        <span class="input-group-text" id="basic-addon3">Dodatkowe opoznienie [sek]</span>
+        <input [(ngModel)]="action.delay_sec" type="number" class="form-control" id="actionName2" placeholder="delay"
+            aria-label="delay" aria-describedby="basic-addon4" required (click)="actionName=action.name">
+    </div> -->
+</div>
+
+
+<div class="modal-footer">
+    <button type="button" class="btn btn-primary" ngbAutofocus (click)="save()">Save</button>
+    <button type="button" class="btn btn-secondary" (click)="activeModal.close('close click')">Cancel</button>
+</div>
