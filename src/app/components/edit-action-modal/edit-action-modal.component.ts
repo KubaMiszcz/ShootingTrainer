@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { IAction } from 'src/app/models/action';
 import * as _ from 'lodash'; 
@@ -14,9 +14,11 @@ export class EditActionModalComponent implements OnInit {
   actionName = '';
   audioFileName = '';
 
+
   constructor(public activeModal: NgbActiveModal) {
     this.action = { name: '', audioFileName: '' };
   }
+
   ngOnInit(): void {
     this.actionName = this.action.name;
   }
