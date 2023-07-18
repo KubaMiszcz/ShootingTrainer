@@ -17,6 +17,10 @@ import { IBlock } from '../models/block';
   providedIn: 'root',
 })
 export class AppService {
+  deleteActionFromStage(stage: IStage, action: IAction) {
+    _.remove(stage.actions, action);
+  }
+  
   getAllBlocks(): IBlock[] {
     let procedure = this.currentProcedure$.value;
     return [...procedure.stages, ...procedure.deciders] ?? [];

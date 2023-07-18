@@ -19,7 +19,8 @@
 
         <div class="card no-box-shadow mb-3">
             <div class="list-group list-group-flush">
-                <app-action-row *ngFor="let action of stage.actions" [action]="action"
+                <app-action-row *ngFor="let action of stage.actions" [action]="action" [showDelete]="true"
+                    (delete)="deleteAction($event)"
                     class="list-group-item p-0"></app-action-row>
             </div>
         </div>

@@ -3,6 +3,7 @@ import { AppService } from 'src/app/services/app.service';
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { IStage } from 'src/app/models/stage';
+import { IAction } from 'src/app/models/action';
 
 @Component({
   selector: 'app-edit-stage-modal',
@@ -34,5 +35,9 @@ export class EditStageModalComponent {
 
   changeNextStep(block:IBlock){
     this.stage.nextBlockName = block.name;
+  }
+
+  deleteAction(action:IAction){
+this.appService.deleteActionFromStage(this.stage, action);
   }
 }

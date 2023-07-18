@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { IAction } from 'src/app/models/action';
 import { AppService } from 'src/app/services/app.service';
@@ -11,12 +11,14 @@ import { EditActionModalComponent } from '../edit-action-modal/edit-action-modal
 })
 export class ActionRowComponent {
   @Input() action: IAction;
+  @Input() showDelete = false;
+  @Output() delete: EventEmitter<IAction> = new EventEmitter();
 
   constructor(private appService: AppService, private modalService: NgbModal) {
-    this.action={
-      name:'',
-      audioFileName:''
-    }
+    this.action = {
+      name: '',
+      audioFileName: '',
+    };
   }
 
   edit(action: IAction) {
@@ -39,7 +41,11 @@ export class ActionRowComponent {
     return action.delay_sec ?? 0;
   }
 
-  toggleIsDisabled(){
+  toggleIsDisabled() {
     this.action.isDisabled = !this.action.isDisabled;
+  }
+
+  onDelete(action: IAction) {
+    this.delete.emit(action);
   }
 }

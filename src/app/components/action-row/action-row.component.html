@@ -27,6 +27,9 @@
         <button type="button" class="btn btn-primary btn-sm" [ngClass]="{'btn-secondary' : action.isDisabled}" (click)="edit(action)">
             <i class="fa fa-edit" aria-hidden="true"></i>
         </button>
+        <button *ngIf="showDelete" type="button" class="btn btn-danger btn-sm" (click)="onDelete(action)">
+            <i class="fa fa-trash" aria-hidden="true"></i>
+        </button>
     </div>
 
 </div>
