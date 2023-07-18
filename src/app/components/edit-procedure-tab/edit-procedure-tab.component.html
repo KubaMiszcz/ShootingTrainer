@@ -1,18 +1,36 @@
-<div class="stages p-4">
-    <div *ngFor="let item of (procedure$ |async)?.deciders">
-        <!-- <app-stage-tile [stage]="item" [isHighlighted]="highlightedStageName===item.name"
-            (pointNextBlock)="highlightStage($event)"></app-stage-tile> -->
-        <app-decider-tile [decider]="item" [isHighlighted]="highlightedBlockName===item.name"
-        (pointNextBlock)="highlightBlock($event)"></app-decider-tile>
+    <div class="p-2 buttons">
+    <button type="button" name="" id="" class="btn btn-primary btn-lg btn-block">Dodaj Krok</button>
     </div>
-</div>
 
 
-<div class="stages p-4">
-    <div *ngFor="let item of (procedure$ |async)?.stages">
-        <app-stage-tile [stage]="item" [isHighlighted]="highlightedBlockName===item.name"
-            (pointNextBlock)="highlightBlock($event)"></app-stage-tile>
+    <div class="content" >
+        
+        <div class="stages pb-4">
+            <div *ngFor="let item of (procedure$ |async)?.stages">
+                <app-stage-tile [stage]="item" [isHighlighted]="highlightedBlockName===item.name"
+                (pointNextBlock)="highlightBlock($event)"
+                (deleteStage)="deleteBlock($event)"
+                ></app-stage-tile>
+                <!-- (editStage)="editBlock($event)" -->
+            </div>
+        </div>
+    
+
+        <div class="stages pb-4">
+            <div *ngFor="let item of (procedure$ |async)?.deciders">
+                <app-decider-tile [decider]="item" [isHighlighted]="highlightedBlockName===item.name"
+                (pointNextBlock)="highlightBlock($event)"></app-decider-tile>
+            </div>
+        </div>
+        
+        
+
+        <div class="stages pb-4">
+            <div *ngFor="let item of (procedure$ |async)?.stages">
+                <app-stage-tile [stage]="item" [isHighlighted]="highlightedBlockName===item.name"
+                (pointNextBlock)="highlightBlock($event)"></app-stage-tile>
+            </div>
+        </div>
+            
     </div>
-</div>
-
-
+    

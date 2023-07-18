@@ -11,11 +11,26 @@ import { IAction } from '../models/action';
 import { BehaviorSubject, Subject } from 'rxjs';
 import { IProcedure } from '../models/procedure';
 import * as _ from 'lodash';
+import { IBlock } from '../models/block';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AppService {
+  deleteBlock(name: string) {
+    let procedure = this.currentProcedure$.value;
+    let block: IStage | IDecider | undefined = procedure.stages.find(
+      (s) => s.name === name
+    );
+
+    if (!block) {
+      block = procedure.deciders.find((s) => s.name === name);
+    }
+
+    _.remove(procedure.stages, block);
+    return;
+  }
+
   currentProcedure$ = new BehaviorSubject<IProcedure>(
     this.getDefaultProcedure()
   );
@@ -43,7 +58,7 @@ export class AppService {
     }
     this.audioPlayerService.playPlaylist();
   }
-  
+
   pauseProcedure() {
     this.audioPlayerService.pausePlaylist();
   }
