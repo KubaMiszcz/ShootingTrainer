@@ -28,5 +28,9 @@ export class EditActionModalComponent implements OnInit {
     this.result.emit(this.action);
     this.activeModal.close();
   }
+
+  updateIsDisabled(){
+    this.action.isDisabled=!this.action.isDisabled
+  }
 }
 

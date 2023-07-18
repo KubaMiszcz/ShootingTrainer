@@ -31,6 +31,7 @@ export class ActionRowComponent {
       action.description = updatedAction.description;
       action.audioFileName = updatedAction.audioFileName;
       action.delay_sec = updatedAction.delay_sec;
+      action.isDisabled = updatedAction.isDisabled;
     });
   }
 
