@@ -15,7 +15,7 @@ export class DeciderTileComponent {
   @Input() isHighlighted = false;
   @Output() pointNextBlock = new EventEmitter<string>();
   allBlocks: IBlock[] = [];
-  
+
   constructor(private appService: AppService, private modalService: NgbModal) {
     this.decider = {
       name: '',
@@ -56,8 +56,12 @@ export class DeciderTileComponent {
     return this.appService.getDeciderNameSuffix(block);
   }
 
-  changeNextStep(block: IBlock) {
-    // this.stage.nextBlockName = block.name;
+  changeNegativeBlock(block: IBlock) {
+    this.decider.negativeBlockName = block.name;
+  }
+
+  changePositiveBlock(block: IBlock) {
+    this.decider.positiveBlockName = block.name;
   }
 
   onDelete() {

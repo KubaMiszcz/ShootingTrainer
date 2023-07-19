@@ -23,7 +23,7 @@
                 aria-expanded="false">{{decider.positiveBlockName}}</button>
             <div class="dropdown-menu dropdown-menu-end">
                 <div *ngFor="let item of allBlocks"><span class="dropdown-item"
-                        (click)="changeNextStep(item)">{{item.name}}{{deciderSuffix(item)}}</span></div>
+                        (click)="changePositiveBlock(item)">{{item.name}}{{deciderSuffix(item)}}</span></div>
             </div>
 
             <button class="input-group-text btn btn-outline-primary m-0 next-block" type="button"
@@ -40,7 +40,7 @@
                 aria-expanded="false">{{decider.negativeBlockName}}</button>
             <div class="dropdown-menu dropdown-menu-end">
                 <div *ngFor="let item of allBlocks"><span class="dropdown-item"
-                        (click)="changeNextStep(item)">{{item.name}}{{deciderSuffix(item)}}</span></div>
+                        (click)="changeNegativeBlock(item)">{{item.name}}{{deciderSuffix(item)}}</span></div>
             </div>
 
             <button class="input-group-text btn btn-outline-primary next-block m-0" type="button"
