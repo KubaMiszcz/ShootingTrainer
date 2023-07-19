@@ -3,26 +3,27 @@
     justify-content: space-between;
     align-items: center;
 
-    .disabled{
-        color: lightgray;
-        fill: lightgray;
-    }
 
-    .label-name{
+    .label-name {
         // width: 60%;
         width: -webkit-fill-available;
-        
-        .audio-filename{
+
+        .audio-filename {
             font-style: italic;
             font-size: 0.6rem;
             text-align: end;
         }
     }
 
-    .buttons{
+    .buttons {
         display: flex;
         align-items: center;
         justify-content: flex-end;
         flex-direction: row;
     }
+}
+
+.disabled {
+    color: lightgray;
+    fill: lightgray;
 }

@@ -3,6 +3,7 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { IAction } from 'src/app/models/action';
 import { AppService } from 'src/app/services/app.service';
 import { EditActionModalComponent } from '../edit-action-modal/edit-action-modal.component';
+import { OrderDirectionEnum } from 'src/app/models/enums';
 
 @Component({
   selector: 'app-action-row',
@@ -12,7 +13,9 @@ import { EditActionModalComponent } from '../edit-action-modal/edit-action-modal
 export class ActionRowComponent {
   @Input() action: IAction;
   @Input() showDelete = false;
+  @Input() showReorder = true;
   @Output() delete: EventEmitter<IAction> = new EventEmitter();
+  @Output() reorder: EventEmitter<IAction> = new EventEmitter();
 
   constructor(private appService: AppService, private modalService: NgbModal) {
     this.action = {
@@ -47,5 +50,11 @@ export class ActionRowComponent {
 
   onDelete(action: IAction) {
     this.delete.emit(action);
+  }
+
+  actionUp() {}
+  
+  actionDown() {
+    // this.reorder.emit(this.action,OrderDirectionEnum.)
   }
 }
