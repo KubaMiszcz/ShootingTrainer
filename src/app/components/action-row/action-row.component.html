@@ -29,10 +29,10 @@
 
     <div class="buttons" >
         <i *ngFor="let _ of [].constructor(getDelay(action))" class="fa fa-clock"></i>
-        <button type="button" class="btn btn-primary btn-sm"  (click)="edit(action)">
+        <button type="button" class="btn btn-primary btn-sm"  (click)="edit(action)" title="edit">
             <i class="fa fa-edit" aria-hidden="true"></i>
         </button>
-        <button *ngIf="showDelete" type="button" class="btn btn-danger btn-sm" (click)="onDelete(action)">
+        <button *ngIf="showDelete" type="button" class="btn btn-danger btn-sm" (click)="onDelete(action)" title="delete">
             <i class="fa fa-trash" aria-hidden="true"></i>
         </button>
     </div>

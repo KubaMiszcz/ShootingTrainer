@@ -50,4 +50,8 @@ throw new Error('Method not implemented.');
   addNewStage(){
     this.appService.addNewStage();
    }
+   
+   addNewDecider(){
+    this.appService.addNewStage();
+   }
 }

@@ -17,8 +17,6 @@ import { IBlock } from '../models/block';
   providedIn: 'root',
 })
 export class AppService {
-  
-
   //===============================
   //===============================
   //===============================
@@ -39,9 +37,20 @@ export class AppService {
 
   addNewStage() {
     let procedure = this.currentProcedure$.value;
-    let newStage: IStage = { name: 'aa', actions: [] };
-    procedure.stages = [newStage, ...procedure.stages];
-    this.currentProcedure$.next(procedure);
+    
+    let newName = 'NowyKrok';
+    let i = 1;
+    let isUnique = false;
+    while (!isUnique) {
+      if (!procedure.stages.find((s) => s.name === newName + i)) {
+        isUnique = true;
+        let newStage: IStage = { name: newName+i, actions: [] };
+        procedure.stages = [newStage, ...procedure.stages];
+        this.currentProcedure$.next(procedure);
+      }
+      i++;
+    }
+
   }
 
   deleteActionFromStage(stage: IStage, action: IAction) {
