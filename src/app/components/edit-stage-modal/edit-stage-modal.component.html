@@ -18,11 +18,14 @@
     <div class="card-body">
 
         <div class="card no-box-shadow mb-3">
-            <div class="list-group list-group-flush">
+            <div *ngIf="let action of stage.actions?.length" class="list-group list-group-flush">
                 <app-action-row *ngFor="let action of stage.actions" [action]="action" [showDelete]="true"
                     (delete)="deleteAction($event)"
                     class="list-group-item p-0"></app-action-row>
             </div>
+            <button type="button" name="" id="" class="btn btn-sm btn-primary btn-block">
+                <i class="fa fa-plus-circle" aria-hidden="true"></i>
+                Dodaj Akcje</button>
         </div>
 
         <div class="input-group input-group mb-3">
