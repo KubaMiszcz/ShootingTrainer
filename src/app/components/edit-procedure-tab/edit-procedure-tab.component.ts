@@ -3,6 +3,8 @@ import { Component } from '@angular/core';
 import { AppSettingsService } from 'src/app/services/app-settings.service';
 import { Subject } from 'rxjs';
 import { IProcedure } from 'src/app/models/procedure';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { EditProcedureModalComponent } from '../edit-procedure-modal/edit-procedure-modal.component';
 
 @Component({
   selector: 'app-edit-procedure-tab',
@@ -17,7 +19,8 @@ export class EditProcedureTabComponent {
 
   constructor(
     private appService: AppService,
-    private appSettingsService: AppSettingsService
+    private appSettingsService: AppSettingsService,
+    private modalService: NgbModal
   ) {
     this.procedure$ = appService.currentProcedure$;
   }
@@ -36,24 +39,33 @@ export class EditProcedureTabComponent {
     }, 1000);
   }
 
-  addNewStage(){
+  addNewStage() {
     this.appService.addNewStage();
-   }
-   
-   addNewDecider(){
+  }
+
+  addNewDecider() {
     this.appService.addNewDecider();
-   }
+  }
 
-   addProcedure(){
+  addProcedure() {
     this.appService.addProcedure();
-   }
+  }
 
-   deleteProcedure(){
+  deleteProcedure() {
     this.appService.deleteProcedure();
-   }
+  }
 
-   editProcedure(){
-    this.appService.addProcedure();
-   }
-
+  editProcedure() {
+    let procedure = this.appService.currentProcedure$.value;
+    const modalRef = this.modalService.open(EditProcedureModalComponent, {
+      size: 'lg',
+      centered: true,
+    });
+    modalRef.componentInstance.procedure = this.appService.deepCopy(procedure);
+    modalRef.componentInstance.result.subscribe(
+      (updatedProcedure: IProcedure) => {
+        procedure.name = updatedProcedure.name;
+      }
+    );
+  }
 }

@@ -16,7 +16,7 @@ import { IDecider } from 'src/app/models/decider';
   },
 })
 export class EditStageModalComponent {
-  @Input() stage: IStage;
+  stage: IStage;
   @Output() result: EventEmitter<IStage> = new EventEmitter();
   stageName = '';
   allBlocks: IBlock[] = [];

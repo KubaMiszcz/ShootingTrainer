@@ -17,6 +17,7 @@ import { ActionRowComponent } from './components/action-row/action-row.component
 import { DeciderTileComponent } from './components/decider-tile/decider-tile.component';
 import { EditDeciderModalComponent } from './components/edit-decider-modal/edit-decider-modal.component';
 import { EditStageModalComponent } from './components/edit-stage-modal/edit-stage-modal.component';
+import { EditProcedureModalComponent } from './components/edit-procedure-modal/edit-procedure-modal.component';
 
 @NgModule({
   declarations: [
@@ -34,6 +35,7 @@ import { EditStageModalComponent } from './components/edit-stage-modal/edit-stag
     DeciderTileComponent,
     EditDeciderModalComponent,
     EditStageModalComponent,
+    EditProcedureModalComponent,
     ],
   imports: [
     BrowserModule,

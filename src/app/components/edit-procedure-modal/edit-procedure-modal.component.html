@@ -1,0 +1,52 @@
+<div class="modal-header">
+    <h4 class="modal-title">
+        <span> Edycja kroku: "{{procedureName}}" </span>
+    </h4>
+    <button type="button" class="btn-close" aria-label="Close" (click)="activeModal.dismiss('Cross click')"
+        ngbAutofocus></button>
+</div>
+
+
+<div class="modal-body">
+    <div class="input-group mb-3">
+        <span class="input-group-text label" id="basic-addon9">Nowa nazwa</span>
+        <input [(ngModel)]="procedure.name" type="text" class="form-control" id="stageName" placeholder="name"
+            aria-label="name" aria-describedby="basic-addon2" required>
+    </div>
+
+
+    <div class="card-body">
+
+        <!-- <div class="card no-box-shadow mb-3">
+            <div *ngIf="stage.actions?.length" class="list-group list-group-flush">
+                <app-action-row *ngFor="let action of stage.actions" [action]="action" [showDelete]="true"
+                    (delete)="deleteAction($event)" (reorderUp)="reorderAction(action,ORDER_DIRECTION.UP)"
+                    (reorderDown)="reorderAction(action,ORDER_DIRECTION.DOWN)"
+                    class="list-group-item p-0"></app-action-row>
+            </div>
+            <button type="button" name="" id="" class="btn btn-sm btn-primary btn-block" (click)="appendNewAction()">
+                <i class="fa fa-plus-circle" aria-hidden="true"></i>
+                Dodaj Akcje [A]</button>
+        </div>
+
+        <div class="input-group input-group mb-3">
+            <span class="input-group-text" id="basic-addon3">Nastepny krok</span>
+            <input [ngModel]="stage.nextBlockName" type="text" class="form-control" id="actionName" placeholder="name"
+                aria-label="name" aria-describedby="basic-addon1" required disabled readonly>
+            <button class="m-0 btn btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown"
+                aria-expanded="false">Zmien...</button>
+            <div class="dropdown-menu dropdown-menu-end">
+                <div *ngFor="let item of allBlocks"><span class="dropdown-item"
+                        (click)="changeNextStep(item)">{{item.name}}{{deciderSuffix(item)}}</span></div>
+            </div>
+        </div> -->
+
+    </div>
+
+</div>
+
+
+<div class="modal-footer">
+    <button type="button" class="btn btn-primary" ngbAutofocus (click)="save()">Save [Enter]</button>
+    <button type="button" class="btn btn-secondary" (click)="activeModal.close('close click')">Cancel [Esc]</button>
+</div>

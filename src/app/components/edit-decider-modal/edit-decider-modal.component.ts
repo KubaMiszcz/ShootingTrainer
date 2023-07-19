@@ -9,7 +9,7 @@ import { IDecider } from 'src/app/models/decider';
   styleUrls: ['./edit-decider-modal.component.scss'],
 })
 export class EditDeciderModalComponent implements OnInit {
-  @Input() decider: IDecider;
+  decider: IDecider;
   @Output() result: EventEmitter<IDecider> = new EventEmitter();
   deciderName = '';
   audioFileName = '';
