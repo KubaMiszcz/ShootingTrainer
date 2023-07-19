@@ -17,14 +17,12 @@ import { IBlock } from '../models/block';
   providedIn: 'root',
 })
 export class AppService {
-  deleteActionFromStage(stage: IStage, action: IAction) {
-    _.remove(stage.actions, action);
-  }
   
-  getAllBlocks(): IBlock[] {
-    let procedure = this.currentProcedure$.value;
-    return [...procedure.stages, ...procedure.deciders] ?? [];
-  }
+
+  //===============================
+  //===============================
+  //===============================
+  //===============================
 
   currentProcedure$ = new BehaviorSubject<IProcedure>(
     this.getDefaultProcedure()
@@ -34,6 +32,26 @@ export class AppService {
     private appSettings: AppSettingsService,
     private audioPlayerService: AudioPlayerService
   ) {}
+
+  renameProcedure(procedureName: string) {
+    this.currentProcedure$.value.name = procedureName;
+  }
+
+  addNewStage() {
+    let procedure = this.currentProcedure$.value;
+    let newStage: IStage = { name: 'aa', actions: [] };
+    procedure.stages = [newStage, ...procedure.stages];
+    this.currentProcedure$.next(procedure);
+  }
+
+  deleteActionFromStage(stage: IStage, action: IAction) {
+    _.remove(stage.actions, action);
+  }
+
+  getAllBlocks(): IBlock[] {
+    let procedure = this.currentProcedure$.value;
+    return [...procedure.stages, ...procedure.deciders] ?? [];
+  }
 
   deleteBlock(name: string) {
     let procedure = this.currentProcedure$.value;

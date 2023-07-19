@@ -1,35 +1,63 @@
-    <div class="p-2 buttons">
-    <button type="button" name="" id="" class="btn btn-primary btn-lg btn-block">Dodaj Krok</button>
+<div class="p-2 buttons d-flex justify-content-between">
+    <div>
+        <button type="button" name="" id="" class="btn btn-primary btn-lg btn-block me-2" (click)="addNewStage()">
+            <i class="fa fa-plus-circle" aria-hidden="true"></i>Dodaj nowy krok</button>
+        <button type="button" name="" id="" class="btn btn-primary btn-lg btn-block" (click)="addNewStage()">
+            <i class="fa fa-plus-circle" aria-hidden="true"></i>Dodaj nowa decyzje</button>
+
+    </div>
+    <div class="d-flex flex-row">
+        <div class="">
+            <input [(ngModel)]="procedureName" class="form-control me-2" type="text" placeholder="name"
+                aria-label="Search">
+        </div>
+        <button type="button" name="" id="" class="btn btn-primary btn-lg btn-block" (click)="renameProcedure()">
+            <i class="fa fa-save" aria-hidden="true"></i>
+        </button>
+        <button type="button" name="" id="" class="btn btn-danger btn-lg btn-block" (click)="deleteProcedure()">
+            <i class="fa fa-trash" aria-hidden="true"></i>Usun procedure </button>
+    </div>
+</div>
+
+
+<div class="content">
+
+
+    <div class="stages pb-4">
+        <div class="d-flex m-2 align-items-baseline flex-column">
+            <div class="">
+                <button type="button" name="" id="" class="btn btn-primary btn-lg btn-block" (click)="addNewStage()">
+                    <i class="fa fa-plus-circle" aria-hidden="true"></i><br>
+                    Dodaj nowy krok</button>
+            </div>
+            <div class="d-flex m-2 align-items-baseline">
+                <button type="button" name="" id="" class="btn btn-primary btn-lg btn-block" (click)="addNewStage()">
+                    <i class="fa fa-plus-circle" aria-hidden="true"></i><br>
+                    Dodaj nową decyzje</button>
+            </div>
+        </div>
+
+        <div *ngFor="let item of (procedure$ |async)?.stages">
+            <app-stage-tile [stage]="item" [isHighlighted]="highlightedBlockName===item.name"
+                (pointNextBlock)="highlightBlock($event)" (deleteStage)="deleteBlock($event)"></app-stage-tile>
+        </div>
     </div>
 
 
-    <div class="content" >
-        
-        <div class="stages pb-4">
-            <div *ngFor="let item of (procedure$ |async)?.stages">
-                <app-stage-tile [stage]="item" [isHighlighted]="highlightedBlockName===item.name"
-                (pointNextBlock)="highlightBlock($event)"
-                (deleteStage)="deleteBlock($event)"
-                ></app-stage-tile>
-            </div>
-        </div>
-    
-
-        <div class="stages pb-4">
-            <div *ngFor="let item of (procedure$ |async)?.deciders">
-                <app-decider-tile [decider]="item" [isHighlighted]="highlightedBlockName===item.name"
+    <div class="stages pb-4">
+        <div *ngFor="let item of (procedure$ |async)?.deciders">
+            <app-decider-tile [decider]="item" [isHighlighted]="highlightedBlockName===item.name"
                 (pointNextBlock)="highlightBlock($event)"></app-decider-tile>
-            </div>
         </div>
-        
-        
-
-        <div class="stages pb-4">
-            <div *ngFor="let item of (procedure$ |async)?.stages">
-                <app-stage-tile [stage]="item" [isHighlighted]="highlightedBlockName===item.name"
-                (pointNextBlock)="highlightBlock($event)"></app-stage-tile>
-            </div>
-        </div>
-            
     </div>
-    
+
+
+
+    <div class="stages pb-4">
+        <div *ngFor="let item of (procedure$ |async)?.stages">
+            <app-stage-tile [stage]="item" [isHighlighted]="highlightedBlockName===item.name"
+                (pointNextBlock)="highlightBlock($event)"></app-stage-tile>
+        </div>
+    </div>
+
+</div>

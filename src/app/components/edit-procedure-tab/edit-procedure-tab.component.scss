@@ -11,5 +11,13 @@
         flex-direction: row;
         flex-wrap: wrap;
         align-content: center;
+
+        .btn {
+            width: 10rem;
+
+            svg {
+                font-size: 2rem;
+            }
+        }
     }
 }
