@@ -4,12 +4,14 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { IStage } from 'src/app/models/stage';
 import { IAction } from 'src/app/models/action';
-import * as _ from 'lodash';
 
 @Component({
   selector: 'app-edit-stage-modal',
   templateUrl: './edit-stage-modal.component.html',
   styleUrls: ['./edit-stage-modal.component.scss'],
+  host: {
+    '(document:keypress)': 'handleKeyboardEvent($event)',
+  },
 })
 export class EditStageModalComponent {
   @Input() stage: IStage;
@@ -22,8 +24,9 @@ export class EditStageModalComponent {
     public activeModal: NgbActiveModal
   ) {
     this.stage = { name: '', actions: [] };
-    this.allBlocks = _.orderBy(this.appService.getAllBlocks(), 'name', 'asc');
-
+    this.allBlocks = appService.getArraySortedByName(
+      this.appService.getAllBlocks()
+    );
   }
 
   ngOnInit(): void {
@@ -46,5 +49,14 @@ export class EditStageModalComponent {
 
   appendNewAction() {
     this.appService.appendNewAction(this.stage);
+  }
+
+  handleKeyboardEvent(event: KeyboardEvent) {
+    if (event.code === 'Enter') {
+      this.save();
+    }
+    if (event.code === 'KeyA') {
+      this.appendNewAction();
+    }
   }
 }

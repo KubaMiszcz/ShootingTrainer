@@ -24,7 +24,7 @@ export class NavBarComponent {
     private appSettingsService: AppSettingsService,
     private appService: AppService
   ) {
-    this.procedures = appSettingsService.appData.procedures;
+    this.procedures = appService.getArraySortedByName(appSettingsService.appData.procedures);
     this.currentProcedure$ = appService.currentProcedure$;
   }
 

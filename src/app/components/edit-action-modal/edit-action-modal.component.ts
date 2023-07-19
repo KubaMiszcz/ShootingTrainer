@@ -7,6 +7,9 @@ import * as _ from 'lodash';
   selector: 'app-edit-action-modal',
   templateUrl: './edit-action-modal.component.html',
   styleUrls: ['./edit-action-modal.component.scss'],
+  host: {
+    '(document:keypress)': 'handleKeyboardEvent($event)',
+  },
 })
 export class EditActionModalComponent implements OnInit {
   @Input() action: IAction;
@@ -31,6 +34,12 @@ export class EditActionModalComponent implements OnInit {
 
   updateIsDisabled(){
     this.action.isDisabled=!this.action.isDisabled
+  }
+
+  handleKeyboardEvent(event: KeyboardEvent) {
+    if (event.code === 'Enter') {
+      this.save();
+    }
   }
 }
 

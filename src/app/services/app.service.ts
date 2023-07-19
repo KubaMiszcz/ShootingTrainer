@@ -17,7 +17,10 @@ import { IBlock } from '../models/block';
   providedIn: 'root',
 })
 export class AppService {
-  
+  getArraySortedByName<T>(array: T[]): T[] {
+    return _.orderBy(array, 'name', 'asc');
+  }
+
   //===============================
   //===============================
   //===============================
@@ -33,15 +36,15 @@ export class AppService {
   ) {}
 
   deleteItemFromArrayByIndex<T>(array: T[], idx: number) {
-    array.splice(idx, 1)
+    array.splice(idx, 1);
   }
-  
+
   appendNewAction(stage: IStage) {
     let newAction: IAction = {
       name: 'NowaAkcja',
       audioFileName: '',
     };
-    
+
     stage.actions.push(newAction);
   }
 
@@ -57,7 +60,7 @@ export class AppService {
     this.currentProcedure$.next(procedure);
   }
 
- private getNewUniqueName(stages: IStage[], prefix: string) {
+  private getNewUniqueName(stages: IStage[], prefix: string) {
     let i = 0;
     let isUnique = false;
     while (!isUnique) {
@@ -118,7 +121,8 @@ export class AppService {
 
   createPlaylist(maxLength: number): IAction[] {
     let playlist = [];
-    let block = this.getBlockByName('start');
+    let block: IStage | IDecider | undefined =
+      this.getCurrentProcedure().stages[0];
     let deadEnd = false;
     let nextBlockName = '';
 
@@ -153,6 +157,10 @@ export class AppService {
     } while (playlist.length < maxLength && !deadEnd);
 
     return playlist;
+  }
+
+  getCurrentProcedure() {
+    return this.currentProcedure$.value;
   }
 
   getNextBlockName(block: IStage | IDecider | undefined, result?: boolean) {
@@ -200,4 +208,3 @@ export class AppService {
     return JSON.parse(JSON.stringify(obj));
   }
 }
-
