@@ -17,14 +17,14 @@ import { Subject } from 'rxjs';
   styleUrls: ['./nav-bar.component.scss'],
 })
 export class NavBarComponent {
-  procedures: IProcedure[];
+  allProcedures$ = new Subject<IProcedure[]>();
   currentProcedure$ = new Subject<IProcedure>();
 
   constructor(
     private appSettingsService: AppSettingsService,
     private appService: AppService
   ) {
-    this.procedures = appService.getArraySortedByName(appSettingsService.appData.procedures);
+    this.allProcedures$ = appService.allProcedures$;
     this.currentProcedure$ = appService.currentProcedure$;
   }
 

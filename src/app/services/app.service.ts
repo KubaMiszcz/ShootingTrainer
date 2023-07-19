@@ -18,6 +18,7 @@ import { ORDER_DIRECTION } from '../models/enums';
   providedIn: 'root',
 })
 export class AppService {
+  
   //===============================
   //===============================
   //===============================
@@ -26,12 +27,54 @@ export class AppService {
   currentProcedure$ = new BehaviorSubject<IProcedure>(
     this.getDefaultProcedure()
   );
+  allProcedures$ = new BehaviorSubject<IProcedure[]>([]);
 
   constructor(
     private appSettings: AppSettingsService,
     private audioPlayerService: AudioPlayerService
-  ) {}
+  ) {
+    this.allProcedures$.next(appSettings.appData.procedures);
+  }
 
+
+
+
+
+
+
+
+
+  addNewDecider() {
+    let procedure = this.currentProcedure$.value;
+    let allDecidersNames = procedure.deciders.map((s) => s.name);
+    let newUniqueName = this.getNewUniqueName(allDecidersNames, 'Decyzja');
+    let newDecider: IDecider = {
+      name: newUniqueName,
+      audioFileName: '',
+      positiveBlockName: '',
+      negativeBlockName: '',
+      positiveChance: 0.5,
+    };
+    procedure.deciders = [newDecider, ...procedure.deciders];
+    this.currentProcedure$.next(procedure);
+  }
+
+  addProcedure() {
+    let allProceduresNames = this.allProcedures$.value.map((p) => p.name);
+    let newUniqueName = this.getNewUniqueName(allProceduresNames, 'Procedura');
+
+    let newProcedure: IProcedure = {
+      name: newUniqueName,
+      stages: [],
+      deciders: [],
+      magazineCapacity: 30,
+      defaultFailureChance: 0.5,
+    };
+
+    this.appSettings.appData.procedures.push(newProcedure);
+    this.changeProcedure(newProcedure);
+  }
+  
   reorderAction(stage: IStage, action: IAction, direction: ORDER_DIRECTION) {
     let actions = stage.actions;
     let idx = actions?.findIndex((a) => a === action);
@@ -60,18 +103,19 @@ export class AppService {
 
   addNewStage() {
     let procedure = this.currentProcedure$.value;
-    let newUniqueName = this.getNewUniqueName(procedure.stages, 'NowyKrok');
+    let allStagesNames = procedure.stages.map((s) => s.name);
+    let newUniqueName = this.getNewUniqueName(allStagesNames, 'Krok');
     let newStage: IStage = { name: newUniqueName, actions: [] };
     procedure.stages = [newStage, ...procedure.stages];
     this.currentProcedure$.next(procedure);
   }
 
-  private getNewUniqueName(stages: IStage[], prefix: string) {
+  private getNewUniqueName(names: string[], prefix: string) {
     let i = 0;
     let isUnique = false;
     while (!isUnique) {
       i++;
-      if (!stages.find((s) => s.name === prefix + i)) {
+      if (!names.find((s) => s === prefix + i)) {
         isUnique = true;
       }
     }

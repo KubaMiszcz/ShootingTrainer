@@ -9,18 +9,14 @@ import { APP_DATA_JSON } from 'src/assets/application-default-data';
   providedIn: 'root',
 })
 export class AppSettingsService {
-  magazineCapacity: number;
-  // defaultFailureChance: number;
   audioFilesPath: string;
   maxPlaylistLength: number;
   appData: IAppData;
 
   constructor() {
     this.appData = APP_DATA_JSON;
-    this.magazineCapacity = this.appData.procedures[0].magazineCapacity ?? 30;
-    // this.defaultFailureChance = this.appData.procedures[0].defaultFailureChance ?? 30;
     this.audioFilesPath = this.appData.audioFilesPath ?? '';
-    this.maxPlaylistLength = this.appData.maxPlaylistLength ?? 30;
+    this.maxPlaylistLength = this.appData.maxPlaylistLength ?? 50;
   }
 
   reloadDefaultAppData(appData: IAppData) {

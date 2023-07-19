@@ -26,7 +26,7 @@
                         Wybrany Plan: {{(currentProcedure$ |async)?.name ?? 'brak'}}
                     </button>
                     <ul class="dropdown-menu dropdown-menu-end">
-                        <li *ngFor="let item of procedures"><button class="dropdown-item" type="button"
+                        <li *ngFor="let item of allProcedures$ |async"><button class="dropdown-item" type="button"
                                 (click)="selectProcedure(item)">{{item.name}}</button></li>
                     </ul>
                 </div>

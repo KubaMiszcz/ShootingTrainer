@@ -10,16 +10,9 @@ import { IProcedure } from 'src/app/models/procedure';
   styleUrls: ['./edit-procedure-tab.component.scss'],
 })
 export class EditProcedureTabComponent {
-renameProcedure() {
-  this.appService.renameProcedure(this.procedureName);
-}
-deleteProcedure() {
-throw new Error('Method not implemented.');
-}
   stages = this.appService.currentProcedure$.value.stages;
   deciders = this.appService.currentProcedure$.value.deciders;
   procedure$ = new Subject<IProcedure>();
-  procedureName = '';
   highlightedBlockName = '';
 
   constructor(
@@ -27,7 +20,6 @@ throw new Error('Method not implemented.');
     private appSettingsService: AppSettingsService
   ) {
     this.procedure$ = appService.currentProcedure$;
-    this.procedureName = appService.currentProcedure$.value.name;
   }
 
   highlightBlock(value: string) {
@@ -47,11 +39,16 @@ throw new Error('Method not implemented.');
   deleteBlock(value: string) {
     this.appService.deleteBlock(value);
   }
+
   addNewStage(){
     this.appService.addNewStage();
    }
    
    addNewDecider(){
-    this.appService.addNewStage();
+    this.appService.addNewDecider();
+   }
+
+   addProcedure(){
+    this.appService.addProcedure();
    }
 }

@@ -40,6 +40,8 @@ export class ProcedureTabComponent {
   }
 
   handleKeyboardEvent(event: KeyboardEvent) {
+    // console.log(event);
+    
     if (event.code === 'Space') {
       if (this.isPlaylistPlaying$.value) {
         this.pauseProcedure();

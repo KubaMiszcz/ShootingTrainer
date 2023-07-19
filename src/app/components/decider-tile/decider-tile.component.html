@@ -15,7 +15,7 @@
         
         <div class="input-group input-group-sm mt-2">
             <span class="input-group-text label" id="basic-addon1">jesli TAK to:</span>
-            <input [ngModel]="decider.positiveBlockName" type="text" class="form-control" id="actionName" placeholder="name"
+            <input [ngModel]="decider.positiveBlockName" type="text" class="form-control" id="actionName" placeholder="brak"
                 aria-label="name" aria-describedby="basic-addon1" required disabled readonly>
             <button class="input-group-text btn btn-outline-primary m-0" type="button"
                 (click)="showNextBlock(decider.positiveBlockName)">pokaz
@@ -25,7 +25,7 @@
 
         <div class="input-group input-group-sm mt-2">
             <span class="input-group-text label" id="basic-addon1">jesli NIE to:</span>
-            <input [ngModel]="decider.negativeBlockName" type="text" class="form-control" id="actionName" placeholder="name"
+            <input [ngModel]="decider.negativeBlockName" type="text" class="form-control" id="actionName" placeholder="brak"
                 aria-label="name" aria-describedby="basic-addon1" required disabled readonly>
             <button class="input-group-text btn btn-outline-primary m-0" type="button"
                 (click)="showNextBlock(decider.negativeBlockName)">pokaz
@@ -35,7 +35,7 @@
         
         <div class="input-group input-group-sm mt-2">
             <span class="input-group-text label" id="basic-addon1">szansa na TAK</span>
-            <input [ngModel]="decider.positiveChance" type="text" class="form-control" id="actionName" placeholder="name"
+            <input [ngModel]="(decider.positiveChance*100)+'%'" type="text" class="form-control" id="actionName" placeholder="name"
                 aria-label="name" aria-describedby="basic-addon1" required disabled readonly>
         </div>
         
