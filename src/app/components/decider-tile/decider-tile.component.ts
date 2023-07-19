@@ -59,4 +59,8 @@ export class DeciderTileComponent {
   changeNextStep(block: IBlock) {
     // this.stage.nextBlockName = block.name;
   }
+
+  onDelete() {
+    this.appService.deleteBlock(this.decider);
+  }
 }

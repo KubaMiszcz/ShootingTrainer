@@ -36,10 +36,6 @@ export class EditProcedureTabComponent {
     }, 1000);
   }
 
-  deleteBlock(value: string) {
-    this.appService.deleteBlock(value);
-  }
-
   addNewStage(){
     this.appService.addNewStage();
    }

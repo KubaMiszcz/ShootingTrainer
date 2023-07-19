@@ -16,7 +16,6 @@ export class StageTileComponent {
   @Input() stage: IStage;
   @Input() isHighlighted = false;
   @Output() pointNextBlock = new EventEmitter<string>();
-  @Output() deleteStage = new EventEmitter<string>();
   ORDER_DIRECTION = ORDER_DIRECTION;
   allBlocks: IBlock[] = [];
 
@@ -36,7 +35,7 @@ export class StageTileComponent {
   }
 
   onDelete() {
-    this.deleteStage.emit(this.stage.name);
+    this.appService.deleteBlock(this.stage);
   }
 
   onEdit() {

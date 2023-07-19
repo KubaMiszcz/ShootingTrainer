@@ -5,6 +5,9 @@
             <div>{{decider.name}}</div>
             <div class="audio-filename">{{decider.audioFileName}}</div>
         </div>
+        <button type="button" class="btn btn-danger btn-sm" (click)="onDelete()" title="delete">
+            <i class="fa fa-trash" aria-hidden="true"></i>
+        </button>
         <button type="button" class="btn btn-primary btn-sm" (click)="edit(decider)" title="edit">
             <i class="fa fa-edit" aria-hidden="true"></i>
         </button>

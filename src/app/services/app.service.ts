@@ -18,21 +18,6 @@ import { ORDER_DIRECTION } from '../models/enums';
   providedIn: 'root',
 })
 export class AppService {
-  
-  getDeciderNameSuffix(block: IBlock) {
-    let suffix = '';
-    if (!this.isDecider(block)) {
-      return suffix;
-    }
-
-    if (!block.name.endsWith('?')) {
-      suffix += '?';
-    }
-    suffix += ' (D)';
-
-    return suffix;
-  }
-  
   //===============================
   //===============================
   //===============================
@@ -50,13 +35,24 @@ export class AppService {
     this.allProcedures$.next(appSettings.appData.procedures);
   }
 
+  //===============================
+  //===============================
+  //===============================
+  //===============================
 
+  getDeciderNameSuffix(block: IBlock) {
+    let suffix = '';
+    if (!this.isDecider(block)) {
+      return suffix;
+    }
 
+    if (!block.name.endsWith('?')) {
+      suffix += '?';
+    }
+    suffix += ' (D)';
 
-
-
-
-
+    return suffix;
+  }
 
   addNewDecider() {
     let procedure = this.currentProcedure$.value;
@@ -88,7 +84,7 @@ export class AppService {
     this.appSettings.appData.procedures.push(newProcedure);
     this.changeProcedure(newProcedure);
   }
-  
+
   reorderAction(stage: IStage, action: IAction, direction: ORDER_DIRECTION) {
     let actions = stage.actions;
     let idx = actions?.findIndex((a) => a === action);
@@ -142,18 +138,16 @@ export class AppService {
     return [...procedure.stages, ...procedure.deciders] ?? [];
   }
 
-  deleteBlock(name: string) {
+  deleteBlock(block: IBlock) {
     let procedure = this.currentProcedure$.value;
-    let block: IStage | IDecider | undefined = procedure.stages.find(
-      (s) => s.name === name
-    );
 
-    if (!block) {
-      block = procedure.deciders.find((s) => s.name === name);
+    if (this.isStage(block)) {
+      _.remove(procedure.stages, block);
     }
 
-    _.remove(procedure.stages, block);
-    return;
+    if (this.isDecider(block)) {
+      _.remove(procedure.deciders, block);
+    }
   }
 
   changeProcedure(value: IProcedure) {
