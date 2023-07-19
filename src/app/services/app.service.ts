@@ -18,6 +18,15 @@ import { ORDER_DIRECTION } from '../models/enums';
   providedIn: 'root',
 })
 export class AppService {
+  deleteProcedure() {
+    const procedures = this.appSettings.appData.procedures;
+    const currentProcedure = this.currentProcedure$.value;
+
+    let idx = procedures.findIndex((p) => p === currentProcedure);
+    _.remove(procedures, this.currentProcedure$.value);
+    idx = idx > procedures.length - 2 ? procedures.length - 1 : idx;
+    this.changeProcedure(procedures?.[idx]);
+  }
   //===============================
   //===============================
   //===============================

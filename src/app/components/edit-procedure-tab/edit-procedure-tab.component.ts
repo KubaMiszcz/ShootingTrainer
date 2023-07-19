@@ -47,4 +47,13 @@ export class EditProcedureTabComponent {
    addProcedure(){
     this.appService.addProcedure();
    }
+
+   deleteProcedure(){
+    this.appService.deleteProcedure();
+   }
+
+   editProcedure(){
+    this.appService.addProcedure();
+   }
+
 }
