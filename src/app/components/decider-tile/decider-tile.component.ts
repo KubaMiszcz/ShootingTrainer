@@ -52,7 +52,7 @@ export class DeciderTileComponent {
     });
   }
 
-  isDecider(block: IBlock) {
+  deciderSuffix(block: IBlock) {
     return this.appService.getDeciderNameSuffix(block);
   }
 

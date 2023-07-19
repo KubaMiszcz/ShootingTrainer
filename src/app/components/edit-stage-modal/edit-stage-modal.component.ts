@@ -67,7 +67,7 @@ export class EditStageModalComponent {
     this.appService.reorderAction(this.stage, action, direction);
   }
 
-  isDecider(block: IBlock) {
+  deciderSuffix(block: IBlock) {
     return this.appService.getDeciderNameSuffix(block);
   }
 }
