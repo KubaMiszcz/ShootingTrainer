@@ -4,6 +4,7 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { IStage } from 'src/app/models/stage';
 import { IAction } from 'src/app/models/action';
+import * as _ from 'lodash';
 
 @Component({
   selector: 'app-edit-stage-modal',
@@ -21,7 +22,8 @@ export class EditStageModalComponent {
     public activeModal: NgbActiveModal
   ) {
     this.stage = { name: '', actions: [] };
-    this.allBlocks = this.appService.getAllBlocks();
+    this.allBlocks = _.orderBy(this.appService.getAllBlocks(), 'name', 'asc');
+
   }
 
   ngOnInit(): void {
