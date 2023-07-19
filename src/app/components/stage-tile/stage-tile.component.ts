@@ -5,6 +5,7 @@ import { EditStageModalComponent } from '../edit-stage-modal/edit-stage-modal.co
 import { AppService } from 'src/app/services/app.service';
 import { ORDER_DIRECTION } from 'src/app/models/enums';
 import { IAction } from 'src/app/models/action';
+import { IBlock } from 'src/app/models/block';
 
 @Component({
   selector: 'app-stage-tile',
@@ -17,12 +18,18 @@ export class StageTileComponent {
   @Output() pointNextBlock = new EventEmitter<string>();
   @Output() deleteStage = new EventEmitter<string>();
   ORDER_DIRECTION = ORDER_DIRECTION;
+  allBlocks: IBlock[] = [];
+  
 
   constructor(private appService: AppService, private modalService: NgbModal) {
     this.stage = {
       name: 'no action',
       actions: [],
     };
+
+    this.allBlocks = appService.getArraySortedByName(
+      this.appService.getAllBlocks()
+    );
   }
 
   showNextBlock(nextBlockName: string) {
@@ -49,5 +56,14 @@ export class StageTileComponent {
 
   reorderAction(action: IAction, direction: ORDER_DIRECTION) {
     this.appService.reorderAction(this.stage, action, direction);
+  }
+
+  isDecider(block: IBlock) {
+   return this.appService.getDeciderNameSuffix(block);
+    
+  }
+
+  changeNextStep(block: IBlock) {
+    this.stage.nextBlockName = block.name;
   }
 }

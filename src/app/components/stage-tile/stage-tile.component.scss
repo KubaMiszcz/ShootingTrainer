@@ -16,6 +16,22 @@
         align-items: center;
     }
 
+    .card-body {
+        .input-group {
+            .label {
+                width: 32%;
+            }
+            
+            .name {
+                width: 45%;
+            }
+
+            .next-block {
+                width: 23%;
+            }
+        }
+    }
+
     .btn-append {
         border-radius: 0px 0px 0px 0px;
     }

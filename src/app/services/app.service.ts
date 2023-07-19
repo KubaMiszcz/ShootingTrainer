@@ -19,6 +19,20 @@ import { ORDER_DIRECTION } from '../models/enums';
 })
 export class AppService {
   
+  getDeciderNameSuffix(block: IBlock) {
+    let suffix = '';
+    if (!this.isDecider(block)) {
+      return suffix;
+    }
+
+    if (!block.name.endsWith('?')) {
+      suffix += '?';
+    }
+    suffix += ' (D)';
+
+    return suffix;
+  }
+  
   //===============================
   //===============================
   //===============================

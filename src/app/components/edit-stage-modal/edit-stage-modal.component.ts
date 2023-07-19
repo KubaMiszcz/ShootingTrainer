@@ -68,16 +68,6 @@ export class EditStageModalComponent {
   }
 
   isDecider(block: IBlock) {
-    let suffix = '';
-    if (!this.appService.isDecider(block)) {
-      return suffix;
-    }
-
-    if (!block.name.endsWith('?')) {
-      suffix += '?';
-    }
-    suffix += ' (D)';
-
-    return suffix;
+    return this.appService.getDeciderNameSuffix(block);
   }
 }
