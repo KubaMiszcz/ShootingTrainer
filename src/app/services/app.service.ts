@@ -37,20 +37,23 @@ export class AppService {
 
   addNewStage() {
     let procedure = this.currentProcedure$.value;
-    
-    let newName = 'NowyKrok';
-    let i = 1;
+    let newUniqueName = this.getNewUniqueName(procedure.stages, 'NowyKrok');
+    let newStage: IStage = { name: newUniqueName, actions: [] };
+    procedure.stages = [newStage, ...procedure.stages];
+    this.currentProcedure$.next(procedure);
+  }
+
+ private getNewUniqueName(stages: IStage[], prefix: string) {
+    let i = 0;
     let isUnique = false;
     while (!isUnique) {
-      if (!procedure.stages.find((s) => s.name === newName + i)) {
-        isUnique = true;
-        let newStage: IStage = { name: newName+i, actions: [] };
-        procedure.stages = [newStage, ...procedure.stages];
-        this.currentProcedure$.next(procedure);
-      }
       i++;
+      if (!stages.find((s) => s.name === prefix + i)) {
+        isUnique = true;
+      }
     }
 
+    return prefix + i;
   }
 
   deleteActionFromStage(stage: IStage, action: IAction) {
@@ -187,3 +190,4 @@ export class AppService {
     return JSON.parse(JSON.stringify(obj));
   }
 }
+
