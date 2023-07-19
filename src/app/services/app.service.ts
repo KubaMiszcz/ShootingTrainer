@@ -17,6 +17,7 @@ import { IBlock } from '../models/block';
   providedIn: 'root',
 })
 export class AppService {
+  
   //===============================
   //===============================
   //===============================
@@ -30,6 +31,19 @@ export class AppService {
     private appSettings: AppSettingsService,
     private audioPlayerService: AudioPlayerService
   ) {}
+
+  deleteItemFromArrayByIndex<T>(array: T[], idx: number) {
+    array.splice(idx, 1)
+  }
+  
+  appendNewAction(stage: IStage) {
+    let newAction: IAction = {
+      name: 'NowaAkcja',
+      audioFileName: '',
+    };
+    
+    stage.actions.push(newAction);
+  }
 
   renameProcedure(procedureName: string) {
     this.currentProcedure$.value.name = procedureName;
@@ -54,10 +68,6 @@ export class AppService {
     }
 
     return prefix + i;
-  }
-
-  deleteActionFromStage(stage: IStage, action: IAction) {
-    _.remove(stage.actions, action);
   }
 
   getAllBlocks(): IBlock[] {

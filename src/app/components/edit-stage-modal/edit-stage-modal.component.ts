@@ -33,11 +33,16 @@ export class EditStageModalComponent {
     this.activeModal.close();
   }
 
-  changeNextStep(block:IBlock){
+  changeNextStep(block: IBlock) {
     this.stage.nextBlockName = block.name;
   }
 
-  deleteAction(action:IAction){
-this.appService.deleteActionFromStage(this.stage, action);
+  deleteAction(action: IAction) {
+    let idx = this.stage.actions.findIndex((a) => a === action);
+    this.appService.deleteItemFromArrayByIndex(this.stage.actions, idx);
+  }
+
+  appendNewAction() {
+    this.appService.appendNewAction(this.stage);
   }
 }
