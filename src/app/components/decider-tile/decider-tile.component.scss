@@ -18,14 +18,30 @@
         justify-content: space-between;
         align-items: center;
 
-        .label-name{
+        .label-name {
             // width: 60%;
             width: -webkit-fill-available;
-            
-            .audio-filename{
+
+            .audio-filename {
                 font-style: italic;
                 font-size: 0.6rem;
                 text-align: start;
+            }
+        }
+    }
+
+    .card-body {
+        .input-group {
+            .label {
+                width: 26%;
+            }
+
+            .name {
+                width: 51%;
+            }
+
+            .next-block {
+                width: 23%;
             }
         }
     }
@@ -41,7 +57,7 @@
 
 .highlight-border {
     border-color: green;
-box-shadow: 4px 4px 6px 1px green;
+    box-shadow: 4px 4px 6px 1px green;
     animation: blinker 0.4s linear infinite;
 }
 

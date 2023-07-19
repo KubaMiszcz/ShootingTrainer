@@ -3,6 +3,7 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { IDecider } from 'src/app/models/decider';
 import { EditDeciderModalComponent } from '../edit-decider-modal/edit-decider-modal.component';
 import { AppService } from 'src/app/services/app.service';
+import { IBlock } from 'src/app/models/block';
 
 @Component({
   selector: 'app-decider-tile',
@@ -13,7 +14,8 @@ export class DeciderTileComponent {
   @Input() decider: IDecider;
   @Input() isHighlighted = false;
   @Output() pointNextBlock = new EventEmitter<string>();
-
+  allBlocks: IBlock[] = [];
+  
   constructor(private appService: AppService, private modalService: NgbModal) {
     this.decider = {
       name: '',
@@ -22,6 +24,10 @@ export class DeciderTileComponent {
       negativeBlockName: '',
       positiveChance: 0.5,
     };
+
+    this.allBlocks = appService.getArraySortedByName(
+      this.appService.getAllBlocks()
+    );
   }
 
   showNextBlock(nextBlockName: string) {
@@ -44,5 +50,13 @@ export class DeciderTileComponent {
       decider.positiveChance = updatedDecider.positiveChance;
       decider.delay_sec = updatedDecider.delay_sec;
     });
+  }
+
+  isDecider(block: IBlock) {
+    return this.appService.getDeciderNameSuffix(block);
+  }
+
+  changeNextStep(block: IBlock) {
+    // this.stage.nextBlockName = block.name;
   }
 }

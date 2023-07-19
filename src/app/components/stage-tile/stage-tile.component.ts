@@ -19,7 +19,6 @@ export class StageTileComponent {
   @Output() deleteStage = new EventEmitter<string>();
   ORDER_DIRECTION = ORDER_DIRECTION;
   allBlocks: IBlock[] = [];
-  
 
   constructor(private appService: AppService, private modalService: NgbModal) {
     this.stage = {
@@ -59,8 +58,7 @@ export class StageTileComponent {
   }
 
   isDecider(block: IBlock) {
-   return this.appService.getDeciderNameSuffix(block);
-    
+    return this.appService.getDeciderNameSuffix(block);
   }
 
   changeNextStep(block: IBlock) {
