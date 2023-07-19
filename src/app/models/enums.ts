@@ -1,4 +1,4 @@
-export enum OrderDirectionEnum {
+export enum ORDER_DIRECTION {
   UP,
   DOWN,
 }

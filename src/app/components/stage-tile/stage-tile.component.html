@@ -1,6 +1,5 @@
 <!-- <div *ngIf="stage.actions.length" class="card stage-card m-2 highlight-border" -->
-<div  class="card stage-card m-2 highlight-border"
-    [ngClass]="{'highlight-border' : isHighlighted}">
+<div class="card stage-card m-2 highlight-border" [ngClass]="{'highlight-border' : isHighlighted}">
 
     <div class="card-header" [ngClass]="{'highlight-background' : isHighlighted}">
         <div>
@@ -19,12 +18,14 @@
     <div class="card-body p-2">
         <div *ngIf="stage.actions?.length" class="card no-box-shadow">
             <div class="list-group list-group-flush">
-                    <app-action-row *ngFor="let action of stage.actions" [action]="action"
-                        class="list-group-item p-0"></app-action-row>
+                <app-action-row *ngFor="let action of stage.actions" [action]="action" class="list-group-item p-0"
+                    (reorderUp)="reorderAction(action,ORDER_DIRECTION.UP)"
+                    (reorderDown)="reorderAction(action,ORDER_DIRECTION.DOWN)">
+                </app-action-row>
             </div>
         </div>
         <div *ngIf="!stage.actions?.length" class="card no-box-shadow d-flex align-items-center">
-            <p >brak akcji</p>
+            <p>brak akcji</p>
         </div>
 
 

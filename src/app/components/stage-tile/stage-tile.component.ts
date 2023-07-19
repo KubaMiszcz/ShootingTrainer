@@ -3,6 +3,8 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { IStage } from 'src/app/models/stage';
 import { EditStageModalComponent } from '../edit-stage-modal/edit-stage-modal.component';
 import { AppService } from 'src/app/services/app.service';
+import { ORDER_DIRECTION } from 'src/app/models/enums';
+import { IAction } from 'src/app/models/action';
 
 @Component({
   selector: 'app-stage-tile',
@@ -14,6 +16,7 @@ export class StageTileComponent {
   @Input() isHighlighted = false;
   @Output() pointNextBlock = new EventEmitter<string>();
   @Output() deleteStage = new EventEmitter<string>();
+  ORDER_DIRECTION = ORDER_DIRECTION;
 
   constructor(private appService: AppService, private modalService: NgbModal) {
     this.stage = {
@@ -42,5 +45,9 @@ export class StageTileComponent {
       this.stage.actions = updatedStage.actions;
       this.stage.nextBlockName = updatedStage.nextBlockName;
     });
+  }
+
+  reorderAction(action: IAction, direction: ORDER_DIRECTION) {
+    this.appService.reorderAction(this.stage, action, direction);
   }
 }

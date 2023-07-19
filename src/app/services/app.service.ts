@@ -12,15 +12,15 @@ import { BehaviorSubject, Subject } from 'rxjs';
 import { IProcedure } from '../models/procedure';
 import * as _ from 'lodash';
 import { IBlock } from '../models/block';
+import { ORDER_DIRECTION } from '../models/enums';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AppService {
-  getArraySortedByName<T>(array: T[]): T[] {
-    return _.orderBy(array, 'name', 'asc');
-  }
 
+
+  
   //===============================
   //===============================
   //===============================
@@ -35,8 +35,17 @@ export class AppService {
     private audioPlayerService: AudioPlayerService
   ) {}
 
-  deleteItemFromArrayByIndex<T>(array: T[], idx: number) {
-    array.splice(idx, 1);
+  reorderAction(stage: IStage, action: IAction, direction: ORDER_DIRECTION) {
+    let actions = stage.actions;
+    let idx = actions?.findIndex((a) => a === action);
+    let maxIdx = actions?.length - 1;
+
+    if (direction === ORDER_DIRECTION.DOWN && idx !== maxIdx) {
+      this.swapArrayItems(actions, idx, idx + 1);
+    }
+    if (direction === ORDER_DIRECTION.UP && idx !== 0) {
+      this.swapArrayItems(actions, idx, idx - 1);
+    }
   }
 
   appendNewAction(stage: IStage) {
@@ -204,7 +213,26 @@ export class AppService {
     return this.currentProcedure$.value.deciders.find((s) => s.name === name);
   }
 
+
+
+
+
+  //GENERIC METHODS
+  //move to coreservice
   deepCopy<T>(obj: T): T {
     return JSON.parse(JSON.stringify(obj));
   }
+
+  swapArrayItems<T>(array: T[], index1: number, index2: number) {
+    [array[index1], array[index2]] = [array[index2], array[index1]];
+  }
+
+  deleteItemFromArrayByIndex<T>(array: T[], idx: number) {
+    array.splice(idx, 1);
+  }
+
+  getArraySortedByName<T>(array: T[]): T[] {
+    return _.orderBy(array, 'name', 'asc');
+  }
+
 }

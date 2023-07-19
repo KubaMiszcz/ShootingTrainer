@@ -1,6 +1,6 @@
 <div class="modal-header">
     <h4 class="modal-title">
-        <span> Edit Stage: "{{stageName}}" </span>
+        <span> Edycja kroku: "{{stageName}}" </span>
     </h4>
     <button type="button" class="btn-close" aria-label="Close" (click)="activeModal.dismiss('Cross click')"
         ngbAutofocus></button>
@@ -20,7 +20,8 @@
         <div class="card no-box-shadow mb-3">
             <div *ngIf="stage.actions?.length" class="list-group list-group-flush">
                 <app-action-row *ngFor="let action of stage.actions" [action]="action" [showDelete]="true"
-                    (delete)="deleteAction($event)"
+                    (delete)="deleteAction($event)" (reorderUp)="reorderAction(action,ORDER_DIRECTION.UP)"
+                    (reorderDown)="reorderAction(action,ORDER_DIRECTION.DOWN)"
                     class="list-group-item p-0"></app-action-row>
             </div>
             <button type="button" name="" id="" class="btn btn-sm btn-primary btn-block" (click)="appendNewAction()">

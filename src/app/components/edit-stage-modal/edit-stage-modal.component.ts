@@ -1,3 +1,4 @@
+import { ORDER_DIRECTION } from './../../models/enums';
 import { IBlock } from './../../models/block';
 import { AppService } from 'src/app/services/app.service';
 import { Component, EventEmitter, Input, Output } from '@angular/core';
@@ -18,6 +19,7 @@ export class EditStageModalComponent {
   @Output() result: EventEmitter<IStage> = new EventEmitter();
   stageName = '';
   allBlocks: IBlock[] = [];
+  ORDER_DIRECTION = ORDER_DIRECTION;
 
   constructor(
     private appService: AppService,
@@ -58,5 +60,9 @@ export class EditStageModalComponent {
     if (event.code === 'KeyA') {
       this.appendNewAction();
     }
+  }
+
+  reorderAction(action: IAction, direction: ORDER_DIRECTION) {
+    this.appService.reorderAction(this.stage, action, direction);
   }
 }
