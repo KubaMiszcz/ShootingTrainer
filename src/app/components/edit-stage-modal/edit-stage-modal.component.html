@@ -37,7 +37,7 @@
                 aria-expanded="false">Zmien...</button>
             <div class="dropdown-menu dropdown-menu-end">
                 <div *ngFor="let item of allBlocks"><span class="dropdown-item"
-                        (click)="changeNextStep(item)">{{item.name}}</span></div>
+                        (click)="changeNextStep(item)">{{item.name}}{{isDecider(item)}}</span></div>
             </div>
         </div>
 

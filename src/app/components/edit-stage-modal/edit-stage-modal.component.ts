@@ -5,6 +5,7 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { IStage } from 'src/app/models/stage';
 import { IAction } from 'src/app/models/action';
+import { IDecider } from 'src/app/models/decider';
 
 @Component({
   selector: 'app-edit-stage-modal',
@@ -64,5 +65,19 @@ export class EditStageModalComponent {
 
   reorderAction(action: IAction, direction: ORDER_DIRECTION) {
     this.appService.reorderAction(this.stage, action, direction);
+  }
+
+  isDecider(block: IBlock) {
+    let suffix = '';
+    if (!this.appService.isDecider(block)) {
+      return suffix;
+    }
+
+    if (!block.name.endsWith('?')) {
+      suffix += '?';
+    }
+    suffix += ' (D)';
+
+    return suffix;
   }
 }

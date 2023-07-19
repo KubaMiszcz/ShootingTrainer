@@ -18,9 +18,6 @@ import { ORDER_DIRECTION } from '../models/enums';
   providedIn: 'root',
 })
 export class AppService {
-
-
-  
   //===============================
   //===============================
   //===============================
@@ -188,11 +185,11 @@ export class AppService {
     return nextBlockName;
   }
 
-  isDecider(obj: IStage | IDecider | undefined): boolean {
+  isDecider(obj: IBlock | IStage | IDecider | undefined): boolean {
     return (obj as IDecider).positiveBlockName !== undefined;
   }
 
-  isStage(obj: IStage | IDecider | undefined): boolean {
+  isStage(obj: IBlock | IStage | IDecider | undefined): boolean {
     return (obj as IStage).actions !== undefined;
   }
 
@@ -213,10 +210,6 @@ export class AppService {
     return this.currentProcedure$.value.deciders.find((s) => s.name === name);
   }
 
-
-
-
-
   //GENERIC METHODS
   //move to coreservice
   deepCopy<T>(obj: T): T {
@@ -234,5 +227,4 @@ export class AppService {
   getArraySortedByName<T>(array: T[]): T[] {
     return _.orderBy(array, 'name', 'asc');
   }
-
 }
