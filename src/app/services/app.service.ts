@@ -173,6 +173,8 @@ export class AppService {
   }
 
   deleteBlock(block: IBlock) {
+    console.log('delete', block);
+    
     let procedure = this.currentProcedure$.value;
 
     if (this.isStage(block)) {
@@ -272,7 +274,7 @@ export class AppService {
   }
 
   isDecider(obj: IBlock | IStage | IDecider | undefined): boolean {
-    return (obj as IDecider).positiveBlock !== undefined;
+    return (obj as IDecider).positiveChance !== undefined;
   }
 
   isStage(obj: IBlock | IStage | IDecider | undefined): boolean {
