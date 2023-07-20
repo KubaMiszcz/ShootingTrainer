@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { IStage } from 'src/app/models/stage';
 import { EditStageModalComponent } from '../edit-stage-modal/edit-stage-modal.component';
@@ -6,13 +6,14 @@ import { AppService } from 'src/app/services/app.service';
 import { ORDER_DIRECTION } from 'src/app/models/enums';
 import { IAction } from 'src/app/models/action';
 import { IBlock } from 'src/app/models/block';
+import * as _ from 'lodash';
 
 @Component({
   selector: 'app-stage-tile',
   templateUrl: './stage-tile.component.html',
   styleUrls: ['./stage-tile.component.scss'],
 })
-export class StageTileComponent {
+export class StageTileComponent implements OnInit {
   @Input() stage: IStage;
   @Input() isHighlighted = false;
   @Output() pointNextBlock = new EventEmitter<string>();
@@ -24,10 +25,14 @@ export class StageTileComponent {
       name: 'no action',
       actions: [],
     };
+  }
 
-    this.allBlocks = appService.getArraySortedByName(
+  ngOnInit(): void {
+    this.allBlocks = this.appService.getArraySortedByName(
       this.appService.getAllBlocks()
     );
+
+    _.remove(this.allBlocks, this.stage);
   }
 
   showNextBlock(block: IStage) {

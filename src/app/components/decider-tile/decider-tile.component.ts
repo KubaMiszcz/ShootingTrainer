@@ -1,17 +1,19 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { IDecider } from 'src/app/models/decider';
 import { EditDeciderModalComponent } from '../edit-decider-modal/edit-decider-modal.component';
 import { AppService } from 'src/app/services/app.service';
 import { IBlock } from 'src/app/models/block';
+import * as _ from 'lodash';
 
 @Component({
   selector: 'app-decider-tile',
   templateUrl: './decider-tile.component.html',
   styleUrls: ['./decider-tile.component.scss'],
 })
-export class DeciderTileComponent {
+export class DeciderTileComponent implements OnInit {
   @Input() decider: IDecider;
+  deciderName = '';
   @Input() isHighlighted = false;
   @Output() pointNextBlock = new EventEmitter<string>();
   allBlocks: IBlock[] = [];
@@ -22,10 +24,16 @@ export class DeciderTileComponent {
       audioFileName: '',
       positiveChance: 0.5,
     };
+  }
 
-    this.allBlocks = appService.getArraySortedByName(
+  ngOnInit(): void {
+    this.deciderName = this.decider.name;
+
+    this.allBlocks = this.appService.getArraySortedByName(
       this.appService.getAllBlocks()
     );
+
+    _.remove(this.allBlocks, this.decider);
   }
 
   showNextBlock(nextBlock: IBlock | undefined) {
@@ -57,7 +65,7 @@ export class DeciderTileComponent {
   changePositiveBlock(block: IBlock) {
     this.decider.positiveBlock = block;
   }
-  
+
   changeNegativeBlock(block: IBlock) {
     this.decider.negativeBlock = block;
   }

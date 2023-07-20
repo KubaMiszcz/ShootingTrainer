@@ -6,6 +6,8 @@ import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { IStage } from 'src/app/models/stage';
 import { IAction } from 'src/app/models/action';
 import { IDecider } from 'src/app/models/decider';
+import * as _ from 'lodash';
+
 
 @Component({
   selector: 'app-edit-stage-modal',
@@ -34,6 +36,12 @@ export class EditStageModalComponent {
 
   ngOnInit(): void {
     this.stageName = this.stage.name;
+
+    this.allBlocks = this.appService.getArraySortedByName(
+      this.appService.getAllBlocks()
+    );
+
+    _.remove(this.allBlocks, this.stage);
   }
 
   save() {
@@ -42,7 +50,7 @@ export class EditStageModalComponent {
   }
 
   changeNextStep(block: IBlock) {
-      this.stage.nextBlock = block;
+    this.stage.nextBlock = block;
   }
 
   deleteAction(action: IAction) {
