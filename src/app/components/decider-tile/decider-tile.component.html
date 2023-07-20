@@ -20,14 +20,14 @@
             <span class="input-group-text label ps-1" id="basic-addon1">jesli TAK to:</span>
 
             <button class="m-0 btn btn-outline-secondary dropdown-toggle name" type="button" data-bs-toggle="dropdown"
-                aria-expanded="false">{{decider.positiveBlockName}}</button>
+                aria-expanded="false">{{decider.positiveBlock?.name}}</button>
             <div class="dropdown-menu dropdown-menu-end">
                 <div *ngFor="let item of allBlocks"><span class="dropdown-item"
                         (click)="changePositiveBlock(item)">{{item.name}}{{deciderSuffix(item)}}</span></div>
             </div>
 
             <button class="input-group-text btn btn-outline-primary m-0 next-block" type="button"
-                (click)="showNextBlock(decider.positiveBlockName)">pokaz
+                (click)="showNextBlock(decider.positiveBlock)">pokaz
                 <i class="fa fa-location-arrow" aria-hidden="true"></i>
             </button>
 
@@ -37,17 +37,18 @@
             <span class="input-group-text label ps-1" id="basic-addon1">jesli NIE to:</span>
 
             <button class="m-0 btn btn-outline-secondary dropdown-toggle name" type="button" data-bs-toggle="dropdown"
-                aria-expanded="false">{{decider.negativeBlockName}}</button>
+                aria-expanded="false">{{decider.negativeBlock?.name}}</button>
             <div class="dropdown-menu dropdown-menu-end">
                 <div *ngFor="let item of allBlocks"><span class="dropdown-item"
                         (click)="changeNegativeBlock(item)">{{item.name}}{{deciderSuffix(item)}}</span></div>
             </div>
 
             <button class="input-group-text btn btn-outline-primary next-block m-0" type="button"
-                (click)="showNextBlock(decider.negativeBlockName)">pokaz
+                (click)="showNextBlock(decider.negativeBlock)">pokaz
                 <i class="fa fa-location-arrow" aria-hidden="true"></i>
             </button>
         </div>
+
 
         <div class="input-group input-group-sm mt-2">
             <span class="input-group-text " id="basic-addon3">szansa na TAK [%]</span>

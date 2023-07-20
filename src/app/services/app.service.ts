@@ -11,7 +11,7 @@ import { IAction } from '../models/action';
 import { BehaviorSubject, Subject } from 'rxjs';
 import { IProcedure } from '../models/procedure';
 import * as _ from 'lodash';
-import { IBlock } from '../models/block';
+import { Block, IBlock } from '../models/block';
 import { ORDER_DIRECTION } from '../models/enums';
 
 @Injectable({
@@ -51,17 +51,22 @@ export class AppService {
     let procedure = this.currentProcedure$.value;
     procedure.stages.forEach(
       (s) =>
-        (s.nextBlock = this.getAllBlocks().find(
+        s.nextBlock = this.getAllBlocks().find(
           (b) => b.name === (s.nextBlock?.name ?? '')
-        ))
+        )
     );
 
-    // procedure.deciders.forEach(
-    //   (s) =>
-    //     (s.positiveBlock = this.getAllBlocks().find(
-    //       // (b) => b.name === (s.nextBlock?.name ?? '')
-    //     ))
-    // );
+    procedure.deciders.forEach(
+      (s) =>
+        {
+          s.positiveBlock = this.getAllBlocks().find(
+            (b) => b.name === (s.positiveBlock?.name ?? '')
+          );
+          s.negativeBlock = this.getAllBlocks().find(
+            (b) => b.name === (s.negativeBlock?.name ?? '')
+          );
+        }
+    );
   }
 
   //====================================================================
@@ -92,8 +97,6 @@ export class AppService {
     let newDecider: IDecider = {
       name: newUniqueName,
       audioFileName: '',
-      positiveBlockName: '',
-      negativeBlockName: '',
       positiveChance: 0.5,
     };
     procedure.deciders = [newDecider, ...procedure.deciders];
@@ -213,14 +216,14 @@ export class AppService {
     let block: IStage | IDecider | undefined =
       this.getCurrentProcedure().stages[0];
     let deadEnd = false;
-    let nextBlockName = '';
+    let nextBlock: IBlock | undefined = new Block();
 
     do {
       if (this.isStage(block)) {
         block = block as IStage;
         let activeActions = block?.actions.filter((a) => !a.isDisabled);
         playlist.push(...activeActions);
-        nextBlockName = this.getNextBlockName(block);
+        nextBlock = this.getNextBlock(block);
       }
 
       let result = true;
@@ -236,12 +239,12 @@ export class AppService {
           result ? YES_ACTION : NO_ACTION,
         ];
         playlist.push(...actions);
-        nextBlockName = this.getNextBlockName(block, result);
+        nextBlock = this.getNextBlock(block, result);
       }
 
-      deadEnd = !nextBlockName.length;
+      deadEnd = !nextBlock?.name?.length;
       if (!deadEnd) {
-        block = this.getBlockByName(nextBlockName);
+        block = this.getBlockByName(nextBlock?.name);
       }
     } while (playlist.length < maxLength && !deadEnd);
 
@@ -252,24 +255,24 @@ export class AppService {
     return this.currentProcedure$.value;
   }
 
-  getNextBlockName(block: IStage | IDecider | undefined, result?: boolean) {
-    let nextBlockName = '';
+  getNextBlock(block: IStage | IDecider | undefined, result?: boolean) {
+    let nextBlock: IBlock | undefined;
 
     if (this.isStage(block)) {
-      nextBlockName = (block as IStage).nextBlock?.name ?? '';
+      nextBlock = (block as IStage).nextBlock;
     }
     if (this.isDecider(block)) {
       block = block as IDecider;
-      nextBlockName = !!result
-        ? block.positiveBlockName
-        : block.negativeBlockName;
+      nextBlock = !!result
+        ? block.positiveBlock
+        : block.negativeBlock;
     }
 
-    return nextBlockName;
+    return nextBlock;
   }
 
   isDecider(obj: IBlock | IStage | IDecider | undefined): boolean {
-    return (obj as IDecider).positiveBlockName !== undefined;
+    return (obj as IDecider).positiveBlock !== undefined;
   }
 
   isStage(obj: IBlock | IStage | IDecider | undefined): boolean {

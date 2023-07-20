@@ -20,8 +20,6 @@ export class DeciderTileComponent {
     this.decider = {
       name: '',
       audioFileName: '',
-      positiveBlockName: '',
-      negativeBlockName: '',
       positiveChance: 0.5,
     };
 
@@ -30,8 +28,8 @@ export class DeciderTileComponent {
     );
   }
 
-  showNextBlock(nextBlockName: string) {
-    this.pointNextBlock.emit(nextBlockName);
+  showNextBlock(nextBlock: IBlock | undefined) {
+    this.pointNextBlock.emit(nextBlock?.name);
   }
 
   edit(decider: IDecider) {
@@ -45,8 +43,8 @@ export class DeciderTileComponent {
       decider.name = updatedDecider.name;
       decider.description = updatedDecider.description;
       decider.audioFileName = updatedDecider.audioFileName;
-      decider.positiveBlockName = updatedDecider.positiveBlockName;
-      decider.negativeBlockName = updatedDecider.negativeBlockName;
+      decider.positiveBlock = updatedDecider.positiveBlock;
+      decider.negativeBlock = updatedDecider.negativeBlock;
       decider.positiveChance = updatedDecider.positiveChance;
       decider.delay_sec = updatedDecider.delay_sec;
     });
@@ -56,12 +54,12 @@ export class DeciderTileComponent {
     return this.appService.getDeciderNameSuffix(block);
   }
 
-  changeNegativeBlock(block: IBlock) {
-    this.decider.negativeBlockName = block?.name;
-  }
-
   changePositiveBlock(block: IBlock) {
-    this.decider.positiveBlockName = block?.name;
+    this.decider.positiveBlock = block;
+  }
+  
+  changeNegativeBlock(block: IBlock) {
+    this.decider.negativeBlock = block;
   }
 
   onDelete() {

@@ -18,8 +18,6 @@ export class EditDeciderModalComponent implements OnInit {
     this.decider = {
       name: '',
       audioFileName: '',
-      positiveBlockName: '',
-      negativeBlockName: '',
       positiveChance: 0.5,
     };
   }

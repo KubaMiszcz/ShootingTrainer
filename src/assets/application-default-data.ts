@@ -82,23 +82,29 @@ export const APP_DATA_JSON: IAppData = {
         {
           name: 'czy naboj podany',
           audioFileName: 'czy naboj podany',
-          positiveBlockName: 'naboj podany',
-          negativeBlockName: 'deadEnd',
+          
+          
           positiveChance: 0.9,
+          positiveBlock: { name: 'naboj podany' },
+          negativeBlock: { name: 'deadEnd' },
         },
         {
           name: 'czy strzelilo',
           audioFileName: 'czy strzelilo.mp3',
-          positiveBlockName: 'czy cel trafiony',
-          negativeBlockName: 'deadEnd',
+          
+          
           positiveChance: 0.9,
+          positiveBlock: { name: 'czy cel trafiony' },
+          negativeBlock: { name: 'deadEnd' },
         },
         {
           name: 'czy cel trafiony',
           audioFileName: 'czy cel trafiony.mp3',
-          positiveBlockName: 'cel trafiony',
-          negativeBlockName: 'strzelaj dalej',
+          
+          
           positiveChance: 0.6,
+          positiveBlock: { name: 'cel trafiony' },
+          negativeBlock: { name: 'strzelaj dalej' },
         },
       ],
       magazineCapacity: 30,
@@ -129,23 +135,29 @@ export const APP_DATA_JSON: IAppData = {
         {
           name: 'Decyzja3',
           audioFileName: '',
-          positiveBlockName: 'Krok1',
-          negativeBlockName: 'Decyzja2',
+          
+          
           positiveChance: 0.5,
+          positiveBlock: { name: '' },
+          negativeBlock: { name: '' },
         },
         {
           name: 'Decyzja2',
           audioFileName: '',
-          positiveBlockName: 'Krok3',
-          negativeBlockName: 'Krok4',
+          
+          
           positiveChance: 0.5,
+          positiveBlock: { name: '' },
+          negativeBlock: { name: '' },
         },
         {
           name: 'Decyzja1',
           audioFileName: '',
-          positiveBlockName: 'Krok1',
-          negativeBlockName: 'Decyzja2',
+          
+          
           positiveChance: 0.5,
+          positiveBlock: { name: '' },
+          negativeBlock: { name: '' },
         },
       ],
       magazineCapacity: 30,

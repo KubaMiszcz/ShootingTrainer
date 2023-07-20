@@ -6,9 +6,9 @@ export interface IDecider extends IBlock {
   name: string;
   description?: string;
   audioFileName: string;
-  positiveBlockName: string;
-  positiveBlock?: IBlock; //remove nullable
-  negativeBlockName: string;
+  positiveBlockName?: string;
+  positiveBlock?: IBlock;
+  negativeBlockName?: string;
   negativeBlock?: IBlock;
   positiveChance: number;
   delay_sec?: number;

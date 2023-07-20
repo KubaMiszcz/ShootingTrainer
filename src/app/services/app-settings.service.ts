@@ -12,9 +12,17 @@ import { APP_DATA_JSON } from 'src/assets/application-default-data';
 export class AppSettingsService {
   generateJSON(): string {
     let data = this.appData;
+
     data.procedures.forEach((p) =>
       p.stages.forEach((s) => {
         s.nextBlock = { name: s.nextBlock?.name ?? '' };
+      })
+    );
+
+    data.procedures.forEach((p) =>
+      p.deciders.forEach((s) => {
+        s.positiveBlock = { name: s.positiveBlock?.name ?? '' };
+        s.negativeBlock = { name: s.negativeBlock?.name ?? '' };
       })
     );
 
