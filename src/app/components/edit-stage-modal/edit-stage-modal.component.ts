@@ -42,7 +42,7 @@ export class EditStageModalComponent {
   }
 
   changeNextStep(block: IBlock) {
-    this.stage.nextBlockName = block.name;
+      this.stage.nextBlock = block;
   }
 
   deleteAction(action: IAction) {

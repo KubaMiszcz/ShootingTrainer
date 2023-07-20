@@ -43,7 +43,25 @@ export class AppService {
     private appSettings: AppSettingsService,
     private audioPlayerService: AudioPlayerService
   ) {
+    this.updateBlocksReferences();
     this.allProcedures$.next(appSettings.appData.procedures);
+  }
+
+  updateBlocksReferences() {
+    let procedure = this.currentProcedure$.value;
+    procedure.stages.forEach(
+      (s) =>
+        (s.nextBlock = this.getAllBlocks().find(
+          (b) => b.name === (s.nextBlock?.name ?? '')
+        ))
+    );
+
+    // procedure.deciders.forEach(
+    //   (s) =>
+    //     (s.positiveBlock = this.getAllBlocks().find(
+    //       // (b) => b.name === (s.nextBlock?.name ?? '')
+    //     ))
+    // );
   }
 
   //====================================================================
@@ -238,7 +256,7 @@ export class AppService {
     let nextBlockName = '';
 
     if (this.isStage(block)) {
-      nextBlockName = (block as IStage).nextBlockName ?? '';
+      nextBlockName = (block as IStage).nextBlock?.name ?? '';
     }
     if (this.isDecider(block)) {
       block = block as IDecider;

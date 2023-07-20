@@ -5,7 +5,7 @@ export const APP_DATA_JSON: IAppData = {
     {
       name: 'MSBS',
       stages: [
-        { name: 'start', actions: [], nextBlockName: 'step1' },
+        { name: 'start', actions: [], nextBlock: { name: 'step1' } },
         {
           name: 'step1',
           actions: [
@@ -22,7 +22,7 @@ export const APP_DATA_JSON: IAppData = {
               delay_sec: 1,
             },
           ],
-          nextBlockName: 'step2',
+          nextBlock: { name: 'step2' },
         },
         {
           name: 'step2',
@@ -36,7 +36,7 @@ export const APP_DATA_JSON: IAppData = {
             { name: 'patrz na komore', audioFileName: 'patrz na komore.mp3' },
             { name: 'zrzuc suwadlo', audioFileName: 'zrzuc suwadlo.mp3' },
           ],
-          nextBlockName: 'czy naboj podany',
+          nextBlock: { name: 'czy naboj podany' },
         },
         {
           name: 'naboj podany',
@@ -44,12 +44,12 @@ export const APP_DATA_JSON: IAppData = {
             { name: 'niska gotowosc', audioFileName: 'niska gotowosc.mp3' },
             { name: 'czekaj na sygnal', audioFileName: 'czekaj na sygnal.mp3' },
           ],
-          nextBlockName: 'cel',
+          nextBlock: { name: 'cel' },
         },
         {
           name: 'cel',
           actions: [{ name: 'cel', audioFileName: 'cel.mp3' }],
-          nextBlockName: 'step4',
+          nextBlock: { name: 'step4' },
         },
         {
           name: 'step4',
@@ -57,12 +57,12 @@ export const APP_DATA_JSON: IAppData = {
             { name: 'przyceluj', audioFileName: 'przyceluj.mp3' },
             { name: 'odbezpiecz bron', audioFileName: 'odbezpiecz bron.mp3' },
           ],
-          nextBlockName: 'strzelaj dalej',
+          nextBlock: { name: 'strzelaj dalej' },
         },
         {
           name: 'strzelaj dalej',
           actions: [{ name: 'strzelaj', audioFileName: 'strzelaj.mp3' }],
-          nextBlockName: 'czy strzelilo',
+          nextBlock: { name: 'czy strzelilo' },
         },
         {
           name: 'cel trafiony',
@@ -70,12 +70,12 @@ export const APP_DATA_JSON: IAppData = {
             { name: 'palec ze spustu', audioFileName: 'palec ze spustu.mp3' },
             { name: 'zabezpiecz bron', audioFileName: 'zabezpiecz bron.mp3' },
           ],
-          nextBlockName: 'naboj podany',
+          nextBlock: { name: 'naboj podany' },
         },
         {
           name: 'deadEnd',
           actions: [{ name: 'koniec', audioFileName: 'koniec.mp3' }],
-          nextBlockName: '',
+          nextBlock: { name: '' },
         },
       ],
       deciders: [
@@ -116,10 +116,14 @@ export const APP_DATA_JSON: IAppData = {
     {
       name: '3-way decider',
       stages: [
-        { name: 'Krok4', actions: [] },
-        { name: 'Krok3', actions: [] },
-        { name: 'Krok2s', actions: [], nextBlockName: 'Decyzja1' },
-        { name: 'start', actions: [{ name: 'NowaAkcja', audioFileName: '' }] },
+        { name: 'Krok4', actions: [], nextBlock: { name: '' } },
+        { name: 'Krok3', actions: [], nextBlock: { name: '' } },
+        { name: 'Krok2s', actions: [], nextBlock: { name: '' } },
+        {
+          name: 'start',
+          actions: [{ name: 'NowaAkcja', audioFileName: '' }],
+          nextBlock: { name: '' },
+        },
       ],
       deciders: [
         {

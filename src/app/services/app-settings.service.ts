@@ -1,3 +1,4 @@
+import { IBlock } from './../models/block';
 import { Injectable } from '@angular/core';
 import { IStage } from '../models/stage';
 import { IAction } from '../models/action';
@@ -9,6 +10,17 @@ import { APP_DATA_JSON } from 'src/assets/application-default-data';
   providedIn: 'root',
 })
 export class AppSettingsService {
+  generateJSON(): string {
+    let data = this.appData;
+    data.procedures.forEach((p) =>
+      p.stages.forEach((s) => {
+        s.nextBlock = { name: s.nextBlock?.name ?? '' };
+      })
+    );
+
+    return JSON.stringify(data);
+  }
+
   audioFilesPath: string;
   maxPlaylistLength: number;
   appData: IAppData;

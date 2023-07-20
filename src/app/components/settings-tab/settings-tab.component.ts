@@ -17,6 +17,6 @@ export class SettingsTabComponent {
   }
 
   generateJSON() {
-    this.procedureJSON = JSON.stringify(this.appSettingsService.appData);
+    this.procedureJSON = this.appSettingsService.generateJSON()
   }
 }

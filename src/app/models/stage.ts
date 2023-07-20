@@ -5,7 +5,7 @@ import { IDecider } from './decider';
 export interface IStage extends IBlock {
   name: string;
   actions: IAction[];
-  nextBlockName?: string;
+  nextBlock?: IBlock;
 }
 
 // export class Stage implements IStage {

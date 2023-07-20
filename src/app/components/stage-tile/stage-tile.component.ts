@@ -30,8 +30,8 @@ export class StageTileComponent {
     );
   }
 
-  showNextBlock(nextBlockName: IBlock) {
-    this.pointNextBlock.emit(nextBlockName?.name);
+  showNextBlock(block: IStage) {
+    this.pointNextBlock.emit(block?.nextBlock?.name);
   }
 
   onDelete() {
@@ -48,7 +48,7 @@ export class StageTileComponent {
     modalRef.componentInstance.result.subscribe((updatedStage: IStage) => {
       this.stage.name = updatedStage.name;
       this.stage.actions = updatedStage.actions;
-      this.stage.nextBlockName = updatedStage.nextBlockName;
+      this.stage.nextBlock = updatedStage.nextBlock;
     });
   }
 
@@ -61,6 +61,6 @@ export class StageTileComponent {
   }
 
   changeNextStep(block: IBlock) {
-    this.stage.nextBlockName = block.name;
+    this.stage.nextBlock = block;
   }
 }
