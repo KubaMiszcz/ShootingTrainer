@@ -29,9 +29,6 @@ export class EditStageModalComponent {
     public activeModal: NgbActiveModal
   ) {
     this.stage = { name: '', actions: [] };
-    this.allBlocks = appService.getArraySortedByName(
-      this.appService.getAllBlocks()
-    );
   }
 
   ngOnInit(): void {
