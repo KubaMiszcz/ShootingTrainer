@@ -65,6 +65,7 @@ export class EditProcedureTabComponent {
     modalRef.componentInstance.result.subscribe(
       (updatedProcedure: IProcedure) => {
         procedure.name = updatedProcedure.name;
+        procedure.magazineCapacity = updatedProcedure.magazineCapacity;
       }
     );
   }
