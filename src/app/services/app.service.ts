@@ -304,8 +304,23 @@ export class AppService {
   //====================================================================
   //GENERIC METHODS
   //move to coreservice
+  
   deepCopy<T>(obj: T): T {
-    return JSON.parse(JSON.stringify(obj));
+    let cache:any = [];
+    let str = JSON.stringify(obj, function(key, value) {
+      if (typeof value === "object" && value !== null) {
+        if (cache.indexOf(value) !== -1) {
+          // Circular reference found, discard key
+          return;
+        }
+        // Store value in our collection
+        cache.push(value);
+      }
+      return value;
+    });
+    cache = null; // reset the cache
+
+    return JSON.parse(str);
   }
 
   swapArrayItems<T>(array: T[], index1: number, index2: number) {
