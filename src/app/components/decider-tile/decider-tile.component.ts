@@ -57,11 +57,11 @@ export class DeciderTileComponent {
   }
 
   changeNegativeBlock(block: IBlock) {
-    this.decider.negativeBlockName = block.name;
+    this.decider.negativeBlockName = block?.name;
   }
 
   changePositiveBlock(block: IBlock) {
-    this.decider.positiveBlockName = block.name;
+    this.decider.positiveBlockName = block?.name;
   }
 
   onDelete() {

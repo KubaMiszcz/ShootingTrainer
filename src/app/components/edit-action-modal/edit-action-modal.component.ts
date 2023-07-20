@@ -27,7 +27,9 @@ export class EditActionModalComponent implements OnInit {
   }
 
   save() {
-    this.action.audioFileName = _.last(this.audioFileName.split('\\')) ?? '';
+    if (this.audioFileName.length) {
+      this.action.audioFileName = _.last(this.audioFileName.split('\\')) ?? '';
+    }
     this.result.emit(this.action);
     this.activeModal.close();
   }

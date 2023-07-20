@@ -30,7 +30,7 @@
 
 
 
-        <div *ngIf="stage.nextBlockName" class="input-group input-group-sm mt-2">
+        <div class="input-group input-group-sm mt-2">
             <span class="input-group-text label ps-1" id="basic-addon1">Nastepny krok</span>
 
             <button class="m-0 btn btn-outline-secondary dropdown-toggle name" type="button" data-bs-toggle="dropdown"
@@ -41,7 +41,7 @@
             </div>
 
             <button class="input-group-text btn btn-outline-primary m-0 next-block" type="button"
-                (click)="showNextBlock(stage.nextBlockName)">pokaz
+                (click)="showNextBlock(stage)">pokaz
                 <i class="fa fa-location-arrow" aria-hidden="true"></i>
             </button>
         </div>

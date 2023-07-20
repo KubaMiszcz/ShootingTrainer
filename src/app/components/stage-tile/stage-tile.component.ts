@@ -30,8 +30,8 @@ export class StageTileComponent {
     );
   }
 
-  showNextBlock(nextBlockName: string) {
-    this.pointNextBlock.emit(nextBlockName);
+  showNextBlock(nextBlockName: IBlock) {
+    this.pointNextBlock.emit(nextBlockName?.name);
   }
 
   onDelete() {

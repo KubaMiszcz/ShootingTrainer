@@ -103,7 +103,7 @@ export const APP_DATA_JSON: IAppData = {
       ],
       magazineCapacity: 30,
       defaultFailureChance: 0.25,
-      isDefault: false,
+      isDefault: true,
     },
     {
       name: '9mm',
@@ -146,7 +146,7 @@ export const APP_DATA_JSON: IAppData = {
       ],
       magazineCapacity: 30,
       defaultFailureChance: 0.5,
-      isDefault: true,
+      isDefault: false,
     },
   ],
   audioFilesPath: '../assets/audio/',
