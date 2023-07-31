@@ -3,7 +3,7 @@ name: Deploy to GitHub Pages via angular-cli-ghpages
 on:
   push:
     branches:
-    - asstest-access
+    - develop
 
 jobs:
   build-and-deploy:
