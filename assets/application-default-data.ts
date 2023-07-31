@@ -165,7 +165,7 @@ export const APP_DATA_JSON: IAppData = {
       isDefault: false,
     },
   ],
-  audioFilesPath: '../assets/audio/',
+  audioFilesPath: 'assets/audio/',
   maxPlaylistLength: 50,
   defaultAudioExtension: '.mp3',
 };
