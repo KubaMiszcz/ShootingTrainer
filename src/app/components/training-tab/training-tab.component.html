@@ -1,7 +1,5 @@
 <div class="content p-4">
 
-<img src="assets/myimg.jpg" class="img-fluid ${3|rounded-top,rounded-right,rounded-bottom,rounded-left,rounded-circle,|}" alt="">
-
   <div class="control-buttons">
     <button *ngIf="!(isPlaylistPlaying$ | async)" type="button" class="btn btn-primary " (click)="playProcedure()"><i
         class="fa fa-play" aria-hidden="true"></i> Play<br><span> [SPACE]</span></button>
