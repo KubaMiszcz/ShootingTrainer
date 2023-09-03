@@ -1,5 +1,5 @@
 # ShootingTrainer
-## Live Demo (no audio/assets) [https://kubamiszcz.github.io/ShootingTrainer/](https://kubamiszcz.github.io/ShootingTrainer/)
+## Live Demo: [https://kubamiszcz.github.io/ShootingTrainer/](https://kubamiszcz.github.io/ShootingTrainer/)
 
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.0.3.
