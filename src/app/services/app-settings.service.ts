@@ -10,6 +10,18 @@ import { APP_DATA_JSON } from 'src/assets/application-default-data';
   providedIn: 'root',
 })
 export class AppSettingsService {
+  audioFilesPath = '';
+  maxPlaylistLength: number;
+  appData: IAppData;
+  emptyAudioFileName = '';
+
+  constructor() {
+    this.appData = APP_DATA_JSON;
+    this.audioFilesPath = this.appData.audioFilesPath ?? '';
+    this.emptyAudioFileName = this.appData.emptyAudioFileName ?? '';
+    this.maxPlaylistLength = this.appData.maxPlaylistLength ?? 50;
+  }
+
   generateJSON(): string {
     let data = this.appData;
 
@@ -29,16 +41,6 @@ export class AppSettingsService {
     return JSON.stringify(data);
   }
 
-  audioFilesPath: string;
-  maxPlaylistLength: number;
-  appData: IAppData;
-
-  constructor() {
-    this.appData = APP_DATA_JSON;
-    this.audioFilesPath = this.appData.audioFilesPath ?? '';
-    this.maxPlaylistLength = this.appData.maxPlaylistLength ?? 50;
-  }
-
   reloadDefaultAppData(appData: IAppData) {
     this.appData = appData;
   }
@@ -55,6 +57,7 @@ export class AppSettingsService {
         },
       ],
       audioFilesPath: this.appData.audioFilesPath,
+      emptyAudioFileName: this.appData.emptyAudioFileName,
       maxPlaylistLength: this.appData.maxPlaylistLength,
       defaultAudioExtension: this.appData.defaultAudioExtension,
     };

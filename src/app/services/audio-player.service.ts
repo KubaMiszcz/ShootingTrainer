@@ -76,6 +76,13 @@ export class AudioPlayerService {
     }
 
     let path = this.appSettingsService.audioFilesPath + action.audioFileName;
+
+    if (!this.doesFileExist(path)) {
+      path =
+        this.appSettingsService.audioFilesPath +
+        this.appSettingsService.emptyAudioFileName;
+    }
+
     this.playActionAudio(path);
   }
 
@@ -85,18 +92,31 @@ export class AudioPlayerService {
     this.currentAudio.addEventListener('ended', () => {
       this.playbackEnded$.next(path + ' ends');
     });
-
     this.currentAudio.load();
+
+    console.log(path, this.doesFileExist(path));
     this.currentAudio.play();
   }
 
-  playAudio(path: string) {
+  doesFileExist(path: string) {
+    let xhr = new XMLHttpRequest();
+    xhr.open('HEAD', path, false);
+    xhr.send();
+
+    if (xhr.status == 404) {
+      return false;
+    } else {
+      return true;
+    }
+  }
+
+  playAudioDEPR(path: string) {
     let audio = new Audio();
     audio.src = path;
     // audio.src = "../../../assets/audio/alarm.wav";
     // audio.src = '../assets/mywav.wav';
     audio.load();
-    audio.play();
+    audio.play().catch(console.warn);
   }
 
   hasFileExtension(fileName: string) {
