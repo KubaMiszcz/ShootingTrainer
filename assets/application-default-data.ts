@@ -82,8 +82,6 @@ export const APP_DATA_JSON: IAppData = {
         {
           name: 'czy naboj podany',
           audioFileName: 'czy naboj podany',
-          
-          
           positiveChance: 0.9,
           positiveBlock: { name: 'naboj podany' },
           negativeBlock: { name: 'deadEnd' },
@@ -91,8 +89,6 @@ export const APP_DATA_JSON: IAppData = {
         {
           name: 'czy strzelilo',
           audioFileName: 'czy strzelilo.mp3',
-          
-          
           positiveChance: 0.9,
           positiveBlock: { name: 'czy cel trafiony' },
           negativeBlock: { name: 'deadEnd' },
@@ -100,8 +96,6 @@ export const APP_DATA_JSON: IAppData = {
         {
           name: 'czy cel trafiony',
           audioFileName: 'czy cel trafiony.mp3',
-          
-          
           positiveChance: 0.6,
           positiveBlock: { name: 'cel trafiony' },
           negativeBlock: { name: 'strzelaj dalej' },
@@ -109,7 +103,7 @@ export const APP_DATA_JSON: IAppData = {
       ],
       magazineCapacity: 30,
       defaultFailureChance: 0.25,
-      isDefault: true,
+      isDefault: false,
     },
     {
       name: '9mm',
@@ -135,8 +129,6 @@ export const APP_DATA_JSON: IAppData = {
         {
           name: 'Decyzja3',
           audioFileName: '',
-          
-          
           positiveChance: 0.5,
           positiveBlock: { name: '' },
           negativeBlock: { name: '' },
@@ -144,8 +136,6 @@ export const APP_DATA_JSON: IAppData = {
         {
           name: 'Decyzja2',
           audioFileName: '',
-          
-          
           positiveChance: 0.5,
           positiveBlock: { name: '' },
           negativeBlock: { name: '' },
@@ -153,8 +143,6 @@ export const APP_DATA_JSON: IAppData = {
         {
           name: 'Decyzja1',
           audioFileName: '',
-          
-          
           positiveChance: 0.5,
           positiveBlock: { name: '' },
           negativeBlock: { name: '' },
@@ -164,8 +152,28 @@ export const APP_DATA_JSON: IAppData = {
       defaultFailureChance: 0.5,
       isDefault: false,
     },
+    {
+      name: 'Procedura1',
+      stages: [
+        {
+          name: 'Krok1',
+          actions: [
+            { name: 'NowaAkcja1', audioFileName: 'zabezpiecz bron.mp3' },
+            { name: 'NowaAkcja2', audioFileName: '' },
+            { name: 'NowaAkcja3', audioFileName: 'palec ze spustu.mp3' },
+            { name: 'NowaAkcja4', audioFileName: 'zrzuc suwadlo.mp3' },
+          ],
+          nextBlock: { name: '' },
+        },
+      ],
+      deciders: [],
+      magazineCapacity: 30,
+      defaultFailureChance: 0.5,
+      isDefault: true,
+    },
   ],
   audioFilesPath: 'assets/audio/',
   maxPlaylistLength: 50,
   defaultAudioExtension: '.mp3',
+  emptyAudioFileName: 'blank1s.mp3'
 };
