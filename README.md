@@ -2,6 +2,13 @@
 ## Live Demo: [https://kubamiszcz.github.io/ShootingTrainer/](https://kubamiszcz.github.io/ShootingTrainer/)
 
 
+# todo
+cel - DDD eg person, 10clock, 100m etc
+press check
+1-2shoot after fix fail
+
+
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.0.3.
 
 ## Development server
